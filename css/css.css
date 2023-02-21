@@ -1,0 +1,279 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap");
+
+.logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 30px;
+}
+
+.logo_zeladinha{
+    height: 10%;
+    width: 10%;
+    
+}
+
+.buscar {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    background-color: #c7c7c7;
+    width: 100%;
+    height: 80%;
+    display: flex;
+}
+
+form input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding-left: 25px;
+    background-color: #dadada;
+}
+
+
+form button {
+    background-color: #ffffff;
+    padding: 10px 35px;
+    border: none;
+    outline: none;
+    color: #000000;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.menu_bar{
+    background-color: #000000;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    
+}
+
+.menu_bar ul{
+    list-style: none;
+    display: flex;
+}
+
+.checkbtn{
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+@media (max-width: 952px ){
+    .menu_bar ul li a{
+        font-size: 16px;
+        padding-left: 50px;
+    }
+}
+
+#check{
+    display: none;
+
+}
+
+.menu_bar ul li{
+    padding: 10px 30px;
+}
+
+.menu_bar ul li a{
+   color: white;
+   text-decoration: none;
+   font-size: 20px;
+}
+
+.menu_bar ul li a:hover{
+    color: grey;
+    
+ }
+
+.dropdown_menu{
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: black;
+}
+
+.dropdown_menu ul{
+    display: block;
+    margin: 10px;
+
+}
+
+.dropdown_menu li {
+    width: 150px;
+    padding: 10px;
+    
+}
+
+.icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 0 30px 0 0;
+}
+
+.icons div {
+    text-align: center;
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.titulo_seccion {
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.cartas{
+    margin-left: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    gap: 30px;
+    place-content: center;
+}
+
+.terms{
+    margin-top: 30px;
+}
+
+.texto{
+    margin-top: 20px;
+    margin-left: 70px;
+    margin-right: 70px;
+}
+
+.titulo_preguntas{
+    margin-top: 20px;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 1rem;
+}
+
+
+.preguntas{
+    max-width: 700px;
+    margin-top: 30px;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 1rem;
+    font-family: 'Quicksand', sans-serif;
+    color: black;
+    
+}
+
+.question{
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.answer{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1.4s ease;
+   
+}
+
+.content_ask {
+   min-height: 100vh;
+   width: 80%;
+   margin: 0 auto;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.preguntas.active .answer{
+    max-height: 300px;
+    animation: fade 1s ease-in-out ;
+}
+
+.preguntas.active svg{
+    transform: rotate(180deg);
+}
+
+@keyframes fade {
+    from{
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    
+}
+
+.secciones_principal {
+    padding-bottom: 20px;
+}
+
+.cards_producto-nuevos {
+    margin-top: 20px;
+    margin-left: 570px;
+    margin-right: 0;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px;
+    place-content:  center;
+}
+
+.card-nuevo {
+    padding: 15px;
+    background-color: #e3e3e3;
+    border: 2px solid rgb(200, 200, 200);
+}
+
+.card-nuevo img {
+    max-height: 180px;
+    min-height: 165px;
+    width: 90%;
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+.card-nuevo h3 {
+    margin-bottom: 3px;
+    font-size: 21px;
+}
+
+.card-nuevo p {
+    font-size: 18px;
+    margin-top: -7px;
+}
+
+.card-nuevo  {
+    font-weight: bold;
+}
+
+.card-nuevo button {
+    padding: 9px 59px;
+    border-radius: 5px;
+    border: none;
+    display: block;
+    margin: auto;
+    background-color: rgb(200, 200, 200);
+    font-weight: 500;
+    color: #4d4d4d;
+}
+
+
+
+
