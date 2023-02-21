@@ -54,11 +54,34 @@ form button {
     align-items: center;
     justify-content: space-between;
     padding: 0 5%;
+    
 }
 
 .menu_bar ul{
     list-style: none;
     display: flex;
+}
+
+.checkbtn{
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+@media (max-width: 952px ){
+    .menu_bar ul li a{
+        font-size: 16px;
+        padding-left: 50px;
+    }
+}
+
+#check{
+    display: none;
+
 }
 
 .menu_bar ul li{
