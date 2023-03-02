@@ -24,6 +24,7 @@
 
 </head>
 
+
 <body>
 
   <nav class="navbar">
@@ -65,8 +66,8 @@
   </div>
 
   <!-- Ingreso de un registro  -->
-  <button class="btn-ingresar btn-outline-dark flex-shrink-0" type="button"><a href="pedidos_admin.html">
-      Ingresar pedido
+  <button class="btn-ingresar btn-outline-dark flex-shrink-0" type="button"><a href="producto_admin.html">
+      Ingresar producto
     </a></button>
 
   <br> <br>
@@ -76,41 +77,93 @@
       <input type="text" class="form-control" id="full_name_id" name="full_name" placeholder="1">
     </div>
     <br>
-    <label for="full_name_id" class="control-label">Cliente</label>
+    <div class="form-group">
+      <label for="street1_id" class="control-label">Nombre del producto</label>
+      <input type="text" class="form-control" id="street1_id" name="street1"
+        placeholder="Ingrese el nombre del producto">
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="street1_id" class="control-label">Descripcion del producto</label>
+      <input type="text" class="form-control" id="street1_id" name="street1"
+        placeholder="Describa el producto a ingresar">
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="street1_id" class="control-label">Precio</label>
+      <input type="text" class="form-control" id="street1_id" name="street1"
+        placeholder="Ingrese el precio, Ej: $##.##">
+    </div>
+    <br>
+    <label for="full_name_id" class="control-label">Marca del producto</label>
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
         aria-expanded="false">
-        Seleccione un cliente
+        Seleccione una marca
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="#">Luis</a></li>
-        <li><a class="dropdown-item" href="#">Jimmy</a></li>
-        <li><a class="dropdown-item" href="#">Walter</a></li>
+        <li><a class="dropdown-item" href="#">Nike</a></li>
+        <li><a class="dropdown-item" href="#">Adidas</a></li>
+        <li><a class="dropdown-item" href="#">Jordan</a></li>
       </ul>
     </div>
     <br>
-    <label for="full_name_id" class="control-label">Estado del pedido</label>
+    <label for="full_name_id" class="control-label">Genero del producto</label>
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
         aria-expanded="false">
-        Seleccione un estado
+        Seleccione una genero
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="#">En camino</a></li>
-        <li><a class="dropdown-item" href="#">Entregado</a></li>
-        <li><a class="dropdown-item" href="#">Bloquedo</a></li>
+        <li><a class="dropdown-item" href="#">Masculino</a></li>
+        <li><a class="dropdown-item" href="#">Femenino</a></li>
+        <li><a class="dropdown-item" href="#">Niños/as</a></li>
+        <li><a class="dropdown-item" href="#">Unisex</a></li>
+      </ul>
+    </div>
+    <br>
+    <label for="full_name_id" class="control-label">Tipo de producto</label>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Seleccione un tipo
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">Deportivos</a></li>
+        <li><a class="dropdown-item" href="#">Casuales</a></li>
+        <li><a class="dropdown-item" href="#">Tacos</a></li>
       </ul>
     </div>
     <br>
     <div class="form-group">
-      <label for="full_name_id" class="control-label">Fecha del pedido</label>
-      <input type="text" class="form-control" id="full_name_id" name="full_name" placeholder="03-06-2023">
+      <label for="street1_id" class="control-label">Imagen del producto</label>
     </div>
+    <a href="#!"><img src="https://dummyimage.com/250x270/dee2e6/6c757d.jpg" alt="..." /></a>
+    <br>
+    <button class="btn-imagen btn-outline-dark flex-shrink-0" type="button"><a href="">
+        Ingresar imagen
+      </a></button>
+    <br>
     <br>
     <div class="form-group">
-      <label for="full_name_id" class="control-label">Direccion</label>
-      <input type="text" class="form-control" id="full_name_id" name="full_name" placeholder="Ingrese una direccion">
+      <label for="street1_id" class="control-label">Nombre de la marca</label>
+      <input type="text" class="form-control" id="street1_id" name="street1"
+        placeholder="Ingrese el nombre de la marca">
+    </div>
+    <br>
+    <label for="full_name_id" class="control-label">Usuario</label>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Seleccione su Usuario
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">####</a></li>
+        <li><a class="dropdown-item" href="#">####</a></li>
+        <li><a class="dropdown-item" href="#">####</a></li>
+      </ul>
     </div>
   </div>
+</body>
 
 </html>

@@ -277,6 +277,18 @@ thead {
     height: 40px;
   }
 
+.formulario{
+    margin-left: 95px;
+    margin-right: 95px;
+}
+
+.btn-ingresar{
+    margin-left: 95px;
+}
+
+.btn-agregar{
+    margin-left: 95px;
+}
 
 
 
