@@ -61,59 +61,43 @@
       <li><a href="usuarios_admin.html">Administrar usuarios</a></li>
       <li><a href="marcas_admin.html">Administrar marcas</a></li>
       <li><a href="gen_productos_admin.html">Administrar gen. prod.</a></li>
+    </ul>
   </div>
 
-  <button class="btn btn-outline-dark flex-shrink-0" type="button"><a href="registar_pedidos.html">
-    Agregar pedido
-  </a></button>
+  <button class="btn btn-outline-dark flex-shrink-0" type="button"><a href="pedidos_admin.html">
+      Ingresar pedido
+    </a></button>
 
-  <section class="intro">
-    <div class="bg-image h-100" style="background-color: #f5f7fa;">
-      <div class="mask d-flex align-items-center h-100">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-body p-0">
-                  <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true"
-                    style="position: relative; height: 700px">
-                    <table class="table table-striped mb-0">
-                      <thead style="background-color: #002d72;">
-                        <tr>
-                          <th scope="col">ID</th>
-                          <th scope="col">Cliente</th>
-                          <th scope="col">Estado del pedido</th>
-                          <th scope="col">Fecha del pedido</th>
-                          <th scope="col">Direccion</th>
-                          <th scope="col">Actualizar</th>
-                          <th scope="col">Eliminar</th>
-
-
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Luis</td>
-                          <td>En espera</td>
-                          <td>03-06-2023</td>
-                          <td>Metrocentro</td>
-                          <td><img src="Imagenes/update.png" alt="Logo" width="30" height="30"
-                              class="d-inline-block align-text-top"></td>
-                          <td><img src="Imagenes/delete.png" alt="Logo" width="30" height="30"
-                              class="d-inline-block align-text-top"></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</body>
+  <br> <br>
+  <div class="form-group">
+    <label for="full_name_id" class="control-label">ID</label>
+    <input type="text" class="form-control" id="full_name_id" name="full_name" placeholder="1">
+  </div>
+  <br>
+  <label for="full_name_id" class="control-label">Cliente</label>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+      aria-expanded="false">
+      Seleccione un cliente
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" href="#">Luis</a></li>
+      <li><a class="dropdown-item" href="#">Jimmy</a></li>
+      <li><a class="dropdown-item" href="#">Walter</a></li>
+    </ul>
+  </div>
+  <br>
+  <label for="full_name_id" class="control-label">Estado del pedido</label>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+      aria-expanded="false">
+      Seleccione un estado
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" href="#">En camino</a></li>
+      <li><a class="dropdown-item" href="#">Entregado</a></li>
+      <li><a class="dropdown-item" href="#">Bloquedo</a></li>
+    </ul>
+  </div>
 
 </html>
