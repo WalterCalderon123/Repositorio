@@ -6,54 +6,83 @@
 // Constante para completar la ruta de la API.
 const USER_API = 'business/dashboard/usuario.php';
 // Constantes para establecer las etiquetas de encabezado y pie de la página web.
-/*const HEADER = document.querySelector('header');
+const HEADER = document.querySelector('header');
 const FOOTER = document.querySelector('footer');
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
     // Petición para obtener en nombre del usuario que ha iniciado sesión.
-    const JSON = await dataFetch(USER_API, 'getUser');
     // Se verifica si el usuario está autenticado, de lo contrario se envía a iniciar sesión.
     if (JSON.session) {
         // Se comprueba si existe un alias definido para el usuario, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             HEADER.innerHTML = `
-                <div class="navbar-fixed">
-                    <nav>
-                        <div class="nav-wrapper">
-                            <a href="main.html" class="brand-logo"><img src="../../resources/img/logo.png" height="60"></a>
-                            <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                            <ul class="right hide-on-med-and-down">
-                                <li><a href="productos.html"><i class="material-icons left">shop</i>Productos</a></li>
-                                <li><a href="categorias.html"><i class="material-icons left">shop_two</i>Categorías</a></li>
-                                <li><a href="usuarios.html"><i class="material-icons left">group</i>Usuarios</a></li>
-                                <li>
-                                    <a href="#" class="dropdown-trigger" data-target="desktop-dropdown">
-                                        <i class="material-icons left">verified_user</i>Cuenta: <b>${JSON.username}</b>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                    <ul id="desktop-dropdown" class="dropdown-content">
-                        <li><a href="profile.html"><i class="material-icons">face</i>Editar perfil</a></li>
-                        <li><a onclick="logOut()"><i class="material-icons">clear</i>Salir</a></li>
+            <div class="navbar">
+            <div class="logo">
+              <img src="Imagenes/Zeladinha Sneakers Logo.jpg" alt="Logo" width="60" height="54"
+                class="d-inline-block align-text-top">
+            </div>
+            <div class="buscar">
+              <form>
+                <input type="text" placeholder="">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+              </form>
+            </div>
+        
+            <div class="icons">
+              <div class="user">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <div class="carrito">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </div>
+        
+            </div>
+        
+          </div>
+        
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+            <div class="container-fluid d-flex flex-column align-items-center justify-content-between">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Productos
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li><a class="dropdown-item" href="#">Separated link</a></li>
                     </ul>
-                </div>
-                <ul id="mobile-menu" class="sidenav">
-                    <li><a href="productos.html"><i class="material-icons">shop</i>Productos</a></li>
-                    <li><a href="categorias.html"><i class="material-icons">shop_two</i>Categorías</a></li>
-                    <li><a href="usuarios.html"><i class="material-icons">group</i>Usuarios</a></li>
-                    <li>
-                        <a class="dropdown-trigger" href="#" data-target="mobile-dropdown">
-                            <i class="material-icons">verified_user</i>Cuenta: <b>${JSON.username}</b>
-                        </a>
-                    </li>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Pedidos
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Tallas</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Marcas</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Usuarios</a>
+                  </li>
                 </ul>
-                <ul id="mobile-dropdown" class="dropdown-content">
-                    <li><a href="profile.html">Editar perfil</a></li>
-                    <li><a onclick="logOut()">Salir</a></li>
-                </ul>
+              </div>
+            </div>
+          </nav>
             `;
             FOOTER.innerHTML = `
                 <div class="container">
@@ -92,7 +121,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     } else {
         // Se comprueba si la página web es la principal, de lo contrario se direcciona a iniciar sesión.
-        if (location.pathname == '/coffeeshop/views/dashboard/index.html') {
+        if (location.pathname == '/Repositorio/Repositorio/sitio_privado/index.html') {
             HEADER.innerHTML = `
                 <div class="navbar-fixed">
                     <nav>
@@ -125,4 +154,4 @@ document.addEventListener('DOMContentLoaded', async () => {
             location.href = 'index.html';
         }
     }
-});*/
+});
