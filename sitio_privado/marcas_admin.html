@@ -23,7 +23,7 @@
 
 <body>
 
-  <div class="navbar">
+  <nav class="navbar">
     <div class="logo">
       <img src="Imagenes/Zeladinha Sneakers Logo.jpg" alt="Logo" width="60" height="54"
         class="d-inline-block align-text-top">
@@ -45,49 +45,21 @@
 
     </div>
 
-  </div>
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-    <div class="container-fluid d-flex flex-column align-items-center justify-content-between">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown">
-            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Productos
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="producto_admin.html">Productos</a></li>
-              <li><a class="dropdown-item" href="detalle_prod_admin.html">Detalles</a></li>
-              <li><a class="dropdown-item" href="gen_productos_admin.html">Generos</a></li>
-              <li><a class="dropdown-item" href="productos_tipo_admin.html">Tipos</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Pedidos
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="pedidos_admin.html">Pedidos</a></li>
-              <li><a class="dropdown-item" href="detalle_ped_admin.html">Detalles</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="tallas_admin.html">Tallas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="marcas_admin.html">Marcas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="usuarios_admin.html">Usuarios</a>
-          </li>
-        </ul>
-      </div>
-    </div>
   </nav>
 
+  <div class="menu_bar">
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <ul>
+      <li><a href="pedidos_admin.html">Administrar pedidos</a></li>
+      <li><a href="producto_admin.html">Administrar productos</a></li>
+      <li><a href="usuarios_admin.html">Administrar usuarios</a></li>
+      <li><a href="marcas_admin.html">Administrar marcas</a></li>
+      <li><a href="gen_productos_admin.html">Administrar gen. prod.</a></li>
+    </ul>
+  </div>
 
   <!-- Ingreso de un registro  -->
   <button class="btn-agregar btn-outline-dark flex-shrink-0" type="button"><a href="registar_marcas.html">
