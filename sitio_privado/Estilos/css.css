@@ -282,16 +282,22 @@ thead {
     margin-right: 95px;
 }
 
-.btn-ingresar{
-    margin-left: 95px;
-}
-
 .btn-agregar{
     margin-left: 95px;
+    background-color: #000000;
+    color: #fff;
+    height: 50px;
+    width: 180px;
+
 }
 
 .dropdown-item{
     color: #000000;
     background-color:#000000;
 }
+
+.Nombre{
+    margin-top: -50px;
+}
+
 

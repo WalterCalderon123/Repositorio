@@ -26,7 +26,8 @@
 
 <body>
 
-  <nav class="navbar">
+
+  <div class="navbar">
     <div class="logo">
       <img src="Imagenes/Zeladinha Sneakers Logo.jpg" alt="Logo" width="60" height="54"
         class="d-inline-block align-text-top">
@@ -47,54 +48,152 @@
       </div>
 
     </div>
-  </nav>
 
-  <div class="menu_bar">
-    <input type="checkbox" id="check">
-    <label for="check" class="checkbtn">
-      <i class="fas fa-bars"></i>
-    </label>
-    <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li class="nav-link">
-        <a class="nav-link" data-bs-toggle="dropdown" role="button" href="producto_admin.html">Productos</a>
-        <ul class="dropdown-menu">
-          <a class="dropdown-item" href="producto_admin.html">Productos</a>
-          <a class="dropdown-item" href="detalle_prod_admin.html">Detalles</a>
-          <a class="dropdown-item" href="gen_productos_admin.html">Generos</a>
-          <a class="dropdown-item" href="productos_tipo_admin.html">Tipos</a>
-        </ul>
-      </li>
-      <li></li>
-      <li class="nav-link">
-        <a class="nav-link" data-bs-toggle="dropdown" role="button" href="pedidos_admin.html">Pedidos</a>
-          <ul class="dropdown-menu">
-          <a class="dropdown-item" href="pedidos_admin.html">Pedidos</a>
-          <a class="dropdown-item" href="detalle_ped_admin.html">Detalles</a>
-        </ul>
-      </li>
-      <li></li>
-      <li class="nav-item">
-        <a class="nav-link" href="tallas_admin.html">Tallas</a>
-      </li>
-      <li></li>
-      <li class="nav-item">
-        <a class="nav-link" href="marcas_admin.html">Marcas</a>
-      </li>
-      <li></li>
-      <li class="nav-item">
-        <a class="nav-link" href="usuarios_admin.html">Usuarios</a>
-      </li>
-      <li></li>
-      </ul>
   </div>
 
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+    <div class="container-fluid d-flex flex-column align-items-center justify-content-between">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Productos
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="producto_admin.html">Productos</a></li>
+              <li><a class="dropdown-item" href="detalle_prod_admin.html">Detalles</a></li>
+              <li><a class="dropdown-item" href="gen_productos_admin.html">Generos</a></li>
+              <li><a class="dropdown-item" href="productos_tipo_admin.html">Tipos</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Pedidos
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="pedidos_admin.html">Pedidos</a></li>
+              <li><a class="dropdown-item" href="detalle_ped_admin.html">Detalles</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="tallas_admin.html">Tallas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="marcas_admin.html">Marcas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="usuarios_admin.html">Usuarios</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <!-- Ingreso al formulario de productos  -->
-  <button class="btn-agregar btn-outline-dark flex-shrink-0" type="button"><a href="registar_productos.html">
-      Agregar producto
-    </a></button>
+<!-- Button trigger modal -->
+<button type="button" class="btn-agregar" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Agregar Productos
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="grid gap-6 m-5 md:grid-cols-2">
+            <!-- Campo para ingresar nombre -->
+            <div>
+              <label for="first_name"
+                class=" mt-5 block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+              <input type="text" id="first_name"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Nombre" required>
+            </div>
+            <!-- Campo para ingresar una descripcion -->
+            <div>
+              <label for="phone"
+                class="block mb-2 mt-5 text-sm font-medium text-gray-900 dark:text-white">Descripcion</label>
+              <input type="text" id="phone"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Descripcion" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+            </div>
+            <!-- Campo para ingresar precio -->
+            <div>
+              <label for="visitors"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Precio</label>
+              <input type="tel" id="visitors"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Precio" required>
+            </div>
+            <!-- Campo para seleccionar genero -->
+            <div>
+              <label for="company"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Marca</label>
+              <select id="countries"
+                class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected>Nike</option>
+                <option value="US">Adidas</option>
+              </select>
+            </div>
+            <!-- Campo para ingresar genero -->
+            <div>
+              <label for="company"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Genero</label>
+              <select id="countries"
+                class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected>Hombre</option>
+                <option value="US">Mujer</option>
+                <option value="US">Niños</option>
+              </select>
+            </div>            
+            <!-- Campo para ingresar tipo de producto -->
+            <div>
+              <label for="company"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo</label>
+              <select id="countries"
+                class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected>Casual</option>
+                <option value="US">Deportivos</option>
+              </select>
+            </div>
+            
+            <!-- Campo para ingresar imagen de producto -->
+            <div>
+              <label for="website"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Imagen</label>
+              <input type="tel" id="website"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="7419782-2" required>
+            </div>
+          </div>
+          <div class="grid gap-6 m-5 md:grid-cols-2">
+            <!-- Campo para ingresar el usuario -->
+            <div>
+              <label for="company"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Usuario</label>
+              <select id="countries"
+                class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected>Jimmy</option>
+                <option value="US">Rogel</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"></button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   <section class="intro">
     <div class="bg-image h-100" style="background-color: #f5f7fa;">
