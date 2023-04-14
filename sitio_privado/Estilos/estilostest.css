@@ -1,18 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap");
 
 
-:root{
+:root {
     font-family: 'Quicksand', sans-serif;
 }
-html{
+
+html {
     box-sizing: border-box;
 }
 
-*,*::after, *::before{
+*,
+*::after,
+*::before {
     box-sizing: inherit;
 }
 
-body{
+body {
     font-family: var(--fuente);
     background-image: url('../Imagenes/fondo.jpg');
     display: flex;
@@ -20,84 +23,94 @@ body{
     height: 100vh;
 }
 
-.contenedor{
+.contenedor {
     margin: 0 auto;
     max-width: 1200px;
     width: 95%;
 }
 
-.imagen-formulario{
+.imagen-formulario {
     background-image: url('../Imagenes/travis.jpg');
     background-position: center center;
     background-size: cover;
     height: 200px;
     flex: 0 0 calc(60%);
     position: relative;
-    
-}
-.imagen-formulario::before{
-   content: '';
-   position: absolute;
-   top: 0;
-   bottom: 0;
-   left: 0;
-   right: 0;
-   background: linear-gradient(to right,rgba(141,169,196,.5), rgba(19, 64, 116, .5) );
-   
+
 }
 
-@media(min-width:768px){
-    .imagen-formulario{
+.imagen-formulario::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to right, rgba(141, 169, 196, .5), rgba(19, 64, 116, .5));
+
+}
+
+@media(min-width:768px) {
+    .imagen-formulario {
         height: auto;
         background-position: right;
     }
 
 }
-@media(min-width:1200px){
-    .imagen-formulario{
+
+@media(min-width:1200px) {
+    .imagen-formulario {
         background-position: center;
     }
 }
 
-@media(min-width:768px){
-    .contenedor-formulario{
+@media(min-width:768px) {
+    .contenedor-formulario {
         display: flex;
     }
 }
 
-.formulario{
+@media(max-width:600px) {
+    .contenedor {
+        height: 500px;
+    }
+}
+
+.formulario {
     padding: 50px;
     background-color: white;
 }
-.texto-formulario h2, .input label, .password-olvidada a, .texto-formulario p{
-    color: var(--blanco);
-}
-.texto-formulario h2{
-    font-size: 40px;
+
+.texto-formulario h2 {
+    font-size: 20px;
     text-align: center;
 }
-.texto-formulario p{
+
+.texto-formulario p {
     font-size: 22px;
     text-align: center;
 }
-.input label{
+
+.input label {
     display: block;
-    font-size: 22px;
+    font-size: 15px;
     font-weight: bold;
-    margin: 20px 0;
+    margin: 10px 0;
 }
-.password-olvidada a{
+
+.password-olvidada a {
     display: inline-block;
     margin-top: 20px;
     font-size: 22px;
 }
-.input input{
+
+.input input {
     width: 100%;
-    padding: 10px 16px;
     border-radius: 5px;
     outline: none;
 }
-.input input[type="submit"]{
+
+.input input[type="submit"] {
     background-color: black;
     color: white;
     font-size: 22px;
@@ -106,8 +119,9 @@ body{
     margin-top: 20px;
     transition: background-color .3s ease-in-out;
 }
-.input input[type="submit"]:hover{
-  
+
+.input input[type="submit"]:hover {
+
     cursor: pointer;
     background-color: gray;
 }
