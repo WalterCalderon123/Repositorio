@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Se muestra el formulario para registrar el primer usuario.
         document.getElementById('signup-contenedor').classList.remove('d-none');
         sweetAlert(4, JSON.exception, true);
-        console.log("hola");
 
     }
 });
