@@ -107,7 +107,8 @@ form button {
     position: absolute;
     left: 0;
     top: 100%;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
 }
 
 .dropdown_menu ul{
@@ -289,6 +290,7 @@ thead {
 .btn-agregar{
     margin-left: 95px;
 }
+
 
 
 

@@ -284,6 +284,7 @@ thead {
 
 .btn-agregar{
     margin-left: 95px;
+    margin-top: 10px;
     background-color: #000000;
     color: #fff;
     height: 50px;
@@ -292,7 +293,7 @@ thead {
 }
 
 .dropdown-item{
-    color: #000000;
+    color: #ffffff;
     background-color:#000000;
 }
 

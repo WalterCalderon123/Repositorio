@@ -93,9 +93,42 @@
 
 
   <!-- Ingreso al formulario de usuarios  -->
-  <button class="btn-agregar btn-outline-dark flex-shrink-0" type="button"><a href="registar_usuarios.html">
-      Agregar usuario
-    </a></button>
+  <button type="button" class="btn-agregar" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar Usuario</button>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario de Usuarios</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="d-flex flex-column">
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Nombre:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Apellido:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Correo:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Alias:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Guardar Cambios</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
 
   <section class="intro">
     <div class="bg-image h-100" style="background-color: #f5f7fa;">

@@ -52,13 +52,15 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
     <div class="container-fluid d-flex flex-column align-items-center justify-content-between">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
-            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
               Productos
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
@@ -69,7 +71,8 @@
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
               Pedidos
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
@@ -93,9 +96,49 @@
 
 
   <!-- Ingreso al formulario de productos  -->
-  <button class="btn-agregar btn-outline-dark flex-shrink-0" type="button"><a href="registar_productos.html">
-      Agregar producto
-    </a></button>
+  <button type="button" class="btn-agregar" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar detalles de
+    producto</button>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario de detalles de productos</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="d-flex flex-column">
+            <div class="nav-item dropdown">
+              <label for="recipient-name" class="col-form-label">Producto:</label>
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Escoge una opcion</option>
+                <option value="1">Zapatillas</option>
+                <option value="2">zapatos</option>
+                <option value="3">Tacos</option>
+              </select>
+            </div>
+            <div class="nav-item dropdown">
+              <label for="recipient-name" class="col-form-label">Talla:</label>
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Escoge una opcion</option>
+                <option value="1">7.5</option>
+                <option value="2">8.0</option>
+                <option value="3">8.5</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Existencia:</label>
+              <input type="number" class="form-control" id="recipient-name">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Guardar Cambios</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <section class="intro">
     <div class="bg-image h-100" style="background-color: #f5f7fa;">
