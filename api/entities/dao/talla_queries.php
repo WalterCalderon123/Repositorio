@@ -10,35 +10,35 @@ class CategoriaQueries
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT id_categoria, nombre_categoria, imagen_categoria, descripcion_categoria
-                FROM categorias
-                WHERE nombre_categoria ILIKE ? OR descripcion_categoria ILIKE ?
-                ORDER BY nombre_categoria';
+        $sql = 'SELECT idtalla, num_talla
+                FROM tallas
+                WHERE num_talla ILIKE ?
+                ORDER BY num_talla';
         $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 
     public function createRow()
     {
-        $sql = 'INSERT INTO categorias(nombre_categoria, imagen_categoria, descripcion_categoria)
-                VALUES(?, ?, ?)';
+        $sql = 'INSERT INTO tallas(num_talla)
+                VALUES(?)';
         $params = array($this->nombre, $this->imagen, $this->descripcion);
         return Database::executeRow($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'SELECT id_categoria, nombre_categoria, imagen_categoria, descripcion_categoria
-                FROM categorias
-                ORDER BY nombre_categoria';
+        $sql = 'SELECT idtalla, num_talla
+                FROM tallas
+                ORDER BY num_talla';
         return Database::getRows($sql);
     }
 
     public function readOne()
     {
-        $sql = 'SELECT id_categoria, nombre_categoria, imagen_categoria, descripcion_categoria
-                FROM categorias
-                WHERE id_categoria = ?';
+        $sql = 'SELECT idtalla, num_talla
+                FROM tallas
+                WHERE idtalla = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
@@ -48,17 +48,17 @@ class CategoriaQueries
         // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
         ($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
 
-        $sql = 'UPDATE categorias
-                SET imagen_categoria = ?, nombre_categoria = ?, descripcion_categoria = ?
-                WHERE id_categoria = ?';
+        $sql = 'UPDATE tallas
+                SET num_talla = ?
+                WHERE idtalla = ?';
         $params = array($this->imagen, $this->nombre, $this->descripcion, $this->id);
         return Database::executeRow($sql, $params);
     }
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM categorias
-                WHERE id_categoria = ?';
+        $sql = 'DELETE FROM tallas
+                WHERE idtalla = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
