@@ -1,20 +1,20 @@
 <?php
-require_once('../../entities/dto/categoria.php');
+require_once('../../entities/dto/genero_prod.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $categoria = new Categoria;
+    $Genero_prod = new Genero_prod;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['id_usuario'])) {
+    if (isset($_SESSION['idusuario'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'readAll':
-                if ($result['dataset'] = $categoria->readAll()) {
+                if ($result['dataset'] = $Genero_prod->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' registros';
                 } elseif (Database::getException()) {
@@ -27,7 +27,7 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $categoria->searchRows($_POST['search'])) {
+                } elseif ($result['dataset'] = $Genero_prod->searchRows($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -38,77 +38,60 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$categoria->setNombre($_POST['nombre'])) {
+                if (!$Genero_prod->setNombre($_POST['nombre'])) {
                     $result['exception'] = 'Nombre incorrecto';
-                } elseif (!$categoria->setDescripcion($_POST['descripcion'])) {
-                    $result['exception'] = 'Descripción incorrecta';
-                } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
-                    $result['exception'] = 'Seleccione una imagen';
-                } elseif (!$categoria->setImagen($_FILES['archivo'])) {
-                    $result['exception'] = Validator::getFileError();
-                } elseif ($categoria->createRow()) {
+                } elseif ($Genero_prod->createRow()) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $categoria->getRuta(), $categoria->getImagen())) {
-                        $result['message'] = 'Categoría creada correctamente';
-                    } else {
-                        $result['message'] = 'Categoría creada pero no se guardó la imagen';
-                    }
+                    if () {
+                        $result['message'] = 'Genero de producto creado correctamente';
+                    } 
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'readOne':
-                if (!$categoria->setId($_POST['id_categoria'])) {
-                    $result['exception'] = 'Categoría incorrecta';
-                } elseif ($result['dataset'] = $categoria->readOne()) {
+                if (!$Genero_prod->setId($_POST['idgenero_producto'])) {
+                    $result['exception'] = 'Genero de producto incorrecto';
+                } elseif ($result['dataset'] = $Genero_prod->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Categoría inexistente';
+                    $result['exception'] = 'Genero de producto inexistente';
                 }
                 break;
             case 'update':
                 $_POST = Validator::validateForm($_POST);
-                if (!$categoria->setId($_POST['id'])) {
-                    $result['exception'] = 'Categoría incorrecta';
-                } elseif (!$data = $categoria->readOne()) {
-                    $result['exception'] = 'Categoría inexistente';
-                } elseif (!$categoria->setNombre($_POST['nombre'])) {
-                    $result['exception'] = 'Nombre incorrecto';
-                } elseif (!$categoria->setDescripcion($_POST['descripcion'])) {
-                    $result['exception'] = 'Descripción incorrecta';
-                } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
-                    if ($categoria->updateRow($data['imagen_categoria'])) {
+                if (!$Genero_prod->setId($_POST['id'])) {
+                    $result['exception'] = 'Genero de producto incorrecta';
+                } elseif (!$data = $Genero_prod->readOne()) {
+                    $result['exception'] = 'Genero de producto inexistente';
+                } elseif (!$Genero_prod->setNombre($_POST['nombre'])) {
+                    $result['exception'] = 'Nombre de genero incorrecto';
+                } 
+                    if () {
                         $result['status'] = 1;
-                        $result['message'] = 'Categoría modificada correctamente';
+                        $result['message'] = 'Genero de producto modificado correctamente';
                     } else {
                         $result['exception'] = Database::getException();
                     }
-                } elseif (!$categoria->setImagen($_FILES['archivo'])) {
-                    $result['exception'] = Validator::getFileError();
-                } elseif ($categoria->updateRow($data['imagen_categoria'])) {
-                    $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $categoria->getRuta(), $categoria->getImagen())) {
+                
+                    if () {
                         $result['message'] = 'Categoría modificada correctamente';
-                    } else {
-                        $result['message'] = 'Categoría modificada pero no se guardó la imagen';
-                    }
+                    } 
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'delete':
-                if (!$categoria->setId($_POST['id_categoria'])) {
-                    $result['exception'] = 'Categoría incorrecta';
-                } elseif (!$data = $categoria->readOne()) {
-                    $result['exception'] = 'Categoría inexistente';
-                } elseif ($categoria->deleteRow()) {
+                if (!$Genero_prod->setId($_POST['idgenero_producto'])) {
+                    $result['exception'] = 'Genero de producto incorrecto';
+                } elseif (!$data = $Genero_prod->readOne()) {
+                    $result['exception'] = 'Genero de producto inexistente';
+                } elseif ($Genero_prod->deleteRow()) {
                     $result['status'] = 1;
-                    if (Validator::deleteFile($categoria->getRuta(), $data['imagen_categoria'])) {
-                        $result['message'] = 'Categoría eliminada correctamente';
-                    } else {
-                        $result['message'] = 'Categoría eliminada pero no se borró la imagen';
+                    if () {
+                        $result['message'] = 'Genero de producto eliminado correctamente';
                     }
                 } else {
                     $result['exception'] = Database::getException();
@@ -123,7 +106,6 @@ if (isset($_GET['action'])) {
         print(json_encode($result));
     } else {
         print(json_encode('Acceso denegado'));
-    }
-} else {
+    } else {
     print(json_encode('Recurso no disponible'));
 }
