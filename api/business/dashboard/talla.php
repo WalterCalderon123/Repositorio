@@ -6,7 +6,7 @@ if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $talla = new Talla;
+    $Talla = new Talla;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -14,7 +14,7 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'readAll':
-                if ($result['dataset'] = $talla->readAll()) {
+                if ($result['dataset'] = $Talla->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' registros';
                 } elseif (Database::getException()) {
@@ -27,7 +27,7 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $talla->searchRows($_POST['search'])) {
+                } elseif ($result['dataset'] = $Talla->searchRows($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -38,9 +38,9 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$talla->setNombre($_POST['talla'])) {
-                    $result['exception'] = 'Nombre incorrecto';
-                } elseif ($talla->createRow()) {
+                if (!$Talla->setNumero($_POST['talla'])) {
+                    $result['exception'] = 'Numero incorrecto';
+                } elseif ($Talla->createRow()) {
                     $result['status'] = 1;
                     if () {
                         $result['message'] = 'Talla creada correctamente';
@@ -50,57 +50,43 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$categoria->setId($_POST['id_categoria'])) {
-                    $result['exception'] = 'Categoría incorrecta';
-                } elseif ($result['dataset'] = $categoria->readOne()) {
+                if (!$Talla->setId($_POST['idtalla'])) {
+                    $result['exception'] = 'Talla incorrecta';
+                } elseif ($result['dataset'] = $Talla->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Categoría inexistente';
+                    $result['exception'] = 'Talla inexistente';
                 }
                 break;
             case 'update':
                 $_POST = Validator::validateForm($_POST);
-                if (!$categoria->setId($_POST['id'])) {
-                    $result['exception'] = 'Categoría incorrecta';
-                } elseif (!$data = $categoria->readOne()) {
-                    $result['exception'] = 'Categoría inexistente';
-                } elseif (!$categoria->setNombre($_POST['nombre'])) {
-                    $result['exception'] = 'Nombre incorrecto';
-                } elseif (!$categoria->setDescripcion($_POST['descripcion'])) {
-                    $result['exception'] = 'Descripción incorrecta';
-                } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
-                    if ($categoria->updateRow($data['imagen_categoria'])) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Categoría modificada correctamente';
-                    } else {
+                if (!$Talla->setId($_POST['id'])) {
+                    $result['exception'] = 'Talla incorrecta';
+                } elseif (!$data = $Talla->readOne()) {
+                    $result['exception'] = 'Talla inexistente';
+                } elseif () {
+                    if {
                         $result['exception'] = Database::getException();
                     }
-                } elseif (!$categoria->setImagen($_FILES['archivo'])) {
-                    $result['exception'] = Validator::getFileError();
-                } elseif ($categoria->updateRow($data['imagen_categoria'])) {
-                    $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $categoria->getRuta(), $categoria->getImagen())) {
-                        $result['message'] = 'Categoría modificada correctamente';
-                    } else {
-                        $result['message'] = 'Categoría modificada pero no se guardó la imagen';
-                    }
+                } elseif () {
+                        $result['message'] = 'Talla modificada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'delete':
-                if (!$categoria->setId($_POST['id_categoria'])) {
-                    $result['exception'] = 'Categoría incorrecta';
-                } elseif (!$data = $categoria->readOne()) {
-                    $result['exception'] = 'Categoría inexistente';
-                } elseif ($categoria->deleteRow()) {
+                if (!$Talla->setId($_POST['idtalla'])) {
+                    $result['exception'] = 'Talla incorrecta';
+                } elseif (!$data = $Talla->readOne()) {
+                    $result['exception'] = 'Talla inexistente';
+                } elseif ($Talla->deleteRow()) {
                     $result['status'] = 1;
-                    if (Validator::deleteFile($categoria->getRuta(), $data['imagen_categoria'])) {
-                        $result['message'] = 'Categoría eliminada correctamente';
+                    if () {
+                        $result['message'] = 'Talla eliminada correctamente';
                     } else {
-                        $result['message'] = 'Categoría eliminada pero no se borró la imagen';
+                        $result['message'] = 'Talla eliminada pero no se borró la imagen';
                     }
                 } else {
                     $result['exception'] = Database::getException();
