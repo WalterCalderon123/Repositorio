@@ -1,10 +1,10 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/dao/categoria_queries.php');
+require_once('../../entities/dao/talla_queries.php');
 /*
-*	Clase para manejar la transferencia de datos de la entidad CATEGORIA.
+*	Clase para manejar la transferencia de datos de la entidad Talla.
 */
-class Categoria extends CategoriaQueries
+class Talla extends TallaQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
