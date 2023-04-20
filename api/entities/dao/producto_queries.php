@@ -10,7 +10,7 @@ class ProductoQueries
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, nombre_categoria, estado_producto
+        $sql = 'SELECT idproducto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, nombre_categoria, estado_producto
                 FROM producto INNER JOIN categorias USING(id_categoria)
                 WHERE nombre_producto ILIKE ? OR descripcion_producto ILIKE ?
                 ORDER BY nombre_producto';
@@ -20,25 +20,25 @@ class ProductoQueries
 
     public function createRow()
     {
-        $sql = 'INSERT INTO productos(nombre_producto, descripcion_producto, precio_producto, imagen_producto, estado_producto, id_categoria, id_usuario)
-                VALUES(?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre, $this->descripcion, $this->precio, $this->imagen, $this->estado, $this->categoria, $_SESSION['id_usuario']);
+        $sql = 'INSERT INTO productos(nombre_producto, descripcion, precio, idmarca, idgenero_producto, idtipo_producto, imagen, idestado_producto, idusuario, descuento)
+                VALUES(?, ?, ?, ?, ?, ?, ?,?, ?, ?)';
+        $params = array($this->nombre, $this->descripcion, $this->precio, $this->marca, $this->genero, $this->tipo,$this->imagen, $this->estado, $this->usuario,$this->descuento, $_SESSION['idusuario']);
         return Database::executeRow($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, nombre_categoria, estado_producto
-                FROM productos INNER JOIN categorias USING(id_categoria)
+        $sql = 'SELECT idproducto,nombre_producto, descripcion, precio, idmarca, idgenero_producto, idtipo_producto, imagen, idestado_producto, idusuario, descuento
+                FROM productos
                 ORDER BY nombre_producto';
         return Database::getRows($sql);
     }
 
     public function readOne()
     {
-        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, imagen_producto, id_categoria, estado_producto
+        $sql = 'SELECT idproducto,nombre_producto, descripcion, precio, idmarca, idgenero_producto, idtipo_producto, imagen, idestado_producto, idusuario, descuento
                 FROM productos
-                WHERE id_producto = ?';
+                WHERE idproducto = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
@@ -49,8 +49,8 @@ class ProductoQueries
         ($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
 
         $sql = 'UPDATE productos
-                SET imagen_producto = ?, nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, estado_producto = ?, id_categoria = ?
-                WHERE id_producto = ?';
+                SET nombre_producto = ?, descripcion = ?, precio = ?, idmarca = ?, idgenero_producto = ?, idtipo_producto = ?, imagen = ?, idestado_producto = ?, idusuario = ?, descuento = ?
+                WHERE idproducto = ?';
         $params = array($this->imagen, $this->nombre, $this->descripcion, $this->precio, $this->estado, $this->categoria, $this->id);
         return Database::executeRow($sql, $params);
     }
@@ -58,16 +58,16 @@ class ProductoQueries
     public function deleteRow()
     {
         $sql = 'DELETE FROM productos
-                WHERE id_producto = ?';
+                WHERE idproducto = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
 
     public function readProductosCategoria()
     {
-        $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto
-                FROM productos INNER JOIN categorias USING(id_categoria)
-                WHERE id_categoria = ? AND estado_producto = true
+        $sql = 'SELECT idproducto, imagen, nombre_producto, descripcion, precio
+                FROM productos INNER JOIN categorias USING(idcategoria)
+                WHERE idcategoria = ? AND estado_producto = true
                 ORDER BY nombre_producto';
         $params = array($this->id);
         return Database::getRows($sql, $params);

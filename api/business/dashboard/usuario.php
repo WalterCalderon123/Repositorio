@@ -119,7 +119,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$usuario->setId($_POST['id_usuario'])) {
+                if (!$usuario->setId($_POST['idusuario'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif ($result['dataset'] = $usuario->readOne()) {
                     $result['status'] = 1;
@@ -149,9 +149,9 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'delete':
-                if ($_POST['id_usuario'] == $_SESSION['id_usuario']) {
+                if ($_POST['idusuario'] == $_SESSION['idusuario']) {
                     $result['exception'] = 'No se puede eliminar a sí mismo';
-                } elseif (!$usuario->setId($_POST['id_usuario'])) {
+                } elseif (!$usuario->setId($_POST['idusuario'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif (!$usuario->readOne()) {
                     $result['exception'] = 'Usuario inexistente';

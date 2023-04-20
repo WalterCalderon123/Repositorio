@@ -67,7 +67,7 @@ class UsuarioQueries
         $sql = 'SELECT idusuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario
                 FROM usuarios
                 WHERE apellido_usuario ILIKE ? OR nombre_usuario ILIKE ?
-                ORDER BY apellidos_usuario';
+                ORDER BY nombre_usuario';
         $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }

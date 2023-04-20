@@ -22,35 +22,14 @@
     justify-content: center;
 }
 
-form {
-    background-color: #c7c7c7;
-    width: 100%;
-    height: 80%;
-    display: flex;
-}
 
-form input {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding-left: 25px;
-    background-color: #dadada;
-}
+
 
 .cupones{
     margin-top: 40px;
 }
 
-form button {
-    background-color: #ffffff;
-    padding: 10px 35px;
-    border: none;
-    outline: none;
-    color: #000000;
-    letter-spacing: 1px;
-    cursor: pointer;
-    text-align: center;
-}
+
 
 .menu_bar{
     background-color: #000000;
@@ -97,10 +76,7 @@ form button {
    font-size: 20px;
 }
 
-.menu_bar ul li a:hover{
-    color: grey;
-    
- }
+
 
 .dropdown_menu{
     display: block;
