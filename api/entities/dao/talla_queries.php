@@ -1,9 +1,9 @@
 <?php
 require_once('../../helpers/database.php');
 /*
-*	Clase para manejar el acceso a datos de la entidad CATEGORIA.
+*	Clase para manejar el acceso a datos de la entidad Talla.
 */
-class CategoriaQueries
+class TallaQueries
 {
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
@@ -22,7 +22,7 @@ class CategoriaQueries
     {
         $sql = 'INSERT INTO tallas(num_talla)
                 VALUES(?)';
-        $params = array($this->nombre, $this->imagen, $this->descripcion);
+        $params = array($this->numero);
         return Database::executeRow($sql, $params);
     }
 
@@ -45,13 +45,10 @@ class CategoriaQueries
 
     public function updateRow($current_image)
     {
-        // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
-        ($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
-
         $sql = 'UPDATE tallas
                 SET num_talla = ?
                 WHERE idtalla = ?';
-        $params = array($this->imagen, $this->nombre, $this->descripcion, $this->id);
+        $params = array($this->nombre, $this->id);
         return Database::executeRow($sql, $params);
     }
 
