@@ -25,7 +25,7 @@ class Marcas extends MarcaQueries
         }
     }
 
-    public function setMarca($value)
+    public function setNombre($value)
     {
         if (Validator::validateAlphanumeric($value, 1, 50)) {
             $this->marca = $value;
