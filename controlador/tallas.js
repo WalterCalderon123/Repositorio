@@ -78,7 +78,7 @@ async function fillTable(form = null) {
             TBODY_ROWS.innerHTML += `
                 <tr>
                     <td>${row.idtalla}</td>
-                    <td>${num_talla}</td>
+                    <td>${row.num_talla}</td>
                     <td>
                         <a onclick="openUpdate(${row.idtalla})" data-bs-toggle="modal" data-bs-target="#save-modal" class="btn btn-primary tooltipped" data-tooltip="Actualizar">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-recycle" viewBox="0 0 16 16">
