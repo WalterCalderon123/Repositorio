@@ -25,7 +25,7 @@ class Talla extends TallaQueries
 
     public function setNumero($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 50)) {
+        if (Validator::validateNaturalNumber($value)) {
             $this->numero = $value;
             return true;
         } else {

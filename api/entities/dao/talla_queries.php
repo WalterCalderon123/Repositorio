@@ -43,12 +43,12 @@ class TallaQueries
         return Database::getRow($sql, $params);
     }
 
-    public function updateRow($current_image)
+    public function updateRow()
     {
         $sql = 'UPDATE tallas
                 SET num_talla = ?
                 WHERE idtalla = ?';
-        $params = array($this->nombre, $this->id);
+        $params = array($this->numero, $this->id);
         return Database::executeRow($sql, $params);
     }
 

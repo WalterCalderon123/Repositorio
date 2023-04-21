@@ -4,18 +4,31 @@ require_once('../../entities/dto/talla.php');
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se instancia la clase correspondiente.
-    $talla= new Talla;
+    $talla = new Talla;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se compara la acción a realizar según la petición del controlador.
     switch ($_GET['action']) {
-        case 'readAll':
-            if ($result['dataset'] = $talla->readAll()) {
+        case 'readTallas':
+            if (!$talla->setId($_POST['idtalla'])) {
+                $result['exception'] = 'Categoría incorrecta';
+            } elseif ($result['dataset'] = $talla->readTallas()) {
                 $result['status'] = 1;
             } elseif (Database::getException()) {
                 $result['exception'] = Database::getException();
             } else {
                 $result['exception'] = 'No existen tallas para mostrar';
+            }
+            break;
+        case 'readOne':
+            if (!$talla->setId($_POST['idtalla'])) {
+                $result['exception'] = 'Talla incorrecta';
+            } elseif ($result['dataset'] = $talla->readOne()) {
+                $result['status'] = 1;
+            } elseif (Database::getException()) {
+                $result['exception'] = Database::getException();
+            } else {
+                $result['exception'] = 'Talla inexistente';
             }
             break;
         default:
