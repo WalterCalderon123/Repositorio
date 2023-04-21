@@ -75,7 +75,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'delete':
-                if (!$talla->setId($_POST['idtalla'])) {
+                if (!$talla->setId($_POST['id'])) {
                     $result['exception'] = 'Talla incorrecta';
                 } elseif (!$talla->readOne()) {
                     $result['exception'] = 'Talla inexistente';

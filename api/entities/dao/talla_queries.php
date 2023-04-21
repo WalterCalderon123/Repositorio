@@ -30,7 +30,7 @@ class TallaQueries
     {
         $sql = 'SELECT idtalla, num_talla
                 FROM tallas
-                ORDER BY num_talla';
+                ORDER BY idtalla';
         return Database::getRows($sql);
     }
 
