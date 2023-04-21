@@ -17,7 +17,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
   <!--css-->
- <link rel="stylesheet" href="css/css.css">
+  <link rel="stylesheet" href="css/css.css">
 
 </head>
 
@@ -50,13 +50,15 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
     <div class="container-fluid d-flex flex-column align-items-center justify-content-between">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
-            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
               Productos
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
@@ -80,81 +82,170 @@
     </div>
   </nav>
 
-  <!-- Ingreso al formulario de productos  -->
-<<<<<<< Updated upstream
-<button type="button" class="btn-agregar" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar Producto</button>
-=======
-<!-- Button trigger modal -->
->>>>>>> Stashed changes
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario de Productos</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <!-- Ingreso al formulario de productos  -->
+  <!-- Button trigger modal -->
+  <div class="d-flex flex-row align-items-center justify-content-center">
+    <form method="post" id="search-form">
+      <div class="input-field col s6 m-4">
+        <input id="search" type="text" name="search" required>
+        <button type="submit" class="btn bg-success tooltipped" data-tooltip="Buscar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="bg-light" class="bi bi-search"
+            viewBox="0 0 16 16">
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+          </svg>
+        </button>
       </div>
-      <div class="modal-body">
-        <form class="d-flex flex-column">
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Nombre:</label>
-            <input type="text" class="form-control" id="recipient-name">
+    </form>
+    <div class="input-field">
+      <a onclick="window.openCreate()" data-bs-toggle="modal" data-bs-target="#save-modal"
+        class="btn btn-agregar tooltipped" data-tooltip="Crear">Agregar
+        producto</a>
+    </div>
+  </div>
+
+  <div class="modal fade" id="save-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modal-title"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="d-flex flex-column" method="post" id="save-form">
+            <input class="invisible" type="number" id="id" name="id">
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Nombre:</label>
+              <input id="nombres" type="text" class="form-control">
+            </div>
+
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Descripcion:</label>
+              <textarea id="descripcion" class="form-control" id="message-text"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Precio:</label>
+              <input id="precio" name="precio" type="number" class="form-control">
+            </div>
+            <div class="nav-item dropdown">
+              <label for="recipient-name" class="col-form-label">Marca:</label>
+              <select id="marca" name="marca" class="form-select" aria-label="Default select example">
+              </select>
+            </div>
+            <div class="nav-item dropdown">
+              <label for="recipient-name" class="col-form-label">Genero:</label>
+              <select id="genero" name="genero" class="form-select" aria-label="Default select example">
+              </select>
+            </div>
+            <div class="nav-item dropdown">
+              <label for="recipient-name" class="col-form-label">Tipo:</label>
+              <select id="tipo" name="tipo" class="form-select" aria-label="Default select example">
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Usuario:</label>
+              <select id="usuario" name="usuario" class="form-select" aria-label="Default select example">
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Descuento:</label>
+              <input id="descuento" name="Descuento" type="number" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Imagen:</label>
+                <input class="form-control" type="file" name="archivo" id="archivo" accept=".jpg, .png">
+            </div>
+            <div class="d-flex mb-3">
+              <p>
+                <span class="label">Estado:</span>
+              <div class="form-switch form-check">
+                  <label>
+                      <input class="form-check-input" id="estado" type="checkbox" role="switch" name="estado" checked>
+                      <span class="lever"></span>
+                  </label>
+              </div>
+              </p>
           </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Descripcion:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Precio:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="nav-item dropdown">
-            <label for="recipient-name" class="col-form-label">Marca:</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Escoge una opcion</option>
-              <option value="1">Nike</option>
-              <option value="2">Adidas</option>
-              <option value="3">Puma</option>
-            </select>
-          </div>
-          <div class="nav-item dropdown">
-            <label for="recipient-name" class="col-form-label">Genero:</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Escoge una opcion</option>
-              <option value="1">Masculino</option>
-              <option value="2">Femenino</option>
-              <option value="3">Niños</option>
-            </select>
-          </div>
-          <div class="nav-item dropdown">
-            <label for="recipient-name" class="col-form-label">Tipo:</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Escoge una opcion</option>
-              <option value="1">Casual</option>
-              <option value="2">Deportivos</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Usuario:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Imagen:</label>
-            <input type="file" class="form-control" id="recipient-name">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Guardar Cambios</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary  tooltipped" data-tooltip="Guardar">Guardar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-  <section class="intro">
-    <button type="button" class="mt-3 btn-agregar" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar Producto</button>
-    <div class="bg-image h-100" style="background-color: #f5f7fa;">
+   <div id="save-modal" class="modal">
+            <!-- Enlace para cerrar el componente Modal -->
+            <div class="row right">
+                <a class="black-text tooltipped modal-close" data-tooltip="Cerrar">
+                    <i class="small material-icons">close</i>
+                </a>
+            </div>
+            <!-- Contenido del componente Modal -->
+            <div class="modal-content">
+                <!-- Título para la caja de diálogo -->
+                <h4 id="modal-title" class="center-align"></h4>
+                <!-- Formulario para crear o actualizar un registro -->
+                <form class="row" method="post" id="save-form" enctype="multipart/form-data">
+                    <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                    <input class="hide" type="number" id="id" name="id">
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix">note_add</i>
+                        <input id="nombre" type="text" name="nombre" class="validate" required>
+                        <label for="nombre">Nombre</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix">shopping_cart</i>
+                        <input id="precio" type="number" name="precio" step="0.01" class="validate" required>
+                        <label for="precio">Precio (US$)</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix">description</i>
+                        <input id="descripcion" type="text" name="descripcion" class="validate" required>
+                        <label for="descripcion">Descripción</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <select id="categoria" name="categoria">
+                        </select>
+                        <label>Categoría</label>
+                    </div>
+                    <div class="file-field input-field col s12 m6">
+                        <div class="btn waves-effect tooltipped" data-tooltip="Elegir imagen de al menos 500x500 px">
+                            <i class="material-icons">image</i>
+                            <input id="archivo" type="file" name="archivo" accept=".jpg, .png">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input type="text" class="file-path validate" placeholder="Formatos válidos: jpg y png">
+                        </div>
+                    </div>
+                    <div class="col s12 m6">
+                        <p>
+                        <div class="switch">
+                            <span>Estado:</span>
+                            <label>
+                                <input id="estado" type="checkbox" name="estado" checked>
+                                <span class="lever"></span>
+                            </label>
+                        </div>
+                        </p>
+                    </div>
+                    <div class="col s12 center-align">
+                        <button type="reset" class="btn waves-effect grey tooltipped" data-tooltip="Reiniciar">
+                            <i class="material-icons">autorenew</i>
+                        </button>
+                        <button type="submit" class="btn waves-effect blue tooltipped" data-tooltip="Guardar">
+                            <i class="material-icons">save</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+  <main class="intro">
+    <div class="bg-image bg-light h-100" >
       <div class="mask d-flex align-items-center h-100">
         <div class="container">
           <div class="row justify-content-center">
@@ -164,7 +255,8 @@
                   <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true"
                     style="position: relative; height: 700px">
                     <table class="table table-striped mb-0">
-                      <thead style="background-color: #002d72;">
+                      <thead class="bg-primary">
+                        <tr id="records"></tr>
                         <tr>
                           <th scope="col">ID</th>
                           <th scope="col">Nombre</th>
@@ -180,24 +272,7 @@
 
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Zapatillas Nike</td>
-                          <td>Par de zapatos</td>
-                          <td>$29.49</td>
-                          <td>Nike</td>
-                          <td>Masculino</td>
-                          <td>Deportivos</td>
-                          <td><img src="Imagenes/user.png" alt="Logo" width="30" height="30"
-                              class="d-inline-block align-text-top"></td>
-                          <td>Cruz991</td>
-                          <td><img src="Imagenes/update.png" alt="Logo" width="30" height="30"
-                              class="d-inline-block align-text-top"></td>
-                          <td><img src="Imagenes/delete.png" alt="Logo" width="30" height="30"
-                              class="d-inline-block align-text-top"></td>
-                        </tr>
-                      </tbody>
+                      <tbody id="tbody-rows"></tbody>
                     </table>
                   </div>
                 </div>
@@ -207,7 +282,13 @@
         </div>
       </div>
     </div>
-  </section>
-</body>
+  </main>
 
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/sweetalert.min.js"></script>
+  <script src="../controlador/components.js"></script>
+  <script src="../controlador/account.js"></script>
+  <script src="../controlador/productos.js"></script>
+
+</body>
 </html>

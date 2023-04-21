@@ -15,9 +15,10 @@ class Producto extends ProductoQueries
     protected $genero = null;
     protected $tipo = null;
     protected $imagen = null;
-    protected $estado = null;
     protected $usuario = null;
     protected $descuento = null;
+    protected $estado = null;
+
 
 
 
@@ -67,7 +68,7 @@ class Producto extends ProductoQueries
     public function setMarca($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->categoria = $value;
+            $this->marca = $value;
             return true;
         } else {
             return false;
@@ -77,7 +78,7 @@ class Producto extends ProductoQueries
     public function setGenero($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->categoria = $value;
+            $this->genero = $value;
             return true;
         } else {
             return false;
@@ -87,27 +88,18 @@ class Producto extends ProductoQueries
     public function setTipo($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->categoria = $value;
+            $this->tipo = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setImagen($value)
+    
+    public function setImagen($file)
     {
-        if (Validator::validateAlphanumeric($value, 1, 800)) {
-            $this->nombre = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setEstado($value)
-    {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->categoria = $value;
+        if (Validator::validateImageFile($file, 500, 500)) {
+            $this->imagen = Validator::getFileName();
             return true;
         } else {
             return false;
@@ -115,6 +107,27 @@ class Producto extends ProductoQueries
     }
 
     public function setUsuario($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->usuario = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+  
+    public function setDescuento($value)
+    {
+        if (Validator::validateMoney($value)) {
+            $this->descuento = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setEstado($value)
     {
         if (Validator::validateBoolean($value)) {
             $this->estado = $value;
@@ -124,15 +137,6 @@ class Producto extends ProductoQueries
         }
     }
 
-    public function setDescuento($value)
-    {
-        if (Validator::validateMoney($value)) {
-            $this->precio = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     /*
     *   Métodos para obtener valores de los atributos.
@@ -178,11 +182,6 @@ class Producto extends ProductoQueries
         return $this->imagen;
     }
 
-    public function getEstado()
-    {
-        return $this->estado;
-    }
-
     public function getUsuario()
     {
         return $this->usuario;
@@ -193,4 +192,8 @@ class Producto extends ProductoQueries
         return $this->descuento;
     }
 
+    public function getEstado()
+    {
+        return $this->estado;
+    }
 }
