@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const Talla_API = 'business/dashboard/talla.php';
+const TALLA_API = 'business/dashboard/talla.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -43,7 +43,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(Talla_API, action, FORM);
+    const JSON = await dataFetch(TALLA_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
@@ -69,7 +69,7 @@ async function fillTable(form = null) {
     // Se verifica la acción a realizar.
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(Talla_API, action, form);
+    const JSON = await dataFetch(TALLA_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
@@ -114,7 +114,7 @@ function openCreate() {
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
     // Se asigna título a la caja de diálogo.
-    MODAL_TITLE.textContent = 'Crear talla';
+    MODAL_TITLE.textContent = 'Ingresar talla';
 }
 
 /*
@@ -125,9 +125,9 @@ function openCreate() {
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('idtalla', id);
+    FORM.append('idusuario', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(Talla_API, 'readOne', FORM);
+    const JSON = await dataFetch(TALLA_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -137,7 +137,7 @@ async function openUpdate(id) {
         MODAL_TITLE.textContent = 'Actualizar talla';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idtalla;
-        document.getElementById('nombres').value = JSON.dataset.num_talla;
+        document.getElementById('numero').value = JSON.dataset.num_talla;
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
     } else {
         sweetAlert(2, JSON.exception, false);
@@ -156,9 +156,9 @@ async function openDelete(id) {
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('idtalla', id);
+        FORM.append('idusuario', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(Talla_API, 'delete', FORM);
+        const JSON = await dataFetch(TALLA_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
