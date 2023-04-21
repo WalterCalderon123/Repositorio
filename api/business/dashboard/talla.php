@@ -6,15 +6,16 @@ if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $Talla = new Talla;
+    $talla = new Talla;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if (isset($_SESSION['idusuario'])) {
+        $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'readAll':
-                if ($result['dataset'] = $Talla->readAll()) {
+                if ($result['dataset'] = $talla->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' registros';
                 } elseif (Database::getException()) {
@@ -27,7 +28,7 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $Talla->searchRows($_POST['search'])) {
+                } elseif ($result['dataset'] = $talla->searchRows($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -38,21 +39,19 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$Talla->setNumero($_POST['talla'])) {
+                if (!$talla->setNumero($_POST['numero'])) {
                     $result['exception'] = 'Numero incorrecto';
-                } elseif ($Talla->createRow()) {
+                }  elseif ($talla->createRow()) {
                     $result['status'] = 1;
-                    if () {
-                        $result['message'] = 'Talla creada correctamente';
-                    }
+                    $result['message'] = 'Talla creada correctamente';
                 } else {
-                    $result['exception'] = Database::getException();
+                    $result['exception'] = Database::getException();;
                 }
                 break;
             case 'readOne':
-                if (!$Talla->setId($_POST['idtalla'])) {
+                if (!$talla->setId($_POST['id'])) {
                     $result['exception'] = 'Talla incorrecta';
-                } elseif ($result['dataset'] = $Talla->readOne()) {
+                } elseif ($result['dataset'] = $talla->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
@@ -62,32 +61,27 @@ if (isset($_GET['action'])) {
                 break;
             case 'update':
                 $_POST = Validator::validateForm($_POST);
-                if (!$Talla->setId($_POST['id'])) {
-                    $result['exception'] = 'Talla incorrecta';
-                } elseif (!$data = $Talla->readOne()) {
+                if (!$talla->setId($_POST['id'])) {
+                    $result['exception'] = 'Talla incorrecto';
+                } elseif (!$data = $talla->readOne()) {
                     $result['exception'] = 'Talla inexistente';
-                } elseif () {
-                    if {
-                        $result['exception'] = Database::getException();
-                    }
-                } elseif () {
-                        $result['message'] = 'Talla modificada correctamente';
-                } else {
+                } elseif (!$talla->setNumero($_POST['numero'])) {
+                    $result['exception'] = 'Numero incorrecto';
+                }  elseif ($talla->updateRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Talla modificada correctamente';
+                }else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'delete':
-                if (!$Talla->setId($_POST['idtalla'])) {
+                if (!$talla->setId($_POST['idtalla'])) {
                     $result['exception'] = 'Talla incorrecta';
-                } elseif (!$data = $Talla->readOne()) {
+                } elseif (!$talla->readOne()) {
                     $result['exception'] = 'Talla inexistente';
-                } elseif ($Talla->deleteRow()) {
+                } elseif ($talla->deleteRow()) {
                     $result['status'] = 1;
-                    if () {
-                        $result['message'] = 'Talla eliminada correctamente';
-                    } else {
-                        $result['message'] = 'Talla eliminada pero no se borró la imagen';
-                    }
+                    $result['message'] = 'Talla eliminada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
