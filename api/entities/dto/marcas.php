@@ -2,7 +2,7 @@
 require_once('../../helpers/validator.php');
 require_once('../../entities/dao/marcas_queries.php');
 /*
-*	Clase para manejar la transferencia de datos de la entidad PRODUCTO.
+*	Clase para manejar la transferencia de datos de la entidad MARCA.
 */
 class Marcas extends MarcaQueries
 {

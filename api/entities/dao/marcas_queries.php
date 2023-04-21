@@ -22,7 +22,7 @@ class MarcaQueries
     {
         $sql = 'INSERT INTO marcas(nombre_marca, logo)
                 VALUES(?, ?)';
-        $params = array($this->marca, $this->logo, $_SESSION['idusuario']);
+        $params = array($this->marca, $this->logo);
         return Database::executeRow($sql, $params);
     }
 
@@ -30,7 +30,7 @@ class MarcaQueries
     {
         $sql = 'SELECT idmarca, logo, nombre_marca
                 FROM marcas 
-                ORDER BY nombre_marca';
+                ORDER BY idmarca';
         return Database::getRows($sql);
     }
 
