@@ -102,32 +102,32 @@
     </div>
   </div>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  
+  <div class="modal fade" id="save-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario de Tallas</h1>
+          <h1 class="modal-title fs-5" id="modal-title"></h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form class="d-flex flex-column">
-            <div class="nav-item dropdown">
-              <label for="recipient-name" class="col-form-label">Numero de Tallas:</label>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Escoge una talla</option>
-                <option value="1">5.0</option>
-                <option value="2">9.5</option>
-                <option value="3">10.0</option>
-              </select>
+          <form class="d-flex flex-column" method="post" id="save-form">
+            <input class="invisible" type="number" id="id" name="id">
+            <div class="mb-3">
+              <label for="numero">Numero de Tallas:</label>
+              <input id="numero" type="number" name="numero" class="form-control validate" required>
             </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Guardar Cambios</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary  tooltipped" data-tooltip="Guardar">Guardar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </div> 
+  </div>
+
+
   <main class="intro">
     <div class="bg-image bg-light h-100">
       <div class="mask d-flex align-items-center h-100">
