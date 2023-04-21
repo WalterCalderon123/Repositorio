@@ -125,7 +125,7 @@ function openCreate() {
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('idusuario', id);
+    FORM.append('idtalla', id);
     // Petición para obtener los datos del registro solicitado.
     const JSON = await dataFetch(TALLA_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -156,7 +156,7 @@ async function openDelete(id) {
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('idusuario', id);
+        FORM.append('idtalla', id);
         // Petición para eliminar el registro seleccionado.
         const JSON = await dataFetch(TALLA_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
