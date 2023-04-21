@@ -49,7 +49,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$talla->setId($_POST['id'])) {
+                if (!$talla->setId($_POST['idtalla'])) {
                     $result['exception'] = 'Talla incorrecta';
                 } elseif ($result['dataset'] = $talla->readOne()) {
                     $result['status'] = 1;
@@ -62,7 +62,7 @@ if (isset($_GET['action'])) {
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$talla->setId($_POST['id'])) {
-                    $result['exception'] = 'Talla incorrecto';
+                    $result['exception'] = 'Talla incorrecta';
                 } elseif (!$data = $talla->readOne()) {
                     $result['exception'] = 'Talla inexistente';
                 } elseif (!$talla->setNumero($_POST['numero'])) {

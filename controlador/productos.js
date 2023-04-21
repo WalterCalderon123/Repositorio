@@ -1,6 +1,8 @@
 // Constantes para completar las rutas de la API.
 const PRODUCTO_API = 'business/dashboard/producto.php';
 const CATEGORIA_API = 'business/dashboard/categoria.php';
+const USUARIO_API = 'business/dashboard/usuario.php';
+
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -15,9 +17,8 @@ const OPTIONS = {
     dismissible: false
 }
 // Inicialización del componente Modal para que funcionen las cajas de diálogo.
-M.Modal.init(document.querySelectorAll('.modal'), OPTIONS);
 // Constante para establecer la modal de guardar.
-const SAVE_MODAL = M.Modal.getInstance(document.getElementById('save-modal'));
+const SAVE_MODAL = document.getElementById('save-modal');
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -80,10 +81,14 @@ async function fillTable(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
-                    <td><img src="${SERVER_URL}images/productos/${row.imagen_producto}" class="materialboxed" height="100"></td>
+                    <td><img src="${SERVER_URL}images/productos/${row.imagen}" class="materialboxed" height="100"></td>
                     <td>${row.nombre_producto}</td>
                     <td>${row.precio_producto}</td>
-                    <td>${row.nombre_categoria}</td>
+                    <td>${row.nombre_marca}</td>
+                    <td>${row.nombre_genero}</td>
+                    <td>${row.tipo_producto}</td>
+                    <td>${row.nombre_usuario}</td>
+                    <td>${row.descuento}</td>
                     <td><i class="material-icons">${icon}</i></td>
                     <td>
                         <a onclick="openUpdate(${row.id_producto})" class="btn waves-effect blue tooltipped" data-tooltip="Actualizar">
@@ -114,7 +119,6 @@ async function fillTable(form = null) {
 */
 function openCreate() {
     // Se abre la caja de diálogo que contiene el formulario.
-    SAVE_MODAL.open();
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
     // Se asigna el título a la caja de diálogo.
@@ -122,7 +126,11 @@ function openCreate() {
     // Se establece el campo de archivo como obligatorio.
     document.getElementById('archivo').required = true;
     // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
-    fillSelect(CATEGORIA_API, 'readAll', 'categoria');
+    fillSelect(USUARIO_API, 'readAll', 'usuario');
+    fillSelect(MARCA_API, 'readAll', 'categoria');
+    fillSelect(TIPO_API, 'readAll', 'categoria');
+    fillSelect(GENERO_API, 'readAll', 'categoria');
+
 }
 
 /*
@@ -139,7 +147,6 @@ async function openUpdate(id) {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
-        SAVE_MODAL.open();
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna el título para la caja de diálogo (modal).
@@ -147,18 +154,21 @@ async function openUpdate(id) {
         // Se establece el campo de archivo como opcional.
         document.getElementById('archivo').required = false;
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.id_producto;
+        document.getElementById('id').value = JSON.dataset.idproducto;
         document.getElementById('nombre').value = JSON.dataset.nombre_producto;
-        document.getElementById('precio').value = JSON.dataset.precio_producto;
-        document.getElementById('descripcion').value = JSON.dataset.descripcion_producto;
-        fillSelect(CATEGORIA_API, 'readAll', 'categoria', JSON.dataset.id_categoria);
+        document.getElementById('precio').value = JSON.dataset.precio;
+        document.getElementById('descripcion').value = JSON.dataset.descripcion;
+        fillSelect(MARCA_API, 'readAll', 'marca', JSON.dataset.idmarca);
+        fillSelect(GENERO_API, 'readAll', 'genero', JSON.dataset.idgenero_producto);
+        fillSelect(TIPO_API, 'readAll', 'tipo', JSON.dataset.idtipo_producto);
+        fillSelect(USUARIO_API, 'readAll', 'usuario', JSON.dataset.idusuario);
+        document.getElementById('descuento').value = JSON.dataset.descuento;
         if (JSON.dataset.estado_producto) {
             document.getElementById('estado').checked = true;
         } else {
             document.getElementById('estado').checked = false;
         }
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-        M.updateTextFields();
     } else {
         sweetAlert(2, JSON.exception, false);
     }
@@ -176,7 +186,7 @@ async function openDelete(id) {
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('id_producto', id);
+        FORM.append('idproducto', id);
         // Petición para eliminar el registro seleccionado.
         const JSON = await dataFetch(PRODUCTO_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
