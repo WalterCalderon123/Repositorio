@@ -28,7 +28,7 @@ class MarcaQueries
 
     public function readAll()
     {
-        $sql = 'SELECT idmarca, logo, nombre_marca
+        $sql = 'SELECT idmarca, nombre_marca, logo
                 FROM marcas 
                 ORDER BY idmarca';
         return Database::getRows($sql);

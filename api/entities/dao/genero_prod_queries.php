@@ -29,7 +29,7 @@ class Genero_prod_Queries
     public function readAll()
     {
         $sql = 'SELECT idgenero_producto, nombre_genero 
-                FROM genero_productos
+                FROM generos_productos
                 ORDER BY nombre_genero';
         return Database::getRows($sql);
     }

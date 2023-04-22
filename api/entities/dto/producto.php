@@ -18,6 +18,8 @@ class Producto extends ProductoQueries
     protected $usuario = null;
     protected $descuento = null;
     protected $estado = null;
+    protected $ruta = '../../images/productos/';
+
 
 
 
@@ -195,5 +197,10 @@ class Producto extends ProductoQueries
     public function getEstado()
     {
         return $this->estado;
+    }
+
+    public function getRuta()
+    {
+        return $this->ruta;
     }
 }

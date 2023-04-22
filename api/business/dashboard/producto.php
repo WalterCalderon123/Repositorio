@@ -60,6 +60,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Seleccione una usuario';
                 } elseif (!$producto->setUsuario($_POST['usuario'])) {
                     $result['exception'] = 'usuario incorrecta';
+                }elseif (!$producto->setDescuento($_POST['descuento'])) {
+                    $result['exception'] = 'Descuento incorrecto';
                 }elseif (!$producto->setEstado(isset($_POST['estado']) ? 1 : 0)) {
                     $result['exception'] = 'Estado incorrecto';
                 } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
@@ -108,10 +110,12 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Seleccione una tipo';
                 } elseif (!$producto->setUsuario($_POST['usuario'])) {
                     $result['exception'] = 'Seleccione una usuario';
-                }elseif (!$producto->setEstado(isset($_POST['estado']) ? 1 : 0)) {
+                }elseif (!$producto->setDescuento($_POST['descuento'])) {
+                    $result['exception'] = 'Descuento incorrecto';
+                } elseif (!$producto->setEstado(isset($_POST['estado']) ? 1 : 0)) {
                     $result['exception'] = 'Estado incorrecto';
                 } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
-                    if ($producto->updateRow($data['imagen_producto'])) {
+                    if ($producto->updateRow($data['imagen'])) {
                         $result['status'] = 1;
                         $result['message'] = 'Producto modificado correctamente';
                     } else {
@@ -119,7 +123,7 @@ if (isset($_GET['action'])) {
                     }
                 } elseif (!$producto->setImagen($_FILES['archivo'])) {
                     $result['exception'] = Validator::getFileError();
-                } elseif ($producto->updateRow($data['imagen_producto'])) {
+                } elseif ($producto->updateRow($data['imagen'])) {
                     $result['status'] = 1;
                     if (Validator::saveFile($_FILES['archivo'], $producto->getRuta(), $producto->getImagen())) {
                         $result['message'] = 'Producto modificado correctamente';
@@ -137,7 +141,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Producto inexistente';
                 } elseif ($producto->deleteRow()) {
                     $result['status'] = 1;
-                    if (Validator::deleteFile($producto->getRuta(), $data['imagen_producto'])) {
+                    if (Validator::deleteFile($producto->getRuta(), $data['imagen'])) {
                         $result['message'] = 'Producto eliminado correctamente';
                     } else {
                         $result['message'] = 'Producto eliminado pero no se borró la imagen';
