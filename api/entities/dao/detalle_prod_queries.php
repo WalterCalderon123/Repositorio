@@ -10,52 +10,52 @@ class TallaQueries
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT idtalla, num_talla
-                FROM tallas
-                WHERE num_talla ILIKE ?
-                ORDER BY idtalla';
+        $sql = 'SELECT iddetalle_producto, idproducto, idtalla, existencia
+                FROM detalle_productos
+                WHERE idproducto ILIKE ? OR idtalla ILIKE ? OR existencia ILIKE ?
+                ORDER BY iddetalle_producto';
         $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 
     public function createRow()
     {
-        $sql = 'INSERT INTO tallas(num_talla)
-                VALUES(?)';
+        $sql = 'INSERT INTO detalle_productos(idproducto, idtalla, existencia)
+                VALUES(?,?,?)';
         $params = array($this->numero);
         return Database::executeRow($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'SELECT idtalla, num_talla
-                FROM tallas
-                ORDER BY idtalla';
+        $sql = 'SELECT iddetalle_producto, idproducto, idtalla, existencia
+                FROM detalle_productos
+                ORDER BY iddetalle_producto';
         return Database::getRows($sql);
     }
 
     public function readOne()
     {
-        $sql = 'SELECT idtalla, num_talla
-                FROM tallas
-                WHERE idtalla = ?';
+        $sql = 'SELECT iddetalle_producto, idproducto, idtalla, existencia
+                FROM detalle_productos
+                WHERE iddetalle_producto = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
 
     public function updateRow()
     {
-        $sql = 'UPDATE tallas
-                SET num_talla = ?
-                WHERE idtalla = ?';
+        $sql = 'UPDATE detalle_productos
+                SET idproducto = ?, idtalla = ?, existencia = ?
+                WHERE iddetalle_producto = ?';
         $params = array($this->numero, $this->id);
         return Database::executeRow($sql, $params);
     }
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM tallas
-                WHERE idtalla = ?';
+        $sql = 'DELETE FROM detalle_productos
+                WHERE iddetalle_producto = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
