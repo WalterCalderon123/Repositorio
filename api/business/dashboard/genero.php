@@ -80,7 +80,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Genero inexistente';
                 } elseif ($generoprod->deleteRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Genero eliminada correctamente';
+                    $result['message'] = 'Genero eliminado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
