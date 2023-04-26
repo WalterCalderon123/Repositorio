@@ -20,7 +20,7 @@ class MarcaQueries
 
     public function createRow()
     {
-        $sql = 'INSERT INTO marcas(logo, nombre_marca)
+        $sql = 'INSERT INTO marcas(nombre_marca, logo)
                 VALUES(?, ?)';
         $params = array($this->marca, $this->logo);
         return Database::executeRow($sql, $params);
