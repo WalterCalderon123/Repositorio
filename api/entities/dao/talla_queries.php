@@ -13,7 +13,7 @@ class TallaQueries
         $sql = 'SELECT idtalla, num_talla
                 FROM tallas
                 WHERE num_talla ILIKE ?
-                ORDER BY idtalla';
+                ORDER BY num_talla';
         $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
