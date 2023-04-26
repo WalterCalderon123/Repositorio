@@ -112,12 +112,12 @@
             <input class="invisible" type="number" id="id" name="id">
             <div class="mb-3">
               <label for="Marcas">Marcas:</label>
-              <input id="Marca" type="text" name="Marcas" class="form-control validate" required>
+              <input id="Marcas" type="text" name="Marcas" class="form-control validate" required>
             </div>
             <div class="mb-3">
-              <label for="Logo">Logos:</label>
-              <input id="Logo" type="file" name="Logo" class="form-control validate" required>
-            </div>
+              <label for="recipient-name" class="col-form-label">Logo:</label>
+                <input class="form-control validate" type="file" name="archivo" id="archivo" accept=".jpg, .png" required>
+             </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-primary  tooltipped" data-tooltip="Guardar">Guardar</button>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -166,9 +166,6 @@
   <script src="../controlador/account.js"></script>
   <script src="../controlador/marcas.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-  crossorigin="anonymous"></script>
 </body>
 
 </html>

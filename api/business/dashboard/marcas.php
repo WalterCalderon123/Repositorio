@@ -44,11 +44,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Marca incorrecta';
                 }  elseif (!is_uploaded_file($_FILES['archivo'])) {
                     $result['exception'] = 'Seleccione una imagen';
-                } elseif (!$categoria->setImagen($_FILES['archivo'])) {
+                } elseif (!$marca->setImagen($_FILES['archivo'])) {
                     $result['exception'] = Validator::getFileError();
-                } elseif ($categoria->createRow()) {
+                } elseif ($marca->createRow()) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $categoria->getRuta(), $categoria->getImagen())) {
+                    if (Validator::saveFile($_FILES['archivo'], $marca->getRuta(), $marca->getImagen())) {
                         $result['message'] = 'Marca creada correctamente';
                     } else {
                         $result['message'] = 'Marca creada pero no se guardó la imagen';
