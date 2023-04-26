@@ -2,7 +2,7 @@
 require_once('../../helpers/validator.php');
 require_once('../../entities/dao/tipo_prod_queries.php');
 /*
-*	Clase para manejar la transferencia de datos de la entidad GENEROS PRODUCTOS.
+*	Clase para manejar la transferencia de datos de la entidad TIPOS PRODUCTOS.
 */
 class Tipo_prod extends Tipo_prod_Queries
 {

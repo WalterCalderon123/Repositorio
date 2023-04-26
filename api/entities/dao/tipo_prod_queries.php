@@ -1,7 +1,7 @@
 <?php
 require_once('../../helpers/database.php');
 /*
-*	Clase para manejar el acceso a datos de la entidad GENEROS PRODUCTOS.
+*	Clase para manejar el acceso a datos de la entidad TIPOS PRODUCTOS.
 */
 class Tipo_prod_Queries
 {
