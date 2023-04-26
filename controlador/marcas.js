@@ -127,7 +127,7 @@ function openCreate() {
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('id', id);
+    FORM.append('idmarca', id);
     // Petición para obtener los datos del registro solicitado.
     const JSON = await dataFetch(MARCA_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.

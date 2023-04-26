@@ -59,7 +59,7 @@ if (isset($_GET['action'])) {
                 break;
 
             case 'readOne':
-                if (!$marca->setId($_POST['id'])) {
+                if (!$marca->setId($_POST['idmarca'])) {
                     $result['exception'] = 'Marca incorrecta';
                 } elseif ($result['dataset'] = $marca->readOne()) {
                     $result['status'] = 1;
@@ -87,7 +87,7 @@ if (isset($_GET['action'])) {
                     }
                 } elseif (!$marca->setImagen($_FILES['archivo'])) {
                     $result['exception'] = Validator::getFileError();
-                } elseif ($marca->updateRow($data['archivo'])) {
+                } elseif ($marca->updateRow($data['logo'])) {
                     $result['status'] = 1;
                     if (Validator::saveFile($_FILES['archivo'], $marca->getRuta(), $marca->getImagen())) {
                         $result['message'] = 'Marca modificada correctamente';
