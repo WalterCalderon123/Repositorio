@@ -48,7 +48,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$tipoprod->setId($_POST['id'])) {
+                if (!$tipoprod->setId($_POST['idtipo_producto'])) {
                     $result['exception'] = 'Tipo de Producto incorrecto';
                 } elseif ($result['dataset'] = $tipoprod->readOne()) {
                     $result['status'] = 1;
@@ -68,13 +68,13 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Tipo de Producto incorrecto';
                 }  elseif ($tipoprod->updateRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Tipo de Producto correctamente';
+                    $result['message'] = 'Tipo de Producto modificado correctamente';
                 }else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'delete':
-                if (!$tipoprod->setId($_POST['id'])) {
+                if (!$tipoprod->setId($_POST['idtipo_producto'])) {
                     $result['exception'] = 'Tipo de Producto incorrecto';
                 } elseif (!$tipoprod->readOne()) {
                     $result['exception'] = 'Tipo de Producto inexistente';
