@@ -44,7 +44,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Marca incorrecta';
                 }  elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
                     $result['exception'] = 'Seleccione una imagen';
-                } elseif (!$marca->setImagen($_FILES['archivo'])) {
+                } elseif (!$marca->setImagen($_FILES['logo'])) {
                     $result['exception'] = Validator::getFileError();
                 } elseif ($marca->createRow()) {
                     $result['status'] = 1;
@@ -85,7 +85,7 @@ if (isset($_GET['action'])) {
                     } else {
                         $result['exception'] = Database::getException();
                     }
-                } elseif (!$marca->setImagen($_FILES['archivo'])) {
+                } elseif (!$marca->setImagen($_FILES['logo'])) {
                     $result['exception'] = Validator::getFileError();
                 } elseif ($marca->updateRow($data['logo'])) {
                     $result['status'] = 1;
@@ -100,7 +100,7 @@ if (isset($_GET['action'])) {
                 break;
                
             case 'delete':
-                if (!$marca->setId($_POST['idmarca'])) {
+                if (!$marca->setId($_POST['id'])) {
                     $result['exception'] = 'Marca incorrecta';
                 } elseif (!$data = $marca->readOne()) {
                     $result['exception'] = 'Marca inexistente';
