@@ -3,26 +3,26 @@ require_once('../../helpers/database.php');
 /*
 *	Clase para manejar el acceso a datos de la entidad GENEROS PRODUCTOS.
 */
-class Genero_prod_Queries
+class Tipo_prod_Queries
 {
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT idgenero_producto, nombre_genero 
-                FROM generos_productos
-                WHERE nombre_genero ILIKE ?
-                ORDER BY nombre_genero';
+        $sql = 'SELECT idtipo_producto, tipo_producto
+                FROM tipo_productos
+                WHERE tipo_producto ILIKE ?
+                ORDER BY idtipo_producto';
         $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 
     public function createRow()
     {
-        $sql = 'INSERT INTO generos_productos(nombre_genero)
+        $sql = 'INSERT INTO tipo_productos(tipo_producto)
                 VALUES(?)';
-        $params = array($this->nombregenero);
+        $params = array($this->tipo);
         return Database::executeRow($sql, $params);
     }
 
@@ -30,15 +30,15 @@ class Genero_prod_Queries
     {
         $sql = 'SELECT idtipo_producto, tipo_producto 
                 FROM tipo_productos
-                ORDER BY tipo_producto';
+                ORDER BY idtipo_producto';
         return Database::getRows($sql);
     }
 
     public function readOne()
     {
-        $sql = 'SELECT idgenero_producto, nombre_genero 
-                FROM generos_productos
-                WHERE idgenero_producto = ?';
+        $sql = 'SELECT idtipo_producto, tipo_producto 
+                FROM tipo_productos
+                WHERE idtipo_producto = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
@@ -46,17 +46,17 @@ class Genero_prod_Queries
     public function updateRow($current_image)
     {
        
-        $sql = 'UPDATE generos_productos
-                SET nombre_genero = ?
-                WHERE idgenero_producto = ?';
-        $params = array($this->nombregenero, $this->id);
+        $sql = 'UPDATE tipo_productos
+                SET tipo_producto = ?
+                WHERE idtipo_producto = ?';
+        $params = array($this->tipo, $this->id);
         return Database::executeRow($sql, $params);
     }
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM generos_productos
-                WHERE idgenero_productos = ?';
+        $sql = 'DELETE FROM tipo_productos
+                WHERE idtipo_producto = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }

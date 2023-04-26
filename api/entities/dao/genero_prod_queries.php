@@ -56,7 +56,7 @@ class Genero_prod_Queries
     public function deleteRow()
     {
         $sql = 'DELETE FROM generos_productos
-                WHERE idgenero_productos = ?';
+                WHERE idgenero_producto = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
