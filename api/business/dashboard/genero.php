@@ -38,7 +38,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$generoprod->setNombre($_POST['genero'])) {
+                if (!$generoprod->setNombre($_POST['nombregenero'])) {
                     $result['exception'] = ' Genero incorrecto';
                 } elseif ($generoprod->createRow()) {
                     $result['status'] = 1;
@@ -64,7 +64,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Genero incorrecto';
                 } elseif (!$data = $generoprod->readOne()) {
                     $result['exception'] = 'Genero inexistente';
-                } elseif (!$generoprod->setNombre($_POST['genero'])) {
+                } elseif (!$generoprod->setNombre($_POST['nombregenero'])) {
                     $result['exception'] = 'genero incorrecto';
                 }  elseif ($generoprod->updateRow()) {
                     $result['status'] = 1;
