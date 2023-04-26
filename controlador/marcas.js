@@ -14,7 +14,6 @@ const OPTIONS = {
     dismissible: false
 }
 // Inicialización del componente Modal para que funcionen las cajas de diálogo.
-
 // Constante para establecer la modal de guardar.
 const SAVE_MODAL = document.getElementById('save-modal');
 
@@ -51,7 +50,6 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se cierra la caja de diálogo.
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
-
     } else {
         sweetAlert(2, JSON.exception, false);
     }
@@ -78,7 +76,7 @@ async function fillTable(form = null) {
             TBODY_ROWS.innerHTML += `
                 <tr>
                     <td>${row.idmarca}</td>
-                    <td>${row.logo}</td>
+                    <td><img src="${SERVER_URL}images/marcas/${row.logo}" class="materialboxed" height="100"></td>
                     <td>${row.nombre_marca}</td>
                     <td>
                         <a onclick="openUpdate(${row.idmarca})" data-bs-toggle="modal" data-bs-target="#save-modal" class="btn btn-primary tooltipped" data-tooltip="Actualizar">
@@ -98,7 +96,8 @@ async function fillTable(form = null) {
             `;
         });
         // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-     
+      // Se muestra un mensaje de acuerdo con el resultado.
+      RECORDS.textContent = JSON.message;
     } else {
         sweetAlert(4, JSON.exception, true);
     }
@@ -116,6 +115,8 @@ function openCreate() {
     SAVE_FORM.reset();
     // Se asigna título a la caja de diálogo.
     MODAL_TITLE.textContent = 'Ingresar Marca';
+     // Se establece el campo de archivo como obligatorio.
+     document.getElementById('archivo').required = true;
 
 }
 
@@ -127,7 +128,7 @@ function openCreate() {
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('idmarca', id);
+    FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
     const JSON = await dataFetch(MARCA_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -137,6 +138,8 @@ async function openUpdate(id) {
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
         MODAL_TITLE.textContent = 'Actualizar Marca';
+          // Se establece el campo de archivo como opcional.
+          document.getElementById('archivo').required = false;
    
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idmarca;
