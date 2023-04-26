@@ -43,7 +43,7 @@ class Tipo_prod_Queries
         return Database::getRow($sql, $params);
     }
 
-    public function updateRow($current_image)
+    public function updateRow()
     {
        
         $sql = 'UPDATE tipo_productos

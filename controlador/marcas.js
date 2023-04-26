@@ -142,8 +142,8 @@ async function openUpdate(id) {
    
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idmarca;
-        document.getElementById('Logo').value = JSON.dataset.logo;
-        document.getElementById('Marca').value = JSON.dataset.nombre_marca;
+        document.getElementById('archivo').value = JSON.dataset.logo;
+        document.getElementById('marca').value = JSON.dataset.nombre_marca;
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
     } else {
         sweetAlert(2, JSON.exception, false);
