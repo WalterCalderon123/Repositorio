@@ -12,6 +12,8 @@ class TallaQueries
     {
         $sql = 'SELECT iddetalle_producto, idproducto, idtalla, existencia
                 FROM detalle_productos
+                INNER JOIN productos USING(idproducto)
+                INNER JOIN tallas USING(idtalla)
                 WHERE idproducto ILIKE ? OR idtalla ILIKE ? OR existencia ILIKE ?
                 ORDER BY iddetalle_producto';
         $params = array("%$value%", "%$value%");
@@ -30,6 +32,8 @@ class TallaQueries
     {
         $sql = 'SELECT iddetalle_producto, idproducto, idtalla, existencia
                 FROM detalle_productos
+                INNER JOIN productos USING(idproducto)
+                INNER JOIN tallas USING(idtalla)
                 ORDER BY iddetalle_producto';
         return Database::getRows($sql);
     }
@@ -58,5 +62,15 @@ class TallaQueries
                 WHERE iddetalle_producto = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
+    }
+
+    public function readDetallesProductos()
+    {
+        $sql = 'SELECT iddetalle_producto, idproducto, idtalla, existencia
+                FROM detalle_productos INNER JOIN productos USING(idproducto)
+                WHERE idmarca = ? AND estado_producto = true
+                ORDER BY nombre_producto';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
     }
 }

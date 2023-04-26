@@ -102,7 +102,7 @@
       usuario</a>
     </div>
   </div>
-  <!-- Ingreso al formulario de usuarios  -->
+  <!-- Ingreso al formulario de valoraciones  -->
 
   <div class="modal fade" id="save-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
     <div class="modal-dialog">
@@ -115,28 +115,28 @@
           <form class="d-flex flex-column" method="post" id="save-form">
             <input class="invisible" type="number" id="id" name="id">
             <div class="mb-3">
-              <label for="nombres">Nombres:</label>
-              <input id="nombres" type="text" name="nombres" class="form-control validate" required>
+              <label for="nombres">Detalle:</label>
+              <input id="nombres" type="form-select validate" name="nombres" class="form-control validate" required>
             </div>
             <div class="mb-3">
-              <label for="apellidos">Apellidos:</label>
-              <input id="apellidos" type="text" name="apellidos" class="form-control validate" required>
+              <label for="apellidos">Calificacion:</label>
+              <input id="apellidos" type="number" name="apellidos" class="form-control validate" required>
             </div>
             <div class="mb-3">
-              <label for="recipient-name" class="col-form-label">Correo:</label>
-              <input id="correo" type="email" name="correo" class="form-control validate" required>
+              <label for="recipient-name" class="col-form-label">Autor:</label>
+              <input id="correo" type="text" name="correo" class="form-control validate" required>
             </div>
             <div class="nav-item dropdown">
-              <label for="recipient-name" class="col-form-label">Alias:</label>
+              <label for="recipient-name" class="col-form-label">Titulo:</label>
               <input id="alias" type="text" name="alias" class="form-control validate" required>
             </div>
             <div class="nav-item dropdown">
-              <label for="recipient-name" class="col-form-label">Clave:</label>
-              <input id="clave" type="password" name="clave" class="validate form-control" required>
+              <label for="recipient-name" class="col-form-label">Reseña:</label>
+              <input id="clave" type="text" name="clave" class="validate form-control" required>
             </div>
             <div class="nav-item dropdown">
-              <label for="recipient-name" class="col-form-label">Confirmar clave:</label>
-              <input id="confirmar" type="password" name="confirmar" class="form-control validate" required>
+              <label for="recipient-name" class="col-form-label">Fecha:</label>
+              <input id="clave" type="date" name="clave" class="validate form-control" required>
             </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-primary  tooltipped" data-tooltip="Guardar">Guardar</button>
