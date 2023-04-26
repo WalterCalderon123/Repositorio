@@ -97,7 +97,7 @@ async function fillTable(form = null) {
             `;
         });
         // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-     
+
     } else {
         sweetAlert(4, JSON.exception, true);
     }
@@ -110,7 +110,7 @@ async function fillTable(form = null) {
 */
 function openCreate() {
     // Se abre la caja de diálogo que contiene el formulario.
-    
+
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
     // Se asigna título a la caja de diálogo.
