@@ -10,9 +10,6 @@
   <!--bootstrap-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
   <!--mdb-->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css" rel="stylesheet" />
   <!-- Google Fonts -->
@@ -52,13 +49,15 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
     <div class="container-fluid d-flex flex-column align-items-center justify-content-between">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
-            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
               Productos
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
@@ -67,12 +66,15 @@
               <li><a class="dropdown-item" href="gen_productos_admin.html">Generos</a></li>
               <li><a class="dropdown-item" href="productos_tipo_admin.html">Tipos</a></li>
             </ul>
-          </li>
+          </li> 
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="tallas_admin.html">Tallas</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="marcas_admin.html">Marcas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="valoraciones_admin.html">Valoraciones</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="usuarios_admin.html">Usuarios</a>
@@ -82,36 +84,51 @@
     </div>
   </nav>
 
+  <div class="d-flex flex-row align-items-center justify-content-center">
+    <form method="post" id="search-form">
+      <div class="input-field col s6 m-4">
+        <input id="search" type="text" name="search" required>
+        <button type="submit" class="btn bg-success tooltipped" data-tooltip="Buscar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="bg-light" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+          </svg>        
+        </button>   
+      </div>
+    </form>
+    <div class="input-field">
+      <a onclick="window.openCreate()" data-bs-toggle="modal" data-bs-target="#save-modal"
+      class="btn btn-agregar tooltipped" data-tooltip="Crear">Agregar Tipo</a>
+    </div>
+  </div>
 
-  <button type="button" class="btn-agregar" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar tipo de
-    producto</button>
-
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  
+  <div class="modal fade" id="save-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario de tipos de productos</h1>
+          <h1 class="modal-title fs-5" id="modal-title"></h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form class="d-flex flex-column">
+          <form class="d-flex flex-column" method="post" id="save-form">
+            <input class="invisible" type="number" id="id" name="id">
             <div class="mb-3">
-              <label for="recipient-name" class="col-form-label">Nombre:</label>
-              <input type="text" class="form-control" id="recipient-name">
+              <label for="tipo">Tipo del Producto:</label>
+              <input id="tipo" type="text" name="tipo" class="form-control validate" required>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary  tooltipped" data-tooltip="Guardar">Guardar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Guardar Cambios</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
   </div>
 
 
-  <section class="intro">
-    <div class="bg-image h-100" style="background-color: #f5f7fa;">
+  <main class="intro">
+    <div class="bg-image bg-light h-100">
       <div class="mask d-flex align-items-center h-100">
         <div class="container">
           <div class="row justify-content-center">
@@ -121,33 +138,16 @@
                   <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true"
                     style="position: relative; height: 700px">
                     <table class="table table-striped mb-0">
-                      <thead style="background-color: #002d72;">
+                      <thead class="bg-primary">
+                        <tr id="records"></tr>
                         <tr>
                           <th scope="col">ID</th>
-                          <th scope="col">Tipo de producto</th>
+                          <th scope="col">Tipo de Producto</th>
                           <th scope="col">Actualizar</th>
                           <th scope="col">Eliminar</th>
-
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Casual</td>
-                          <td><img src="Imagenes/update.png" alt="Logo" width="30" height="30"
-                              class="d-inline-block align-text-top"></td>
-                          <td><img src="Imagenes/delete.png" alt="Logo" width="30" height="30"
-                              class="d-inline-block align-text-top"></td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Deportivos</td>
-                          <td><img src="Imagenes/update.png" alt="Logo" width="30" height="30"
-                              class="d-inline-block align-text-top"></td>
-                          <td><img src="Imagenes/delete.png" alt="Logo" width="30" height="30"
-                              class="d-inline-block align-text-top"></td>
-                        </tr>
-                      </tbody>
+                      <tbody id="tbody-rows"></tbody>
                     </table>
                   </div>
                 </div>
@@ -157,7 +157,15 @@
         </div>
       </div>
     </div>
-  </section>
+  </main>
+
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/sweetalert.min.js"></script>
+  <script src="../controlador/components.js"></script>
+  <script src="../controlador/account.js"></script>
+  <script src="../controlador/tipo.js"></script>
+
 </body>
+
 
 </html>
