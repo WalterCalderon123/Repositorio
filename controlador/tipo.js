@@ -137,7 +137,7 @@ async function openUpdate(id) {
         MODAL_TITLE.textContent = 'Actualizar tipo';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idtipo_producto;
-        document.getElementById('genero').value = JSON.dataset.tipo_producto;
+        document.getElementById('tipo').value = JSON.dataset.tipo_producto;
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
     } else {
         sweetAlert(2, JSON.exception, false);

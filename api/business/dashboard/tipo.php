@@ -48,7 +48,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$tipoprod->setId($_POST['idtipo_producto'])) {
+                if (!$tipoprod->setId($_POST['id'])) {
                     $result['exception'] = 'Tipo de Producto incorrecto';
                 } elseif ($result['dataset'] = $tipoprod->readOne()) {
                     $result['status'] = 1;
@@ -74,7 +74,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'delete':
-                if (!$tipoprod->setId($_POST['idtipo_producto'])) {
+                if (!$tipoprod->setId($_POST['id'])) {
                     $result['exception'] = 'Tipo de Producto incorrecto';
                 } elseif (!$tipoprod->readOne()) {
                     $result['exception'] = 'Tipo de Producto inexistente';
