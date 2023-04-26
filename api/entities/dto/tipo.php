@@ -4,7 +4,7 @@ require_once('../../entities/dao/tipo_prod_queries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad GENEROS PRODUCTOS.
 */
-class Genero_prod extends Genero_prod_Queries
+class Tipo_prod extends Tipo_prod_Queries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
