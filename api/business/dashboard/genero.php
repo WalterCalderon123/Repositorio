@@ -38,90 +38,51 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$generoprod->setNombre($_POST['nombre'])) {
-                    $result['exception'] = 'Nombre de genero incorrecto';
+                if (!$generoprod->setNombre($_POST['genero'])) {
+                    $result['exception'] = ' Genero incorrecto';
                 } elseif ($producto->createRow()) {
                     $result['status'] = 1;
-                    
+                    $result['message'] = 'Genero creado correctamente';
                 } else {
                     $result['exception'] = Database::getException();;
                 }
                 break;
             case 'readOne':
-                if (!$producto->setId($_POST['id'])) {
-                    $result['exception'] = 'Producto incorrecto';
+                if (!$producto->setId($_POST['idgenero_producto'])) {
+                    $result['exception'] = 'Genero incorrecto';
                 } elseif ($result['dataset'] = $producto->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Producto inexistente';
+                    $result['exception'] = 'Genero inexistente';
                 }
                 break;
             case 'update':
                 $_POST = Validator::validateForm($_POST);
-                if (!$producto->setId($_POST['id'])) {
-                    $result['exception'] = 'Producto incorrecto';
-                } elseif (!$data = $producto->readOne()) {
-                    $result['exception'] = 'Producto inexistente';
-                } elseif (!$producto->setNombre($_POST['nombre'])) {
-                    $result['exception'] = 'Nombre incorrecto';
-                } elseif (!$producto->setDescripcion($_POST['descripcion'])) {
-                    $result['exception'] = 'Descripción incorrecta';
-                } elseif (!$producto->setPrecio($_POST['precio'])) {
-                    $result['exception'] = 'Precio incorrecto';
-                } elseif (!$producto->setCategoria($_POST['categoria'])) {
-                    $result['exception'] = 'Seleccione una categoría';
-                } elseif (!$producto->setEstado(isset($_POST['estado']) ? 1 : 0)) {
-                    $result['exception'] = 'Estado incorrecto';
-                } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
-                    if ($producto->updateRow($data['imagen_producto'])) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Producto modificado correctamente';
-                    } else {
-                        $result['exception'] = Database::getException();
-                    }
-                } elseif (!$producto->setImagen($_FILES['archivo'])) {
-                    $result['exception'] = Validator::getFileError();
-                } elseif ($producto->updateRow($data['imagen_producto'])) {
+                if (!$generoprod->setId($_POST['id'])) {
+                    $result['exception'] = 'Genero incorrecto';
+                } elseif (!$data = $generoprod->readOne()) {
+                    $result['exception'] = 'Genero inexistente';
+                } elseif (!$generoprod->setNombre($_POST['genero'])) {
+                    $result['exception'] = 'genero incorrecto';
+                }  elseif ($generoprod->updateRow()) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $producto->getRuta(), $producto->getImagen())) {
-                        $result['message'] = 'Producto modificado correctamente';
-                    } else {
-                        $result['message'] = 'Producto modificado pero no se guardó la imagen';
-                    }
-                } else {
+                    $result['message'] = 'Genero modificado correctamente';
+                }else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'delete':
-                if (!$producto->setId($_POST['id_producto'])) {
-                    $result['exception'] = 'Producto incorrecto';
-                } elseif (!$data = $producto->readOne()) {
-                    $result['exception'] = 'Producto inexistente';
-                } elseif ($producto->deleteRow()) {
+                if (!$generoprod->setId($_POST['idgenero_producto'])) {
+                    $result['exception'] = 'Genero incorrecto';
+                } elseif (!$generoprod->readOne()) {
+                    $result['exception'] = 'Genero inexistente';
+                } elseif ($generoprod->deleteRow()) {
                     $result['status'] = 1;
-                    if (Validator::deleteFile($producto->getRuta(), $data['imagen_producto'])) {
-                        $result['message'] = 'Producto eliminado correctamente';
-                    } else {
-                        $result['message'] = 'Producto eliminado pero no se borró la imagen';
-                    }
+                    $result['message'] = 'Genero eliminada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
-                }
-                break;
-            case 'cantidadProductosCategoria':
-                if ($result['dataset'] = $producto->cantidadProductosCategoria()) {
-                    $result['status'] = 1;
-                } else {
-                    $result['exception'] = 'No hay datos disponibles';
-                }
-                break;
-            case 'porcentajeProductosCategoria':
-                if ($result['dataset'] = $producto->porcentajeProductosCategoria()) {
-                    $result['status'] = 1;
-                } else {
-                    $result['exception'] = 'No hay datos disponibles';
                 }
                 break;
             default:
