@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const TIPO_API = 'business/dashboard/genero.php';
+const TIPO_API = 'business/dashboard/tipo.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
