@@ -42,7 +42,7 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$marca->setNombre($_POST['marca'])) {
                     $result['exception'] = 'Marca incorrecta';
-                }  elseif (!is_uploaded_file($_FILES['archivo'])) {
+                }  elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
                     $result['exception'] = 'Seleccione una imagen';
                 } elseif (!$marca->setImagen($_FILES['archivo'])) {
                     $result['exception'] = Validator::getFileError();
@@ -59,7 +59,7 @@ if (isset($_GET['action'])) {
                 break;
 
             case 'readOne':
-                if (!$marca->setId($_POST['idmarca'])) {
+                if (!$marca->setId($_POST['id'])) {
                     $result['exception'] = 'Marca incorrecta';
                 } elseif ($result['dataset'] = $marca->readOne()) {
                     $result['status'] = 1;
@@ -78,7 +78,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Marca inexistente';
                 } elseif (!$marca->setNombre($_POST['marca'])) {
                     $result['exception'] = 'Marca incorrecta';
-                } elseif (!is_uploaded_file($_FILES['archivo'])) {
+                } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
                     if ($marca->updateRow($data['logo'])) {
                         $result['status'] = 1;
                         $result['message'] = 'Marca modificada correctamente';

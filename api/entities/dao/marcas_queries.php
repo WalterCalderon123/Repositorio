@@ -20,7 +20,7 @@ class MarcaQueries
 
     public function createRow()
     {
-        $sql = 'INSERT INTO marcas(nombre_marca, logo)
+        $sql = 'INSERT INTO marcas(logo, nombre_marca)
                 VALUES(?, ?)';
         $params = array($this->marca, $this->logo);
         return Database::executeRow($sql, $params);
@@ -30,7 +30,7 @@ class MarcaQueries
     {
         $sql = 'SELECT idmarca, logo, nombre_marca
                 FROM marcas 
-                ORDER BY idmarca';
+                ORDER BY nombre_marca';
         return Database::getRows($sql);
     }
 

@@ -80,6 +80,11 @@
     </div>
   </nav>
 
+ 
+
+
+  <!-- Ingreso al formulario de marcas  -->
+   <!-- Button trigger modal -->
   <div class="d-flex flex-row align-items-center justify-content-center">
     <form method="post" id="search-form">
       <div class="input-field col s6 m-4">
@@ -97,9 +102,6 @@
     </div>
   </div>
 
-
-  <!-- Ingreso al formulario de marcas  -->
-
   <div class="modal fade" id="save-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -111,8 +113,8 @@
           <form class="d-flex flex-column" method="post" id="save-form">
             <input class="invisible" type="number" id="id" name="id">
             <div class="mb-3">
-              <label for="Marcas">Marcas:</label>
-              <input id="Marcas" type="text" name="Marcas" class="form-control validate" required>
+              <label for="recipient-name" class="col-form-label">marca:</label>
+              <input id="marca" type="text" name="marca" class="form-control validate" required>
             </div>
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label">Logo:</label>
@@ -142,7 +144,6 @@
                       <thead class="bg-primary">
                         <tr id="records"></tr>
                         <tr>
-                          <th scope="col">ID</th>
                           <th scope="col">Marcas</th>
                           <th scope="col">Logos</th>
                           <th scope="col">Actualizar</th>

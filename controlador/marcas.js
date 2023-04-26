@@ -75,7 +75,6 @@ async function fillTable(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
-                    <td>${row.idmarca}</td>
                     <td><img src="${SERVER_URL}images/marcas/${row.logo}" class="materialboxed" height="100"></td>
                     <td>${row.nombre_marca}</td>
                     <td>
