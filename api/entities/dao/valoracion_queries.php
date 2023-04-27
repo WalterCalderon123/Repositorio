@@ -10,7 +10,7 @@ class ValoracionQueries
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT idvaloracion, iddetalle_pedido, calificacion_producto, nombre, titulo, resenia, fecha_comentario
+        $sql = 'SELECT idvaloracion, iddetalle_pedido, calificacion_producto, nombre, titulo, resenia, fecha_comentario, estado_valoracion
                 FROM valoraciones
                 WHERE iddetalle_pedido ILIKE ? OR calificacion_producto ILIKE ? OR nombre ILIKE ? 
                 OR titulo ILIKE ? OR resenia ILIKE ? OR fecha_comentario ILIKE ?
@@ -21,7 +21,7 @@ class ValoracionQueries
 
     public function readAll()
     {
-        $sql = 'SELECT idvaloracion, iddetalle_pedido, calificacion_producto, nombre, titulo, resenia, fecha_comentario
+        $sql = 'SELECT idvaloracion, iddetalle_pedido, calificacion_producto, nombre, titulo, resenia, fecha_comentario, estado_valoracion
                 FROM valoraciones
                 ORDER BY idvaloracion';
         return Database::getRows($sql);
@@ -29,7 +29,7 @@ class ValoracionQueries
 
     public function readOne()
     {
-        $sql = 'SELECT idvaloracion, iddetalle_pedido, calificacion_producto, nombre, titulo, resenia, fecha_comentario
+        $sql = 'SELECT idvaloracion, iddetalle_pedido, calificacion_producto, nombre, titulo, resenia, fecha_comentario, estado_valoracion
                 FROM valoraciones
                 WHERE idvaloracion = ?';
         $params = array($this->id);

@@ -36,7 +36,7 @@ if (isset($_GET['action'])) {
                 } else {
                     $result['exception'] = 'No hay coincidencias';
                 }
-                break;
+                    break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
                 if (!$talla->setNumero($_POST['numero'])) {

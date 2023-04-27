@@ -126,8 +126,6 @@ function openCreate() {
     SAVE_FORM.reset();
     // Se asigna el título a la caja de diálogo.
     MODAL_TITLE.textContent = 'Crear valoracion';
-    // Se establece el campo de archivo como obligatorio.
-    document.getElementById('archivo').required = true;
     // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
     fillSelect(DETALLEPED_API, 'readAll', 'detalle');
 
@@ -151,13 +149,14 @@ async function openUpdate(id) {
         SAVE_FORM.reset();
         // Se asigna el título para la caja de diálogo (modal).
         MODAL_TITLE.textContent = 'Actualizar valoracion';
-        // Se establece el campo de archivo como opcional.
-        document.getElementById('archivo').required = false;
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idproducto;
         document.getElementById('detalle').value = JSON.dataset.deta;
         document.getElementById('calificacion').value = JSON.dataset.calificacion_producto;
-        document.getElementById('autor').value = JSON.dataset.autor;
+        document.getElementById('autor').value = JSON.dataset.nombre;
+        document.getElementById('titulo').value = JSON.dataset.titulo;
+        document.getElementById('resenia').value = JSON.dataset.resenia;
+        document.getElementById('fecha').value = JSON.dataset.fecha_comentario;
         fillSelect(GENERO_API, 'readAll', 'genero', JSON.dataset.idgenero_producto);
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
     } else {
