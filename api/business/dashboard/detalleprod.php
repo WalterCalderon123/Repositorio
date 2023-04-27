@@ -11,7 +11,6 @@ if (isset($_GET['action'])) {
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if (isset($_SESSION['idusuario'])) {
-        $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'readAll':
@@ -39,9 +38,13 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$detalleprod->setNumero($_POST['numero'])) {
-                    $result['exception'] = 'Numero incorrecto';
-                }  elseif ($detalleprod->createRow()) {
+                if (!$detalleprod->setProducto($_POST['producto'])) {
+                    $result['exception'] = 'Producto incorrecto';
+                }  elseif (!$detalleprod->setTalla($_POST['talla'])) {
+                    $result['exception'] = 'Talla incorrecta';
+                }  elseif (!$detalleprod->setExistencia($_POST['existencia'])) {
+                    $result['exception'] = 'Existencia incorrecta';
+                }   elseif ($detalleprod->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Detalle creado correctamente';
                 } else {
@@ -65,8 +68,12 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Detalle incorrect';
                 } elseif (!$data = $detalleprod->readOne()) {
                     $result['exception'] = 'Detalle inexistente';
-                } elseif (!$detalleprod->setNumero($_POST['numero'])) {
-                    $result['exception'] = 'Numero incorrecto';
+                } elseif (!$detalleprod->setProducto($_POST['producto'])) {
+                    $result['exception'] = 'Producto incorrecto';
+                }  elseif (!$detalleprod->setTalla($_POST['talla'])) {
+                    $result['exception'] = 'Talla incorrecta';
+                }  elseif (!$detalleprod->setExistencia($_POST['existencia'])) {
+                    $result['exception'] = 'Existencia incorrecta';
                 }  elseif ($detalleprod->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Detalle modificado correctamente';

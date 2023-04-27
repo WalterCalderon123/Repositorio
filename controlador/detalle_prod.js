@@ -1,7 +1,7 @@
 // Constantes para completar las rutas de la API.
-const TIPO_API = 'business/dashboard/tipo.php';
+const DETALLE_API = 'business/dashboard/detalleprod.php';
 const PRODUCTO_API = 'business/dashboard/producto.php';
-const MARCA_API = 'business/dashboard/talla.php';
+const TALLA_API = 'business/dashboard/talla.php';
 
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
@@ -45,7 +45,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(TIPO_API, action, FORM);
+    const JSON = await dataFetch(DETALLE_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
@@ -70,7 +70,7 @@ async function fillTable(form = null) {
     // Se verifica la acción a realizar.
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(TIPO_API, action, form);
+    const JSON = await dataFetch(DETALLE_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
@@ -78,9 +78,8 @@ async function fillTable(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
-                    <td>${row.iddetalle_producto}</td>
-                    <td>${row.idproducto}</td>
-                    <td>${row.idtalla}</td>
+                    <td>${row.producto}</td>
+                    <td>${row.talla}</td>
                     <td>${row.existencia}</td>
                     <td>
                     <a onclick="openUpdate(${row.iddetalle_producto})" data-bs-toggle="modal" data-bs-target="#save-modal" class="btn btn-primary tooltipped" data-tooltip="Actualizar">
@@ -135,7 +134,7 @@ async function openUpdate(id) {
     const FORM = new FormData();
     FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(TIPO_API, 'readOne', FORM);
+    const JSON = await dataFetch(DETALLE_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -143,18 +142,11 @@ async function openUpdate(id) {
         SAVE_FORM.reset();
         // Se asigna el título para la caja de diálogo (modal).
         MODAL_TITLE.textContent = 'Actualizar detalle';
-        // Se establece el campo de archivo como opcional.
-        document.getElementById('archivo').required = false;
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.iddetalle_producto;
         fillSelect(PRODUCTO_API, 'readAll', 'producto', JSON.dataset.idproducto);
         fillSelect(TALLA_API, 'readAll', 'talla', JSON.dataset.idtalla);
         document.getElementById('existencia').value = JSON.dataset.existencia;
-        if (JSON.dataset.estado_producto) {
-            document.getElementById('estado').checked = true;
-        } else {
-            document.getElementById('estado').checked = false;
-        }
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
     } else {
         sweetAlert(2, JSON.exception, false);
@@ -175,7 +167,7 @@ async function openDelete(id) {
         const FORM = new FormData();
         FORM.append('iddetalle_producto', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(TIPO_API, 'delete', FORM);
+        const JSON = await dataFetch(DETALLE_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.

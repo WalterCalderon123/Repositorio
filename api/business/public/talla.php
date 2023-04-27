@@ -11,7 +11,7 @@ if (isset($_GET['action'])) {
     switch ($_GET['action']) {
         case 'readTallas':
             if (!$talla->setId($_POST['idtalla'])) {
-                $result['exception'] = 'Categoría incorrecta';
+                $result['exception'] = 'Talla incorrecta';
             } elseif ($result['dataset'] = $talla->readTallas()) {
                 $result['status'] = 1;
             } elseif (Database::getException()) {

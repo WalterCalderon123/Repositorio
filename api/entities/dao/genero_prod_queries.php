@@ -13,7 +13,7 @@ class Genero_prod_Queries
         $sql = 'SELECT idgenero_producto, nombre_genero 
                 FROM generos_productos
                 WHERE nombre_genero ILIKE ?
-                ORDER BY idgenero_producto';
+                ORDER BY nombre_genero';
         $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }

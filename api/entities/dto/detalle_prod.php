@@ -4,7 +4,7 @@ require_once('../../entities/dao/detalle_prod_queries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad Talla.
 */
-class DetalleProd extends DetalleProdQueries
+class DetalleProd extends DetalleprodQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;

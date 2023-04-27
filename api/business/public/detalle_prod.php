@@ -12,7 +12,7 @@ if (isset($_GET['action'])) {
         case 'readDetalle_prod':
             if (!$detalleprod->setId($_POST['iddetalle_producto'])) {
                 $result['exception'] = 'Detalle del producto incorrecto';
-            } elseif ($result['dataset'] = $detalleprod->readTallas()) {
+            } elseif ($result['dataset'] = $detalleprod->readDetalle_prod()) {
                 $result['status'] = 1;
             } elseif (Database::getException()) {
                 $result['exception'] = Database::getException();
@@ -21,7 +21,7 @@ if (isset($_GET['action'])) {
             }
             break;
         case 'readOne':
-            if (!$detalleprod->setId($_POST['idtalla'])) {
+            if (!$detalleprod->setId($_POST['iddetalle_producto'])) {
                 $result['exception'] = 'Detalle del producto incorrecto';
             } elseif ($result['dataset'] = $detalleprod->readOne()) {
                 $result['status'] = 1;
