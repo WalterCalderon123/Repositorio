@@ -52,7 +52,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$detalleprod->setId($_POST['iddetalle_producto'])) {
+                if (!$detalleprod->setId($_POST['id'])) {
                     $result['exception'] = 'Detalle incorrecto';
                 } elseif ($result['dataset'] = $detalleprod->readOne()) {
                     $result['status'] = 1;

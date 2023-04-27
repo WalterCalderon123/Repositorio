@@ -78,8 +78,9 @@ async function fillTable(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
-                    <td>${row.producto}</td>
-                    <td>${row.talla}</td>
+                    <td>${row.iddetalle_producto}</td>
+                    <td>${row.nombre_producto}</td>
+                    <td>${row.num_talla}</td>
                     <td>${row.existencia}</td>
                     <td>
                     <a onclick="openUpdate(${row.iddetalle_producto})" data-bs-toggle="modal" data-bs-target="#save-modal" class="btn btn-primary tooltipped" data-tooltip="Actualizar">

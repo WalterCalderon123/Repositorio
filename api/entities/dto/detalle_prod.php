@@ -2,7 +2,7 @@
 require_once('../../helpers/validator.php');
 require_once('../../entities/dao/detalle_prod_queries.php');
 /*
-*	Clase para manejar la transferencia de datos de la entidad Talla.
+*	Clase para manejar la transferencia de datos de la entidad Detalle Productos.
 */
 class DetalleProd extends DetalleprodQueries
 {
