@@ -60,11 +60,6 @@
 	direccion_pedido varchar(500)
 	);
 	
-	Create table estado_productos(
-	idestado_producto serial primary key,
-	estado_producto varchar(20) not null
-	);
-	
 	Create table productos(
 	idproducto serial primary key,
 	nombre_producto varchar(150) not null,
@@ -74,9 +69,9 @@
 	idgenero_producto int not null,
 	idtipo_producto int not null,
 	imagen varchar(800) null,
-	idestado_producto int not null,
 	idusuario int not null,
-	descuento numeric(5,2) null
+	descuento numeric(5,2) null,
+	estado_producto boolean not null
 	);
 	
 	Create table tallas(
@@ -156,13 +151,6 @@ ALTER TABLE productos
 ADD CONSTRAINT tipo_productos
 FOREIGN KEY (idtipo_producto) 
 REFERENCES tipo_productos(idtipo_producto)
-ON UPDATE CASCADE
-ON DELETE CASCADE;
-
-ALTER TABLE productos
-ADD CONSTRAINT estado_producto
-FOREIGN KEY (idestado_producto) 
-REFERENCES estado_productos(idestado_producto)
 ON UPDATE CASCADE
 ON DELETE CASCADE;
 

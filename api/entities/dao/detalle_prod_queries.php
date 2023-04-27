@@ -24,13 +24,13 @@ class DetalleprodQueries
     {
         $sql = 'INSERT INTO detalle_productos(idproducto, idtalla, existencia)
                 VALUES(?,?,?)';
-        $params = array($this->numero);
+        $params = array($this->producto, $this->talla, $this->existencia);
         return Database::executeRow($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'SELECT iddetalle_producto, idproducto, idtalla, existencia
+        $sql = 'SELECT iddetalle_producto, nombre_producto, num_talla, existencia
                 FROM detalle_productos
                 INNER JOIN productos USING(idproducto)
                 INNER JOIN tallas USING(idtalla)
@@ -52,7 +52,7 @@ class DetalleprodQueries
         $sql = 'UPDATE detalle_productos
                 SET idproducto = ?, idtalla = ?, existencia = ?
                 WHERE iddetalle_producto = ?';
-        $params = array($this->numero, $this->id);
+        $params = array($this->producto, $this->talla, $this->existencia, $this->id);
         return Database::executeRow($sql, $params);
     }
 
