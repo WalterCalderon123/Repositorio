@@ -100,7 +100,8 @@
 	nombre varchar(50) not null,
 	titulo varchar(50) not null,
 	resenia varchar(800) not null,
-	fecha_comentario date not null
+	fecha_comentario date not null,
+	estado_valoracion boolean not null
 	);
 
 ALTER TABLE clientes
