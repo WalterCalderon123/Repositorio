@@ -31,7 +31,7 @@ class Valoraciones extends ValoracionQueries
 
     public function setDetalle($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 50)) {
+        if (Validator::validateNaturalNumber($value, 1, 50)) {
             $this->detallepedido = $value;
             return true;
         } else {
@@ -41,7 +41,7 @@ class Valoraciones extends ValoracionQueries
 
     public function setCalificacion($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 5)) {
+        if (Validator::validateNaturalNumber($value, 1, 5)) {
             $this->calificacion = $value;
             return true;
         } else {
@@ -51,7 +51,7 @@ class Valoraciones extends ValoracionQueries
 
     public function setNombre($value)
     {
-        if (Validator::validateString($value, 1, 50)) {
+        if (Validator::validateAlphanumeric($value, 1, 50)) {
             $this->nombre = $value;
             return true;
         } else {

@@ -1,12 +1,12 @@
 <?php
-require_once('../../entities/dto/detalle_prod.php');
+require_once('../../entities/dto/valoraciones.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $detalleprod = new DetalleProd;
+    $valoracion = new ValoracionQueries;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -14,8 +14,9 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'readAll':
-                if ($result['dataset'] = $detalleprod->readAll()) {
+                if ($result['dataset'] = $valoracion->readAll()) {
                     $result['status'] = 1;
+                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -26,7 +27,7 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $detalleprod->searchRows($_POST['search'])) {
+                } elseif ($result['dataset'] = $valoracion->searchRows($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -35,25 +36,10 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-            case 'create':
-                $_POST = Validator::validateForm($_POST);
-                if (!$detalleprod->setProducto($_POST['producto'])) {
-                    $result['exception'] = 'Producto incorrecto';
-                }  elseif (!$detalleprod->setTalla($_POST['talla'])) {
-                    $result['exception'] = 'Talla incorrecta';
-                }  elseif (!$detalleprod->setExistencia($_POST['existencia'])) {
-                    $result['exception'] = 'Existencia incorrecta';
-                }   elseif ($detalleprod->createRow()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Detalle creado correctamente';
-                } else {
-                    $result['exception'] = Database::getException();;
-                }
-                break;
             case 'readOne':
-                if (!$detalleprod->setId($_POST['id'])) {
-                    $result['exception'] = 'Detalle incorrecto';
-                } elseif ($result['dataset'] = $detalleprod->readOne()) {
+                if (!$valoracion->setId($_POST['id'])) {
+                    $result['exception'] = 'Valoracion incorrecta';
+                } elseif ($result['dataset'] = $valoracion->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
@@ -63,29 +49,25 @@ if (isset($_GET['action'])) {
                 break;
             case 'update':
                 $_POST = Validator::validateForm($_POST);
-                if (!$detalleprod->setId($_POST['id'])) {
-                    $result['exception'] = 'Detalle incorrect';
-                } elseif (!$data = $detalleprod->readOne()) {
+                if (!$valoracion->setId($_POST['id'])) {
+                    $result['exception'] = 'Valoracion incorrecta';
+                } elseif (!$data = $valoracion->readOne()) {
                     $result['exception'] = 'Detalle inexistente';
-                } elseif (!$detalleprod->setProducto($_POST['producto'])) {
-                    $result['exception'] = 'Producto incorrecto';
-                }  elseif (!$detalleprod->setTalla($_POST['talla'])) {
-                    $result['exception'] = 'Talla incorrecta';
-                }  elseif (!$detalleprod->setExistencia($_POST['existencia'])) {
-                    $result['exception'] = 'Existencia incorrecta';
-                }  elseif ($detalleprod->updateRow()) {
+                } elseif (!$valoracion->setDetalle($_POST['detalle'])) {
+                    $result['exception'] = 'Detalle incorrecto';
+                }  elseif ($valoracion->updateRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Detalle modificado correctamente';
+                    $result['message'] = 'Valoracion modificada correctamente';
                 }else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'delete':
-                if (!$detalleprod->setId($_POST['iddetalle_producto'])) {
+                if (!$valoracion->setId($_POST['iddetalle_producto'])) {
                     $result['exception'] = 'Detalle incorrecto';
-                } elseif (!$detalleprod->readOne()) {
+                } elseif (!$valoracion->readOne()) {
                     $result['exception'] = 'Detalle inexistente';
-                } elseif ($detalleprod->deleteRow()) {
+                } elseif ($valoracion->deleteRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Detalle eliminado correctamente';
                 } else {
