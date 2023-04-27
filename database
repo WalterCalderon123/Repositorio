@@ -4,7 +4,7 @@
 	apellido_usuario varchar(50) not null,
 	correo_usuario varchar(100) not null,
 	alias_usuario varchar(50) not null,
-	clave_usuario varchar(10) not null
+	clave_usuario varchar(100) not null
 	);
 	
 	Create table genero_clientes(
@@ -43,8 +43,8 @@
 	
 	Create table marcas(
 	idmarca serial primary key,
-	nombre_marca varchar(100) not null
-	logo varchar(500) not null,
+	nombre_marca varchar(100) not null,
+	logo varchar(500) not null
 	);
 	
 	Create table estado_pedidos(
