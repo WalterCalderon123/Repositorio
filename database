@@ -1,0 +1,206 @@
+	Create table usuarios(
+	idusuario serial primary key,
+	nombre_usuario varchar(50) not null,
+	apellido_usuario varchar(50) not null,
+	correo_usuario varchar(100) not null,
+	alias_usuario varchar(50) not null,
+	clave_usuario varchar(10) not null
+	);
+	
+	Create table genero_clientes(
+	idgenero_cliente serial primary key,
+	genero_cliente varchar(20) not null
+	);
+	
+	Create table estado_clientes(
+	idestado_cliente serial primary key,
+	estado_cliente varchar(20) not null
+	);
+	
+	Create table clientes (
+	idcliente serial primary key,
+	nombre_cliente varchar(30) not null ,
+	apellido_cliente varchar(30) not null,
+	dui varchar(10) not null,
+	correo varchar(100) not null,
+	telefono varchar(9) not null,
+	fecha_nacimiento date not null,
+	direccion varchar(200) not null,
+	idgenero_cliente int not null,
+	idestado_cliente int not null,
+	clave_cliente varchar(50) not null
+	);
+	
+	Create table generos_productos(
+	idgenero_producto serial primary key,
+	nombre_genero varchar(15) not null
+	);
+	
+	Create table tipo_productos(
+	idtipo_producto serial primary key,
+	tipo_producto varchar(20) not null
+	);
+	
+	Create table marcas(
+	idmarca serial primary key,
+	nombre_marca varchar(100) not null
+	logo varchar(500) not null,
+	);
+	
+	Create table estado_pedidos(
+	idestado_pedido serial primary key,
+	estado_pedido varchar(20) not null
+	);
+	
+	create table pedidos(
+	id_pedido serial primary key,
+	idcliente int not null,
+	idestado_pedido int not null,
+	fecha_pedido date not null,
+	direccion_pedido varchar(500)
+	);
+	
+	Create table estado_productos(
+	idestado_producto serial primary key,
+	estado_producto varchar(20) not null
+	);
+	
+	Create table productos(
+	idproducto serial primary key,
+	nombre_producto varchar(150) not null,
+	descripcion varchar(500) not null,
+	precio numeric(5,2) not null,
+	idmarca int not null,
+	idgenero_producto int not null,
+	idtipo_producto int not null,
+	imagen varchar(800) null,
+	idestado_producto int not null,
+	idusuario int not null,
+	descuento numeric(5,2) null
+	);
+	
+	Create table tallas(
+	idtalla serial primary key,
+	num_talla numeric(3,1)
+	);
+
+	Create table detalle_productos(
+	iddetalle_producto serial primary key,
+	idproducto int not null,
+	idtalla int not null,
+	existencia int not null	
+	);
+
+	Create table detalle_pedidos(
+	iddetalle_pedido serial primary key,
+	idpedido int not null,
+	iddetalle_producto int not null,
+	cantidad_producto int not null
+	);
+	
+	create table valoraciones(
+	idvaloracion serial primary key,
+	iddetalle_pedido int not null,
+	calificacion_producto int not null,
+	nombre varchar(50) not null,
+	titulo varchar(50) not null,
+	resenia varchar(800) not null,
+	fecha_comentario date not null
+	);
+
+ALTER TABLE clientes
+ADD UNIQUE (dui);
+
+ALTER TABLE clientes
+ADD UNIQUE (correo);
+
+ALTER TABLE clientes
+ADD UNIQUE (telefono);
+
+ALTER TABLE usuarios
+ADD UNIQUE (correo_usuario);
+
+ALTER TABLE usuarios
+ADD UNIQUE (alias_usuario);
+	
+ALTER TABLE productos
+ADD CONSTRAINT usuario_producto
+FOREIGN KEY (idusuario) 
+REFERENCES usuarios(idusuario);
+	
+ALTER TABLE pedidos
+ADD CONSTRAINT pedido_cliente
+FOREIGN KEY (idcliente) 
+REFERENCES clientes(idcliente);
+		
+ALTER TABLE pedidos
+ADD CONSTRAINT estado_pedido
+FOREIGN KEY (idestado_pedido) 
+REFERENCES estado_pedidos(idestado_pedido);
+
+ALTER TABLE productos
+ADD CONSTRAINT genero_producto
+FOREIGN KEY (idgenero_producto) 
+REFERENCES generos_productos(idgenero_producto)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+
+ALTER TABLE productos
+ADD CONSTRAINT marca_producto
+FOREIGN KEY (idmarca) 
+REFERENCES marcas(idmarca)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+
+ALTER TABLE productos
+ADD CONSTRAINT tipo_productos
+FOREIGN KEY (idtipo_producto) 
+REFERENCES tipo_productos(idtipo_producto)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+
+ALTER TABLE productos
+ADD CONSTRAINT estado_producto
+FOREIGN KEY (idestado_producto) 
+REFERENCES estado_productos(idestado_producto)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+
+ALTER TABLE detalle_pedidos
+ADD CONSTRAINT detalle_producto
+FOREIGN KEY (iddetalle_producto) 
+REFERENCES detalle_productos(iddetalle_producto);
+
+ALTER TABLE detalle_productos
+ADD CONSTRAINT detalle_talla
+FOREIGN KEY (idtalla) 
+REFERENCES tallas(idtalla);
+
+ALTER TABLE detalle_productos
+ADD CONSTRAINT detalle_prod
+FOREIGN KEY (idproducto) 
+REFERENCES productos(idproducto);
+
+ALTER TABLE detalle_pedidos
+ADD CONSTRAINT detalle_pedido
+FOREIGN KEY (idpedido) 
+REFERENCES pedidos(id_pedido);
+
+ALTER TABLE valoraciones
+ADD CONSTRAINT detalle_valoracion
+FOREIGN KEY (iddetalle_pedido) 
+REFERENCES detalle_pedidos(iddetalle_pedido);
+
+ALTER TABLE clientes
+ADD CONSTRAINT genero_clientes
+FOREIGN KEY (idgenero_cliente) 
+REFERENCES genero_clientes(idgenero_cliente)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+
+ALTER TABLE clientes
+ADD CONSTRAINT estado_clientes
+FOREIGN KEY (idestado_cliente) 
+REFERENCES estado_clientes(idestado_cliente)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
