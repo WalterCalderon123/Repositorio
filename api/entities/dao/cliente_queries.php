@@ -82,9 +82,9 @@ class ClienteQueries
 
     public function readAll()
     {
-        $sql = 'SELECT id_cliente, nombres_cliente, apellidos_cliente, correo_cliente, dui_cliente, estado_cliente
+        $sql = 'SELECT idcliente, nombre_cliente, apellido_cliente, dui,correo, telefono
                 FROM clientes
-                ORDER BY apellidos_cliente';
+                ORDER BY nombre_cliente';
         return Database::getRows($sql);
     }
 

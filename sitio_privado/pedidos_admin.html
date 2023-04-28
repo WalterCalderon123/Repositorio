@@ -23,6 +23,7 @@
 
 <body>
 
+
   <div class="navbar">
     <div class="logo">
       <img src="Imagenes/Zeladinha Sneakers Logo.jpg" alt="Logo" width="60" height="54"
@@ -48,7 +49,6 @@
       <div class="carrito">
         <i class="fa-solid fa-cart-shopping"></i>
       </div>
-
     </div>
 
   </div>
@@ -70,17 +70,13 @@
               <li><a class="dropdown-item" href="producto_admin.html">Productos</a></li>
               <li><a class="dropdown-item" href="detalle_prod_admin.html">Detalles</a></li>
               <li><a class="dropdown-item" href="gen_productos_admin.html">Generos</a></li>
-              <li><a class="dropdown-item" href="productos_tipo_admin.html">Tipos</a></li>
             </ul>
-          </li> 
+          </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="tallas_admin.html">Tallas</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="marcas_admin.html">Marcas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="valoraciones_admin.html">Valoraciones</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="usuarios_admin.html">Usuarios</a>
@@ -90,25 +86,24 @@
     </div>
   </nav>
 
+
+  <!-- Ingreso al formulario de productos  -->
+  <!-- Button trigger modal -->
   <div class="d-flex flex-row align-items-center justify-content-center">
     <form method="post" id="search-form">
       <div class="input-field col s6 m-4">
         <input id="search" type="text" name="search" required>
         <button type="submit" class="btn bg-success tooltipped" data-tooltip="Buscar">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="bg-light" class="bi bi-search" viewBox="0 0 16 16">
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-          </svg>        
-        </button>   
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="bg-light" class="bi bi-search"
+            viewBox="0 0 16 16">
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+          </svg>
+        </button>
       </div>
     </form>
-    <div class="input-field">
-      <a onclick="window.openCreate()" data-bs-toggle="modal" data-bs-target="#save-modal"
-      class="btn btn-agregar tooltipped" data-tooltip="Crear">Agregar
-      talla</a>
-    </div>
   </div>
 
-  
   <div class="modal fade" id="save-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -119,23 +114,38 @@
         <div class="modal-body">
           <form class="d-flex flex-column" method="post" id="save-form">
             <input class="invisible" type="number" id="id" name="id">
+            <div class="nav-item dropdown">
+              <label for="recipient-name" class="col-form-label">Cliente:</label>
+              <select id="cliente" name="cliente" class="form-select validate" required aria-label="Default select example">
+              </select>
+            </div>
+            <div class="nav-item dropdown">
+              <label for="recipient-name" class="col-form-label">Estado:</label>
+              <select id="estado" name="estado" class="form-select validate" required aria-label="Default select example">
+              </select>
+            </div>
             <div class="mb-3">
-              <label for="numero">Numero de Tallas:</label>
-              <input id="numero" type="number" name="numero" class="form-control validate" required>
-            </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-primary  tooltipped" data-tooltip="Guardar">Guardar</button>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            </div>
+                <label for="recipient-name" class="col-form-label">Fecha:</label>
+                <input id="fecha" type="date" name="date"  value="yyyy-MM-dd" class="form-control validate" required>
+              </div>
+            <div class="mb-3">
+                <label for="message-text" class="col-form-label">Direccion:</label>
+                <textarea id="direccion" name="direccion" class="form-control validate" required></textarea>
+              </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary  tooltipped" data-tooltip="Guardar">Guardar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
           </form>
         </div>
+       
       </div>
     </div>
   </div>
 
 
   <main class="intro">
-    <div class="bg-image bg-light h-100">
+    <div class="bg-image bg-light h-100" >
       <div class="mask d-flex align-items-center h-100">
         <div class="container">
           <div class="row justify-content-center">
@@ -149,9 +159,11 @@
                         <tr id="records"></tr>
                         <tr>
                           <th scope="col">ID</th>
-                          <th scope="col">Numero de talla</th>
+                          <th scope="col">Cliente</th>
+                          <th scope="col">Estado</th>
+                          <th scope="col">Fecha</th>
+                          <th scope="col">Direccion</th>
                           <th scope="col">Actualizar</th>
-                          <th scope="col">Eliminar</th>
                         </tr>
                       </thead>
                       <tbody id="tbody-rows"></tbody>
@@ -170,9 +182,7 @@
   <script src="../js/sweetalert.min.js"></script>
   <script src="../controlador/components.js"></script>
   <script src="../controlador/account.js"></script>
-  <script src="../controlador/tallas.js"></script>
+  <script src="../controlador/pedidos.js"></script>
 
 </body>
-
-
 </html>

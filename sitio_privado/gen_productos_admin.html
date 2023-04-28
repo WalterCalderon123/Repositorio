@@ -37,7 +37,13 @@
 
     <div class="icons">
       <div class="user">
+        <a class="nav-link active dropdown-toggle" href="#" id="logoutdropdown" role="button"
+        data-bs-toggle="dropdown" aria-expanded="false">
         <i class="fa-solid fa-user"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="logoutdropdown">
+        <li><a a onclick="logOut()" class="dropdown-item">Salir</a></li>
+      </ul>
       </div>
       <div class="carrito">
         <i class="fa-solid fa-cart-shopping"></i>
