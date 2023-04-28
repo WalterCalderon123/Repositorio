@@ -102,6 +102,7 @@
 
 
 
+
   <!-- Ingreso al formulario de productos  -->
   <!-- Button trigger modal -->
   <div class="d-flex flex-row align-items-center justify-content-center">
@@ -130,22 +131,18 @@
           <form class="d-flex flex-column" method="post" id="save-form">
             <input class="invisible" type="number" id="id" name="id">
             <div class="nav-item dropdown">
-              <label for="recipient-name" class="col-form-label">Cliente:</label>
-              <select id="cliente" name="cliente" class="form-select validate" required aria-label="Default select example">
+              <label for="recipient-name" class="col-form-label">Pedido:</label>
+              <select id="pedido" name="pedido" class="form-select validate" required aria-label="Default select example">
               </select>
             </div>
             <div class="nav-item dropdown">
-              <label for="recipient-name" class="col-form-label">Estado:</label>
-              <select id="estado" name="estado" class="form-select validate" required aria-label="Default select example">
+              <label for="recipient-name" class="col-form-label">Detalle de producto:</label>
+              <select id="detalle" name="detalle" class="form-select validate" required aria-label="Default select example">
               </select>
             </div>
             <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Fecha:</label>
-                <input id="fecha" type="date" name="date"  value="yyyy-MM-dd" class="form-control validate" required>
-              </div>
-            <div class="mb-3">
-                <label for="message-text" class="col-form-label">Direccion:</label>
-                <textarea id="direccion" name="direccion" class="form-control validate" required></textarea>
+                <label for="recipient-name" class="col-form-label">Cantidad:</label>
+                <input id="cantidad" type="number" name="cantidad"  class="form-control validate" required>
               </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary  tooltipped" data-tooltip="Guardar">Guardar</button>
@@ -174,10 +171,9 @@
                         <tr id="records"></tr>
                         <tr>
                           <th scope="col">ID</th>
-                          <th scope="col">Cliente</th>
-                          <th scope="col">Estado</th>
-                          <th scope="col">Fecha</th>
-                          <th scope="col">Direccion</th>
+                          <th scope="col">Pedido</th>
+                          <th scope="col">Producto</th>
+                          <th scope="col">Cantidad</th>
                           <th scope="col">Actualizar</th>
                         </tr>
                       </thead>
