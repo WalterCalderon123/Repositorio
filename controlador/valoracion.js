@@ -96,13 +96,6 @@ async function fillTable(form = null) {
                     </svg>
                     </a>
                 </td> 
-                <td>
-                    <a onclick="openDelete(${row.idvaloracion})" class="btn btn-danger tooltipped" data-tooltip="Eliminar">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                    </svg>
-                    </a>
-                    </td>
                 </tr>
             `;
         });
@@ -165,32 +158,5 @@ async function openUpdate(id) {
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
     } else {
         sweetAlert(2, JSON.exception, false);
-    }
-}
-
-/*
-*   Función asíncrona para eliminar un registro.
-*   Parámetros: id (identificador del registro seleccionado).
-*   Retorno: ninguno.
-*/
-async function openDelete(id) {
-    // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar la valoracion de forma permanente?');
-    // Se verifica la respuesta del mensaje.
-    if (RESPONSE) {
-        // Se define una constante tipo objeto con los datos del registro seleccionado.
-        const FORM = new FormData();
-        FORM.append('idvaloracion', id);
-        // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(VALORACION_API, 'delete', FORM);
-        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-        if (JSON.status) {
-            // Se carga nuevamente la tabla para visualizar los cambios.
-            fillTable();
-            // Se muestra un mensaje de éxito.
-            sweetAlert(1, JSON.message, true);
-        } else {
-            sweetAlert(2, JSON.exception, false);
-        }
     }
 }
