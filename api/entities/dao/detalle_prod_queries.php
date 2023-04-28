@@ -49,9 +49,9 @@ class DetalleprodQueries
     public function updateRow()
     {
         $sql = 'UPDATE detalle_productos
-                SET idproducto = ?, idtalla = ?, existencia = ?
+                SET existencia = existencia + ?
                 WHERE iddetalle_producto = ?';
-        $params = array($this->producto, $this->talla, $this->existencia, $this->id);
+        $params = array($this->existencia, $this->id);
         return Database::executeRow($sql, $params);
     }
 

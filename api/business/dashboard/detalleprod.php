@@ -67,11 +67,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Detalle incorrect';
                 } elseif (!$data = $detalleprod->readOne()) {
                     $result['exception'] = 'Detalle inexistente';
-                } elseif (!$detalleprod->setProducto($_POST['producto'])) {
-                    $result['exception'] = 'Producto incorrecto';
-                }  elseif (!$detalleprod->setTalla($_POST['talla'])) {
-                    $result['exception'] = 'Talla incorrecta';
-                }  elseif (!$detalleprod->setExistencia($_POST['existencia'])) {
+                } elseif (!$detalleprod->setExistencia($_POST['existencia'])) {
                     $result['exception'] = 'Existencia incorrecta';
                 }  elseif ($detalleprod->updateRow()) {
                     $result['status'] = 1;

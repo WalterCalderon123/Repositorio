@@ -147,7 +147,10 @@ async function openUpdate(id) {
         document.getElementById('id').value = JSON.dataset.iddetalle_producto;
         fillSelect(PRODUCTO_API, 'readAll', 'producto', JSON.dataset.idproducto);
         fillSelect(TALLA_API, 'readAll', 'talla', JSON.dataset.idtalla);
-        document.getElementById('existencia').value = JSON.dataset.existencia;
+        document.getElementById('existencia1').value = JSON.dataset.existencia;
+        document.getElementById('producto').disabled = true;
+        document.getElementById('talla').disabled = true;
+        document.getElementById('existencia1').disabled = true;
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
     } else {
         sweetAlert(2, JSON.exception, false);
