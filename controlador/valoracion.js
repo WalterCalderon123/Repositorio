@@ -1,6 +1,6 @@
 // Constantes para completar las rutas de la API.
 const VALORACION_API = 'business/dashboard/valoraciones.php';
-const DETALLEPED_API = 'business/dashboard/.php';
+const DETALLEPED_API = 'business/dashboard/detalleprod.php';
 
 
 // Constante para establecer el formulario de buscar.
@@ -82,7 +82,7 @@ async function fillTable(form = null) {
             TBODY_ROWS.innerHTML += `
                 <tr>
                     <td>${row.idvaloracion}</td>
-                    <td>${row.nombre_producto}</td>
+                    <td>${row.iddetalle_pedido}</td>
                     <td>${row.calificacion_producto}</td>
                     <td>${row.nombre}</td>
                     <td>${row.titulo}</td>
@@ -151,13 +151,17 @@ async function openUpdate(id) {
         MODAL_TITLE.textContent = 'Actualizar valoracion';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idproducto;
-        document.getElementById('detalle').value = JSON.dataset.deta;
+        fillSelect(DETALLEPED_API, 'readAll', 'detalle', JSON.dataset.iddetalle_pedido);
         document.getElementById('calificacion').value = JSON.dataset.calificacion_producto;
         document.getElementById('autor').value = JSON.dataset.nombre;
         document.getElementById('titulo').value = JSON.dataset.titulo;
         document.getElementById('resenia').value = JSON.dataset.resenia;
         document.getElementById('fecha').value = JSON.dataset.fecha_comentario;
-        fillSelect(GENERO_API, 'readAll', 'genero', JSON.dataset.idgenero_producto);
+        if (JSON.dataset.estado_valoracion) {
+            document.getElementById('estado').checked = true;
+        } else {
+            document.getElementById('estado').checked = false;
+        }
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
     } else {
         sweetAlert(2, JSON.exception, false);
@@ -171,12 +175,12 @@ async function openUpdate(id) {
 */
 async function openDelete(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar el producto de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar la valoracion de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('idproducto', id);
+        FORM.append('idvaloracion', id);
         // Petición para eliminar el registro seleccionado.
         const JSON = await dataFetch(VALORACION_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.

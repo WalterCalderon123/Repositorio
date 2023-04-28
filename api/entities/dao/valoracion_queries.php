@@ -19,6 +19,15 @@ class ValoracionQueries
         return Database::getRows($sql, $params);
     }
 
+    public function updateRow()
+    {
+        $sql = 'UPDATE valoraciones
+                SET iddetalle_pedido = ?, calificacion_producto = ?, nombre = ?, titulo = ?, resenia = ?, fecha_comentario = ?, estado_valoracion = ?
+                WHERE idvaloracion = ?';
+        $params = array($this->detallepedido, $this->calificacion, $this->nombre, $this->titulo, $this->resenia, $this->fecha, $this->estado, $this->id);
+        return Database::executeRow($sql, $params);
+    }
+    
     public function readAll()
     {
         $sql = 'SELECT idvaloracion, iddetalle_pedido, calificacion_producto, nombre, titulo, resenia, fecha_comentario, estado_valoracion

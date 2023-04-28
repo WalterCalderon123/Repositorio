@@ -16,7 +16,6 @@ if (isset($_GET['action'])) {
             case 'readAll':
                 if ($result['dataset'] = $valoracion->readAll()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -52,25 +51,25 @@ if (isset($_GET['action'])) {
                 if (!$valoracion->setId($_POST['id'])) {
                     $result['exception'] = 'Valoracion incorrecta';
                 } elseif (!$data = $valoracion->readOne()) {
-                    $result['exception'] = 'Detalle inexistente';
-                } elseif (!$valoracion->setDetalle($_POST['detalle'])) {
+                    $result['exception'] = 'Valoracion inexistente';
+                } elseif (!$valoracion->setDetalle($_POST['detallepedido'])) {
                     $result['exception'] = 'Detalle incorrecto';
-                }  elseif ($valoracion->updateRow()) {
+                } elseif (!$valoracion->setCalificacion($_POST['calificacion'])) {
+                    $result['exception'] = 'Calificacion incorrecta';
+                } elseif (!$valoracion->setNombre($_POST['nombre'])) {
+                    $result['exception'] = 'Nombre incorrecto';
+                } elseif (!$valoracion->setTitulo($_POST['titulo'])) {
+                    $result['exception'] = 'Marca Incorrecta';
+                } elseif (!$valoracion->setResenia($_POST['resenia'])) {
+                    $result['exception'] = 'Reseña incorrecta';
+                } elseif (!$valoracion->setFecha($_POST['fecha'])) {
+                    $result['exception'] = 'Seleccione una fecha';
+                } elseif (!$valoracion->setEstado($_POST['estado'])) {
+                    $result['exception'] = 'Seleccione un estado';
+                } elseif ($valoracion->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Valoracion modificada correctamente';
                 }else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
-            case 'delete':
-                if (!$valoracion->setId($_POST['iddetalle_producto'])) {
-                    $result['exception'] = 'Detalle incorrecto';
-                } elseif (!$valoracion->readOne()) {
-                    $result['exception'] = 'Detalle inexistente';
-                } elseif ($valoracion->deleteRow()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Detalle eliminado correctamente';
-                } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
