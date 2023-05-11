@@ -26,7 +26,7 @@
 
 <body>
     <!-- Navigation-->
-    <nav class="navbar">
+    <div class="navbar">
         <div class="logo">
             <img src="Imagenes/Zeladinha Sneakers Logo.jpg" alt="Logo" width="60" height="54"
                 class="d-inline-block align-text-top">
@@ -48,27 +48,42 @@
 
         </div>
 
-    </nav>
-    <div class="menu_bar">
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fas fa-bars"></i>
-        </label>
-        <ul>
-            <li> <a href="#">Categorias</a></li>
-            <li><a href="#">Destacados</a></li>
-            <li> <a href="#">Generos <i class="fas fa-caret-down"></i></a>
-                <!-- <div class="dropdown-menu">
-            <ul> -->
-            <li><a href="#">Hombre</a></li>
-            <li><a href="#">Mujer</a></li>
-            <li><a href="#">Niños</a></li>
-            <!-- </ul>
-          </div> -->
-            </li>
-            <li> <a href="#">Ofertas</a></li>
-        </ul>
     </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+        <div class="container-fluid d-flex flex-column align-items-center justify-content-between">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="">Categorias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="">Destacados</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Generos
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="">Hombre</a></li>
+                            <li><a class="dropdown-item" href="">Mujer</a></li>
+                            <li><a class="dropdown-item" href="">Niños</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="">Ofertas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <!-- Product section-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 my-5">
@@ -161,7 +176,7 @@
 
                             <ul class="list-unstyled mb-0">
                                 <li>
-                                    <a href="terms.html" class="text-white">Terminos y condiciones</a>
+                                    <a href="terminos.html" class="text-white">Terminos y condiciones</a>
                                 </li>
                             </ul>
                         </div>
@@ -173,7 +188,7 @@
 
                             <ul class="list-unstyled mb-0">
                                 <li>
-                                    <a href="ask.html" class="text-white">Preguntas frecuentes</a>
+                                    <a href="preguntas.html" class="text-white">Preguntas frecuentes</a>
                                 </li>
                             </ul>
                         </div>
@@ -185,7 +200,7 @@
 
                             <ul class="list-unstyled mb-0">
                                 <li>
-                                    <a href="about_us.html" class="text-white">Sobre nosotros</a>
+                                    <a href="sobre_nosotros.html" class="text-white">Sobre nosotros</a>
                                 </li>
                             </ul>
                         </div>
