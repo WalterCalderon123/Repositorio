@@ -194,10 +194,6 @@ REFERENCES estado_clientes(idestado_cliente)
 ON UPDATE CASCADE
 ON DELETE CASCADE;
 
-
-Insert Into pedidos(idcliente, idestado_pedido, fecha_pedido, direccion_pedido)
-values (1, 5, 'Luis','Reseña de zapatos','Articulo recomendado','2023-04-26', 'YES')
-
 Insert Into genero_clientes(genero_cliente)
 values ('Masculino'),
 ('Femenino')
@@ -207,15 +203,20 @@ values ('Activo'),
 ('Inactivo'),
 ('Bloquedo')
 
+Insert Into estado_pedidos(estado_pedido)
+values ('Entregado'),
+('En Camino'),
+('Cancelado'),
+('Bloqueado')
+
 Insert Into clientes(nombre_cliente, apellido_cliente, dui, correo, telefono, fecha_nacimiento, direccion, idgenero_cliente, idestado_cliente, clave_cliente)
 values ('Luis', 'Cruz', '12345679-0','hola123@gmail.com','7894-6515', '2004-04-26','San Salvador', 1, 1, 'hola123')
 	 
 Insert Into pedidos(idcliente, idestado_pedido, fecha_pedido, direccion_pedido)
-values (1, 1, '2022-04-26','San Salvador')
+values (1, 3,'2023-04-26', 'San Salvador')	
 
 Insert Into detalle_pedidos(idpedido, iddetalle_producto, cantidad_producto)
 values (1, 1, '2')
 	
 Insert Into valoraciones(iddetalle_pedido, calificacion_producto, nombre, titulo, resenia, fecha_comentario, estado_valoracion)
 values (1, 5, 'Luis','Reseña de zapatos','Articulo recomendado','2023-04-26', 'YES')
-	
