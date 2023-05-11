@@ -17,7 +17,7 @@ class TallaQueries
         $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
-
+    
     public function createRow()
     {
         $sql = 'INSERT INTO tallas(num_talla)
