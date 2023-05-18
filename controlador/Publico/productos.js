@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                         </div>
                         <div class="card-content">
                             <span class="card-title">${row.nombre_producto}</span>
-                            <p>Descripcion ${row.descripcion}</p>
                             <p>Precio(US$) ${row.precio}</p>
                         </div>
                     </div>
