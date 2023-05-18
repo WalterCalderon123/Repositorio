@@ -9,10 +9,10 @@ if (isset($_GET['action'])) {
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se compara la acción a realizar según la petición del controlador.
     switch ($_GET['action']) {
-        case 'readProductosCategoria':
-            if (!$producto->setId($_POST['id_categoria'])) {
-                $result['exception'] = 'Categoría incorrecta';
-            } elseif ($result['dataset'] = $producto->readProductosCategoria()) {
+        case 'readProductosMarcas':
+            if (!$producto->setId($_POST['idmarca'])) {
+                $result['exception'] = 'Marca incorrecta';
+            } elseif ($result['dataset'] = $producto->readProductosMarcas()) {
                 $result['status'] = 1;
             } elseif (Database::getException()) {
                 $result['exception'] = Database::getException();
@@ -20,8 +20,41 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'No existen productos para mostrar';
             }
             break;
+        case 'readProductosGeneros':
+            if (!$producto->setId($_POST['idgenero_producto'])) {
+                $result['exception'] = 'Genero incorrecto';
+            } elseif ($result['dataset'] = $producto->readProductosGeneros()) {
+                $result['status'] = 1;
+            } elseif (Database::getException()) {
+                $result['exception'] = Database::getException();
+            } else {
+                $result['exception'] = 'No existen productos para mostrar';
+            }
+            break;
+        case 'readProductosTipo':
+            if (!$producto->setId($_POST['idtipo_producto'])) {
+                $result['exception'] = 'Tipo de producto incorrecto';
+            } elseif ($result['dataset'] = $producto->readProductosTipo()) {
+                $result['status'] = 1;
+            } elseif (Database::getException()) {
+                $result['exception'] = Database::getException();
+            } else {
+                $result['exception'] = 'No existen productos para mostrar';
+            }
+            break;
+        case 'readProductosUsuarios':
+            if (!$producto->setId($_POST['idusuario'])) {
+                $result['exception'] = 'Usuario incorrecto';
+            } elseif ($result['dataset'] = $producto->readProductosUsuarios()) {
+                $result['status'] = 1;
+            } elseif (Database::getException()) {
+                $result['exception'] = Database::getException();
+            } else {
+                $result['exception'] = 'No existen productos para mostrar';
+            }
+            break;            
         case 'readOne':
-            if (!$producto->setId($_POST['id_producto'])) {
+            if (!$producto->setId($_POST['idproducto'])) {
                 $result['exception'] = 'Producto incorrecto';
             } elseif ($result['dataset'] = $producto->readOne()) {
                 $result['status'] = 1;
