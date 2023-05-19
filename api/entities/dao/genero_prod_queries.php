@@ -14,7 +14,7 @@ class Genero_prod_Queries
                 FROM generos_productos
                 WHERE nombre_genero ILIKE ?
                 ORDER BY nombre_genero';
-        $params = array("%$value%", "%$value%");
+        $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 
