@@ -14,7 +14,7 @@ class TallaQueries
                 FROM tallas
                 WHERE num_talla ILIKE ?
                 ORDER BY num_talla';
-        $params = array("%$value%", "%$value%");
+        $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
     

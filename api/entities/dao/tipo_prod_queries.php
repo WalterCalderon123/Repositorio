@@ -14,7 +14,7 @@ class Tipo_prod_Queries
                 FROM tipo_productos
                 WHERE tipo_producto ILIKE ?
                 ORDER BY  tipo_producto';
-        $params = array("%$value%", "%$value%");
+        $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 

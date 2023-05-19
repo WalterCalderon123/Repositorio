@@ -15,8 +15,16 @@ class ValoracionQueries
                 WHERE iddetalle_pedido ILIKE ? OR calificacion_producto ILIKE ? OR nombre ILIKE ? 
                 OR titulo ILIKE ? OR resenia ILIKE ? OR fecha_comentario ILIKE ?
                 ORDER BY iddetalle_pedido';
-        $params = array("%$value%", "%$value%");
+        $params = array("%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
+    }
+
+    public function createRow()
+    {
+        $sql = 'INSERT INTO valoraciones(iddetalle_pedido, calificacion_producto, nombre, titulo, resenia, fecha_comentario, estado_valoracion)
+                VALUES(?,?,?,?,?,?,?)';
+        $params = array($this->detallepedido, $this->calificacion, $this->nombre, $this->titulo, $this->resenia, $this->fecha, $this->estado, $this->id);
+        return Database::executeRow($sql, $params);
     }
 
     public function updateRow()
@@ -25,6 +33,14 @@ class ValoracionQueries
                 SET iddetalle_pedido = ?, calificacion_producto = ?, nombre = ?, titulo = ?, resenia = ?, fecha_comentario = ?, estado_valoracion = ?
                 WHERE idvaloracion = ?';
         $params = array($this->detallepedido, $this->calificacion, $this->nombre, $this->titulo, $this->resenia, $this->fecha, $this->estado, $this->id);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function deleteRow()
+    {
+        $sql = 'DELETE FROM valoraciones
+                WHERE idvaloracion = ?';
+        $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
     

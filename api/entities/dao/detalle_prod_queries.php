@@ -16,7 +16,7 @@ class DetalleprodQueries
                 INNER JOIN tallas USING(idtalla)
                 WHERE idproducto ILIKE ? OR idtalla ILIKE ? OR existencia ILIKE ?
                 ORDER BY iddetalle_producto';
-        $params = array("%$value%", "%$value%");
+        $params = array("%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 

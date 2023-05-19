@@ -16,9 +16,6 @@ class DetallePedidoQueries
         ORDER BY nombre_producto';
         $params = array("%$value%");
         return Database::getRows($sql, $params);
-
-        
-
     }
 
  
