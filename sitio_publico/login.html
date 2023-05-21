@@ -16,11 +16,11 @@
 <body>
 
     <div class="contenedor-formulario contenedor" id="login-contenedor">
-        <form class="formulario" method="post" id="login-form">
+        <form class="formulario" method="post" id="session-form">
             <h2>Bienvenido!!</h2>
             <div class="input">
-                <label for="alias">Usuario</label>
-                <input id="alias" type="text" name="alias" class="validate" required>
+                <label for="usuario">Correo</label>
+                <input id="usuario" type="text" name="usuario" class="validate" required>
             </div>
             <div class="input">
                 <label for="clave">Clave</label>
@@ -40,47 +40,10 @@
         </div>
     </div>
 
-    <div class="d-none contenedor-formulario contenedor" id="signup-contenedor">
-        <form class="formulario" method="post" id="signup-form">
-            <div class="texto-formulario">
-                <h2>Bienvenido!!</h2>
-                <p>Crea una nueva cuenta</p>
-            </div>
-            <div class="input">
-                <label for="nombres">Nombres</label>
-                <input id="nombres" type="text" name="nombres" class="validate" required>
-            </div>
-            <div class="input">
-                <label for="apellidos">Apellidos</label>
-                <input id="apellidos" type="text" name="apellidos" class="validate" required>
-            </div>
-            <div class="input">
-                <label for="correo">Correo</label>
-                <input id="correo" type="email" name="correo" class="validate" required>
-            </div>
-            <div class="input">
-                <label for="codigo">Clave</label>
-                <input id="codigo" type="password" name="codigo" class="validate" required>
-            </div>
-            <div class="input">
-                <label for="confirmar">Confirmar clave</label>
-                <input id="confirmar" type="password" name="confirmar" class="validate" required>
-            </div>
-            <div class="col s12 center-align">
-                <button type="submit" class="btn btn-dark mt-3  tooltipped" data-tooltip="Guardar">
-                    <i class="material-icons">Guardar</i>
-                </button>
-            </div>
-        </form>
-        <div class="imagen-formulario">
-
-        </div>
-    </div>
-
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/sweetalert.min.js"></script>
-    <script src="../controlador/components.js"></script>
-    <script src="../controlador/account.js"></script>
+    <script src="../controlador//Publico/components.js"></script>
+    <script src="../controlador/Publico/login.js"></script>
 
 </body>
 

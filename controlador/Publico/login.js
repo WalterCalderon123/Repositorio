@@ -1,7 +1,7 @@
 // Constante para establecer el formulario de iniciar sesión.
 const SESSION_FORM = document.getElementById('session-form');
+const USER_API = 'business/public/cliente.php';
 // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-M.Tooltip.init(document.querySelectorAll('.tooltipped'));
 
 // Método manejador de eventos para cuando se envía el formulario de iniciar sesión.
 SESSION_FORM.addEventListener('submit', async (event) => {

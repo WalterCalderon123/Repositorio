@@ -6,8 +6,7 @@
 // Constante para completar la ruta de la API.
 const USER_API = 'business/public/cliente.php';
 // Constantes para establecer las etiquetas de encabezado y pie de la página web.
-/*const HEADER = document.querySelector('header');
-const FOOTER = document.querySelector('footer');
+const HEADER = document.querySelector('header');
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
@@ -16,47 +15,140 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Se comprueba si el usuario está autenticado para establecer el encabezado respectivo.
     if (JSON.session) {
         HEADER.innerHTML = `
-            <div class="navbar-fixed">
-                <nav>
-                    <div class="nav-wrapper">
-                        <a href="index.html" class="brand-logo"><img src="../../resources/img/logo.png" height="60"></a>
-                        <a data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                        <ul class="right hide-on-med-and-down">
-                            <li><a href="index.html"><i class="material-icons left">view_module</i>Catálogo</a></li>
-                            <li><a href="cart.html"><i class="material-icons left">shopping_cart</i>Carrito</a></li>
-                            <li><a onclick="logOut()"><i class="material-icons left">close</i>Cerrar sesión</a></li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-            <ul class="sidenav" id="mobile">
-                <li><a href="index.html"><i class="material-icons left">view_module</i>Catálogo</a></li>
-                <li><a href="cart.html"><i class="material-icons left">shopping_cart</i>Carrito</a></li>
-                <li><a onclick="logOut()"><i class="material-icons left">close</i>Cerrar sesión</a></li>
+        <div class="navbar">
+        <div class="logo">
+          <img src="Imagenes/Zeladinha Sneakers Logo.jpg" alt="Logo" width="60" height="54"
+            class="d-inline-block align-text-top">
+        </div>
+        <div class="buscar">
+          <form>
+            <input type="text" placeholder="">
+            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </form>
+        </div>
+    
+      
+        <div class="icons">
+          <div class="user">
+            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-user"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+            <li><a a onclick="logOut()" class="dropdown-item">Salir</a></li>
+          </ul>
+          </div>
+          <div class="carrito">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+    
+        </div>
+    
+      </div>
+    
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+        <div class="container-fluid d-flex flex-column align-items-center justify-content-between">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="">Categorias</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="">Destacados</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Generos
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="">Hombre</a></li>
+                  <li><a class="dropdown-item" href="">Mujer</a></li>
+                  <li><a class="dropdown-item" href="">Niños</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="ofertas.html">Ofertas</a>
+              </li>
             </ul>
+          </div>
+        </div>
+      </nav>
         `;
     } else {
         HEADER.innerHTML = `
-            <div class="navbar-fixed">
-                <nav>
-                    <div class="nav-wrapper">
-                        <a href="index.html" class="brand-logo"><img src="../../resources/img/logo.png" height="60"></a>
-                        <a data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                        <ul class="right hide-on-med-and-down">
-                            <li><a href="index.html"><i class="material-icons left">view_module</i>Catálogo</a></li>
-                            <li><a href="signup.html"><i class="material-icons left">person</i>Crear cuenta</a></li>
-                            <li><a href="login.html"><i class="material-icons left">login</i>Iniciar sesión</a></li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-            <ul class="sidenav" id="mobile">
-                <li><a href="index.html"><i class="material-icons left">view_module</i>Catálogo</a></li>
-                <li><a href="signup.html"><i class="material-icons left">person</i>Crear cuenta</a></li>
-                <li><a href="login.html"><i class="material-icons left">login</i>Iniciar sesión</a></li>
+        <div class="navbar">
+        <div class="logo">
+          <img src="Imagenes/Zeladinha Sneakers Logo.jpg" alt="Logo" width="60" height="54"
+            class="d-inline-block align-text-top">
+        </div>
+        <div class="buscar">
+          <form>
+            <input type="text" placeholder="">
+            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </form>
+        </div>
+    
+      
+        <div class="icons">
+          <div class="user">
+            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-user"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+            <li><a href="login.html" class="dropdown-item">Iniciar sesion</a></li>      
+            <li><a a onclick="logOut()" class="dropdown-item">Salir</a></li>
+          </ul>
+          </div>
+          <div class="carrito">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+    
+        </div>
+    
+      </div>
+    
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+        <div class="container-fluid d-flex flex-column align-items-center justify-content-between">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="">Categorias</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="">Destacados</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Generos
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="">Hombre</a></li>
+                  <li><a class="dropdown-item" href="">Mujer</a></li>
+                  <li><a class="dropdown-item" href="">Niños</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="ofertas.html">Ofertas</a>
+              </li>
             </ul>
+          </div>
+        </div>
+      </nav>    
         `;
     }
+
+    /*
     // Se define el componente Parallax.
     const PARALLAX = `
             <div class="parallax-container">
@@ -126,4 +218,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('parallax').src += IMAGES[ELEMENT];
     // Se inicializa el efecto Parallax.
     M.Parallax.init(document.querySelectorAll('.parallax'));
-});*/
+    */
+});

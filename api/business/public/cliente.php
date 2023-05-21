@@ -17,7 +17,7 @@ if (isset($_GET['action'])) {
             case 'getUser':
                 if (isset($_SESSION['correo'])) {
                     $result['status'] = 1;
-                    $result['username'] = $_SESSION['correo_cliente'];
+                    $result['username'] = $_SESSION['correo'];
                 } else {
                     $result['exception'] = 'Correo de usuario indefinido';
                 }
