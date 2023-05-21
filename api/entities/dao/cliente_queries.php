@@ -10,11 +10,10 @@ class ClienteQueries
     */
     public function checkUser($correo)
     {
-        $sql = 'SELECT id_cliente, estado_cliente FROM clientes WHERE correo_cliente = ?';
+        $sql = 'SELECT idcliente FROM clientes WHERE correo = ?';
         $params = array($correo);
         if ($data = Database::getRow($sql, $params)) {
-            $this->id = $data['id_cliente'];
-            $this->estado = $data['estado_cliente'];
+            $this->id = $data['idcliente'];
             $this->correo = $correo;
             return true;
         } else {
@@ -24,7 +23,7 @@ class ClienteQueries
 
     public function checkPassword($password)
     {
-        $sql = 'SELECT clave_cliente FROM clientes WHERE id_cliente = ?';
+        $sql = 'SELECT clave_cliente FROM clientes WHERE idcliente = ?';
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
         if (password_verify($password, $data['clave_cliente'])) {
@@ -50,21 +49,13 @@ class ClienteQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function changeStatus()
-    {
-        $sql = 'UPDATE clientes
-                SET estado_cliente = ?
-                WHERE id_cliente = ?';
-        $params = array($this->estado, $this->id);
-        return Database::executeRow($sql, $params);
-    }
 
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT id_cliente, nombres_cliente, apellidos_cliente, correo_cliente, dui_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente
+        $sql = 'SELECT idcliente, nombre_cliente, apellido_cliente, dui, correo, telefono, fecha_nacimiento, direccion
                 FROM clientes
                 WHERE apellidos_cliente ILIKE ? OR nombres_cliente ILIKE ? OR correo_cliente ILIKE ?
                 ORDER BY apellidos_cliente';
@@ -74,9 +65,9 @@ class ClienteQueries
 
     public function createRow()
     {
-        $sql = 'INSERT INTO clientes(nombres_cliente, apellidos_cliente, correo_cliente, dui_cliente, telefono_cliente, nacimiento_cliente, direccion_cliente, clave_cliente)
+        $sql = 'INSERT INTO clientes(nombre_cliente, apellido_cliente, dui, correo, telefono, fecha_nacimiento, direccion, clave_cliente)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombres, $this->apellidos, $this->correo, $this->dui, $this->telefono, $this->nacimiento, $this->direccion, $this->clave);
+        $params = array($this->nombre, $this->apellido, $this->dui, $this->correo, $this->telefono, $this->nacimiento, $this->direccion,$this->clave);
         return Database::executeRow($sql, $params);
     }
 
@@ -113,4 +104,15 @@ class ClienteQueries
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    public function readClienteGeneros()
+    {
+        $sql = 'SELECT idcliente, genero_cliente, nombre_cliente, apellido_cliente
+                FROM clientes INNER JOIN genero_clientes USING (idgenero_cliente)
+                WHERE idgenero_cliente = ? 
+                ORDER BY nombre_cliente';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
 }
+

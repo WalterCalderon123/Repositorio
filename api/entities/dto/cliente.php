@@ -8,15 +8,14 @@ class Cliente extends ClienteQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
-    protected $nombres = null;
-    protected $apellidos = null;
+    protected $nombre = null;
+    protected $apellido = null;
+    protected $dui = null;
     protected $correo = null;
     protected $telefono = null;
-    protected $dui = null;
     protected $nacimiento = null;
     protected $direccion = null;
     protected $clave = null;
-    protected $estado = null; // Valor por defecto en la base de datos: true
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -31,20 +30,30 @@ class Cliente extends ClienteQueries
         }
     }
 
-    public function setNombres($value)
+    public function setNombre($value)
     {
         if (Validator::validateAlphabetic($value, 1, 50)) {
-            $this->nombres = $value;
+            $this->nombre = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setApellidos($value)
+    public function setApellido($value)
     {
         if (Validator::validateAlphabetic($value, 1, 50)) {
-            $this->apellidos = $value;
+            $this->apellido = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public function setDUI($value)
+    {
+        if (Validator::validateDUI($value)) {
+            $this->dui = $value;
             return true;
         } else {
             return false;
@@ -71,15 +80,6 @@ class Cliente extends ClienteQueries
         }
     }
 
-    public function setDUI($value)
-    {
-        if (Validator::validateDUI($value)) {
-            $this->dui = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public function setNacimiento($value)
     {
@@ -111,15 +111,6 @@ class Cliente extends ClienteQueries
         }
     }
 
-    public function setEstado($value)
-    {
-        if (Validator::validateBoolean($value)) {
-            $this->estado = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     /*
     *   Métodos para obtener valores de los atributos.
@@ -129,14 +120,19 @@ class Cliente extends ClienteQueries
         return $this->id;
     }
 
-    public function getNombres()
+    public function getNombre()
     {
-        return $this->nombres;
+        return $this->nombre;
     }
 
-    public function getApellidos()
+    public function getApellid()
     {
-        return $this->apellidos;
+        return $this->apellido;
+    }
+
+    public function getDUI()
+    {
+        return $this->dui;
     }
 
     public function getCorreo()
@@ -149,10 +145,7 @@ class Cliente extends ClienteQueries
         return $this->telefono;
     }
 
-    public function getDUI()
-    {
-        return $this->dui;
-    }
+  
 
     public function getNacimiento()
     {
@@ -169,8 +162,5 @@ class Cliente extends ClienteQueries
         return $this->clave;
     }
 
-    public function getEstado()
-    {
-        return $this->estado;
-    }
+  
 }

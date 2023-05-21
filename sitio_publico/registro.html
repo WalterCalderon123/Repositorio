@@ -8,49 +8,72 @@
     <title>Registro</title>
 
     <!--css-->
-    <link rel="stylesheet" href="Estilos/estilostest.css">
-
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--css-->
+    <link rel="stylesheet" href="css/estilostest.css">
 </head>
 
 <body>
 
     <div class="contenedor-formulario contenedor">
-        <form class="formulario">
+        <form class="formulario" method="post" id="signup-form">
             <div class="texto-formulario">
                 <h2>Bienvenido!!</h2>
                 <p>Crea una nueva cuenta</p>
             </div>
             <div class="input">
-                <label for="usuario">Nombre</label>
-                <input placeholder="Ingresa tu nombre" type="text" id="usuario">
+                <label for="nombre">Nombres</label>
+                <input id="nombre" type="text" name="nombre" class="validate" required>
             </div>
             <div class="input">
-                <label for="usuario">Apellido</label>
-                <input placeholder="Ingresa tu apellido" type="text" id="usuario">
+                <label for="apellido">Apellidos</label>
+                <input id="apellido" type="text" name="apellido" class="validate" required>
             </div>
             <div class="input">
-                <label for="usuario">Correo</label>
-                <input placeholder="Ingresa tu correo" type="text" id="usuario">
+                <label for="dui">DUI</label>
+                <input type="text" id="dui" name="dui" placeholder="00000000-0" class="validate" required>
             </div>
             <div class="input">
-                <label for="usuario">Usuario</label>
-                <input placeholder="Ingresa tu usuario" type="text" id="usuario">
+                <label for="correo">Correo</label>
+                <input id="correo" type="email" name="correo" class="validate" required>
             </div>
             <div class="input">
-                <label for="contraseña">Contraseña</label>
-                <input placeholder="Ingresa tu contraseña" type="password" id="contraseña">
+                <label for="Telefono">Telefono</label>
+                <input type="text" id="telefono" name="telefono" placeholder="0000-0000" class="validate" required>
             </div>
-            <div class="password-olvidada">
-                <a href="#">¿Ya tienes cuenta?</a>
+            <div class="mb-3">
+                <label for="nacimiento" class="col-form-label">Fecha de nacimiento:</label>
+                <input id="nacimiento" type="date" name="nacimiento"  value="yyyy-MM-dd" class="form-control validate" required>
+            </div>
+            <div class="mb-3">
+                <label for="message-text" class="col-form-label">Direccion:</label>
+                <textarea id="direccion" name="direccion" class="form-control validate" required></textarea>
+              </div>
+            <div class="input">
+                <label for="clave">Clave</label>
+                <input id="clave" type="password" name="clave" class="validate" required>
             </div>
             <div class="input">
-                <input type="submit" value="Login">
+                <label for="confirmar_clave">Confirmar clave</label>
+                <input id="confirmar_clave" type="password" name="confirmar_clave" class="validate" required>
+            </div>
+            <div class="col s12 center-align">
+                <button type="submit" class="btn btn-dark mt-3  tooltipped" data-tooltip="Guardar">
+                    <i class="material-icons">Guardar</i>
+                </button>
             </div>
         </form>
         <div class="imagen-formulario">
 
         </div>
     </div>
+
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/sweetalert.min.js"></script>
+    <script src="../controlador//Publico/components.js"></script>
+    <script src="../controlador/Publico/account.js"></script>
+    <script src="../controlador/Publico/signup.js"></script>
+
 
 </body>
 

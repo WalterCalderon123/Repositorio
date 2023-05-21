@@ -10,12 +10,12 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'session' => 0, 'recaptcha' => 0, 'message' => null, 'exception' => null, 'username' => null);
     // Se verifica si existe una sesión iniciada como cliente para realizar las acciones correspondientes.
-    if (isset($_SESSION['id_cliente'])) {
+    if (isset($_SESSION['idcliente'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
         switch ($_GET['action']) {
             case 'getUser':
-                if (isset($_SESSION['correo_cliente'])) {
+                if (isset($_SESSION['correo'])) {
                     $result['status'] = 1;
                     $result['username'] = $_SESSION['correo_cliente'];
                 } else {
@@ -38,38 +38,20 @@ if (isset($_GET['action'])) {
         switch ($_GET['action']) {
             case 'signup':
                 $_POST = Validator::validateForm($_POST);
-                $secretKey = '6LdBzLQUAAAAAL6oP4xpgMao-SmEkmRCpoLBLri-';
-                $ip = $_SERVER['REMOTE_ADDR'];
-
-                $data = array('secret' => $secretKey, 'response' => $_POST['g-recaptcha-response'], 'remoteip' => $ip);
-
-                $options = array(
-                    'http' => array('header'  => "Content-type: application/x-www-form-urlencoded\r\n", 'method' => 'POST', 'content' => http_build_query($data)),
-                    'ssl' => array('verify_peer' => false, 'verify_peer_name' => false)
-                );
-
-                $url = 'https://www.google.com/recaptcha/api/siteverify';
-                $context  = stream_context_create($options);
-                $response = file_get_contents($url, false, $context);
-                $captcha = json_decode($response, true);
-
-                if (!$captcha['success']) {
-                    $result['recaptcha'] = 1;
-                    $result['exception'] = 'No eres humano';
-                } elseif (!$cliente->setNombres($_POST['nombres'])) {
+                if (!$cliente->setNombre($_POST['nombre'])) {
                     $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$cliente->setApellidos($_POST['apellidos'])) {
+                } elseif (!$cliente->setApellido($_POST['apellido'])) {
                     $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$cliente->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo incorrecto';
-                } elseif (!$cliente->setDireccion($_POST['direccion'])) {
-                    $result['exception'] = 'Dirección incorrecta';
                 } elseif (!$cliente->setDUI($_POST['dui'])) {
                     $result['exception'] = 'DUI incorrecto';
-                } elseif (!$cliente->setNacimiento($_POST['nacimiento'])) {
-                    $result['exception'] = 'Fecha de nacimiento incorrecta';
-                } elseif (!$cliente->setTelefono($_POST['telefono'])) {
+                } elseif (!$cliente->setCorreo($_POST['correo'])) {
+                    $result['exception'] = 'Correo incorrecto';
+                }elseif (!$cliente->setTelefono($_POST['telefono'])) {
                     $result['exception'] = 'Teléfono incorrecto';
+                }elseif (!$cliente->setNacimiento($_POST['nacimiento'])) {
+                    $result['exception'] = 'Fecha de nacimiento incorrecta';
+                } elseif (!$cliente->setDireccion($_POST['direccion'])) {
+                    $result['exception'] = 'Dirección incorrecta';
                 } elseif ($_POST['clave'] != $_POST['confirmar_clave']) {
                     $result['exception'] = 'Claves diferentes';
                 } elseif (!$cliente->setClave($_POST['clave'])) {
@@ -85,13 +67,11 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$cliente->checkUser($_POST['usuario'])) {
                     $result['exception'] = 'Correo incorrecto';
-                } elseif (!$cliente->getEstado()) {
-                    $result['exception'] = 'La cuenta ha sido desactivada';
-                } elseif ($cliente->checkPassword($_POST['clave'])) {
+                }elseif ($cliente->checkPassword($_POST['clave'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
-                    $_SESSION['id_cliente'] = $cliente->getId();
-                    $_SESSION['correo_cliente'] = $cliente->getCorreo();
+                    $_SESSION['idcliente'] = $cliente->getId();
+                    $_SESSION['correo'] = $cliente->getCorreo();
                 } else {
                     $result['exception'] = 'Clave incorrecta';
                 }

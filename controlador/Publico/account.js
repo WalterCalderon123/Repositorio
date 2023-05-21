@@ -6,7 +6,7 @@
 // Constante para completar la ruta de la API.
 const USER_API = 'business/public/cliente.php';
 // Constantes para establecer las etiquetas de encabezado y pie de la página web.
-const HEADER = document.querySelector('header');
+/*const HEADER = document.querySelector('header');
 const FOOTER = document.querySelector('footer');
 
 // Método manejador de eventos para cuando el documento ha cargado.
@@ -126,4 +126,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('parallax').src += IMAGES[ELEMENT];
     // Se inicializa el efecto Parallax.
     M.Parallax.init(document.querySelectorAll('.parallax'));
-});
+});*/
