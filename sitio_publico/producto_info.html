@@ -92,17 +92,19 @@
             <!-- Blog entries-->
             <div class="col-lg-8">
                 <!-- Featured blog post-->
-                <div class="card mb-4">
-                    <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg"
-                            alt="..." /></a>
-                    <div class="card-body">
-                        <h2 class="card-title">Air Force 1</h2>
-                        <p class="card-text">La luminosidad sigue viva con este calzado de básquetbol original. La
-                            fusión de la comodidad de la duela y un estilo externo a la cancha le da un giro fresco a lo
-                            que mejor conoces: una confección inspirada en los años 80, detalles audaces y un estilo
-                            basquetbolero puro.</p>
+                <main class="container">
+                    <!-- Título del contenido principal -->
+                    <h4 class="center indigo-text" id="titulo">Detalles del producto</h4>
+                    <!-- Componente Horizontal Card para mostrar el detalle de un producto -->
+                    <div class="card horizontal" id="detalle">
+                        <div class="card-image">
+                            <!-- Se muestra una imagen por defecto mientras se carga la imagen del producto -->
+                            <img id="imagen" src="../../api/images/productos/unknown.png">
+                        </div>
                     </div>
-                </div>
+                </main>
+                <br>
+                <br>
                 <!-- Nested row for non-featured blog posts-->
                 <div class="row">
                     <div class="col-lg-6">
@@ -163,33 +165,30 @@
             <!-- Side widgets-->
             <div class="col-lg-4">
                 <!-- Search widget-->
-                <div class="card mb-4">
-                    <div class="card-header">Opciones del zapato</div>
-                    <div class="card-body">
-                        <label>Talla de zapatos
-                            <select>
-                                <option value="husker">7</option>
-                                <option value="starbuck">7.5</option>
-                                <option value="hotdog">8</option>
-                                <option value="apollo">8.5</option>
-                            </select>
-                        </label>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h4 id="nombre" class="header"></h4>
+                        <p id="descripcion"></p>
+                        <p>Precio (US$) <b id="precio"></b></p>
+                    </div>
+                    <div class="card-action">
+                        <!-- Formulario para agregar el producto al carrito de compras -->
+                        <form class="row" method="post" id="shopping-form">
+                            <!-- Campo oculto para asignar el id del producto -->
+                            <input type="hidden" id="id_producto" name="id_producto">
+                            <div class="input-field col s12 m6">
+                                <i class="material-icons prefix">Cantidad</i>
+                                <input type="number" id="cantidad" name="cantidad" min="1" class="validate" required>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <!-- Botón para enviar el formulario -->
+                                <button type="submit" class="btn waves-effect blue tooltipped" data-tooltip="Agregar">
+                                    <i class="material-icons">Añadir al carrito</i>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <!-- Categories widget-->
-                <div class="card mb-4">
-                    <div class="card-header">Cantidad</div>
-                    <div class="card-body">
-                        <div class="row">
-                            <input type="text" id="middle-label" placeholder="Uno Dos Tres Cuatro...">
-                        </div>
-                    </div>
-                </div>
-                <!-- Side widget-->
-                <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                    <i class="bi-cart-fill me-1"></i>
-                    Añadir al carrito
-                </button>
             </div>
         </div>
     </div>
