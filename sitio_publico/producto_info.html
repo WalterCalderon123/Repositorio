@@ -99,7 +99,7 @@
                     <div class="card horizontal" id="detalle">
                         <div class="card-image">
                             <!-- Se muestra una imagen por defecto mientras se carga la imagen del producto -->
-                            <img id="imagen" src="../../api/images/productos/unknown.png">
+                            <img id="imagen" src="Imagenes/unknown.png">
                         </div>
                     </div>
                 </main>
@@ -175,7 +175,7 @@
                         <!-- Formulario para agregar el producto al carrito de compras -->
                         <form class="row" method="post" id="shopping-form">
                             <!-- Campo oculto para asignar el id del producto -->
-                            <input type="hidden" id="id_producto" name="id_producto">
+                            <input type="hidden" id="idproducto" name="idproducto">
                             <div class="input-field col s12 m6">
                                 <i class="material-icons prefix">Cantidad</i>
                                 <input type="number" id="cantidad" name="cantidad" min="1" class="validate" required>
@@ -308,6 +308,10 @@
         </footer>
         <!-- Footer -->
     </div>
+    
+    <script src="../js/sweetalert.min.js"></script>
+    <script src="../controlador//Publico/components.js"></script>
+    <script src="../controlador/Publico/detalles.js"></script>
 </body>
 
 </html>

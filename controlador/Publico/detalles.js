@@ -6,7 +6,6 @@ const PARAMS = new URLSearchParams(location.search);
 // Constante para establecer el formulario de agregar un producto al carrito de compras.
 const SHOPPING_FORM = document.getElementById('shopping-form');
 // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-M.Tooltip.init(document.querySelectorAll('.tooltipped'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
@@ -18,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se colocan los datos en la página web de acuerdo con el producto seleccionado previamente.
-        document.getElementById('imagen').src = SERVER_URL.concat('images/productos/', JSON.dataset.imagen);
+        document.getElementById('imagen').src = SERVER_URL.concat('/images/productos', JSON.dataset.imagen);
         document.getElementById('nombre').textContent = JSON.dataset.nombre_producto;
         document.getElementById('descripcion').textContent = JSON.dataset.descripcion;
         document.getElementById('precio').textContent = JSON.dataset.precio;
