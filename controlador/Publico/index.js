@@ -33,7 +33,7 @@ async function fillProductos() {
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
             // Se establece la página web de destino con los parámetros.
-            //url = `articles.html?id=${row.id_categoria}&nombre=${row.nombre_categoria}`;
+            url = `producto_info.html?id=${row.idproducto}`;
             // Se crean y concatenan las tarjetas con los datos de cada categoría.
             PRODUCTOS.innerHTML += /*
                 <div class="col s12 m6 l4">
@@ -63,7 +63,7 @@ async function fillProductos() {
                 </div>
                 */               
                 `
-                <a href="producto_info.html" class="text-dark" data-producto="ID-del-producto">
+                <a href="${url}" class="text-dark" data-producto="ID-del-producto">
                 <div class="card" style="width: 18rem;">
                   <img src="${SERVER_URL}images/productos/${row.imagen}" height="288px" class="card-img-top">
                   <div class="card-body">
