@@ -41,7 +41,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Producto incorrecto';
                 }  elseif (!$detalleprod->setTalla($_POST['talla'])) {
                     $result['exception'] = 'Talla incorrecta';
-                }  elseif (!$detalleprod->setExistencia($_POST['existencia'])) {
+                }  elseif (!$detalleprod->setExistencia($_POST['existencia1'])) {
                     $result['exception'] = 'Existencia incorrecta';
                 }   elseif ($detalleprod->createRow()) {
                     $result['status'] = 1;

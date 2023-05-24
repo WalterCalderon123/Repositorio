@@ -122,6 +122,8 @@ function openCreate() {
     // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
     fillSelect(PRODUCTO_API, 'readAll', 'producto');
     fillSelect(TALLA_API, 'readAll', 'talla');
+    document.getElementById('existencia').disabled = true;
+
 
 }
 
@@ -151,6 +153,8 @@ async function openUpdate(id) {
         document.getElementById('producto').disabled = true;
         document.getElementById('talla').disabled = true;
         document.getElementById('existencia1').disabled = true;
+        document.getElementById('existencia').disabled = false;
+
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
     } else {
         sweetAlert(2, JSON.exception, false);
