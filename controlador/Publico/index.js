@@ -1,6 +1,6 @@
 // Constante para completar la ruta de la API.
-const PRODUCTO_API = 'business/dashboard/producto.php';
-const MARCA_API = 'business/dashboard/marcas.php';
+const PRODUCTO_API = 'business/public/producto.php';
+const MARCA_API = 'business/public/marcas.php';
 
 // Constante para establecer el contenedor de categorías.
 const PRODUCTOS = document.getElementById('productos');

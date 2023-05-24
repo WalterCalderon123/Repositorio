@@ -40,7 +40,7 @@ SHOPPING_FORM.addEventListener('submit', async (event) => {
     const JSON = await dataFetch(PEDIDO_API, 'createDetail', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se constata si el cliente ha iniciado sesión.
     if (JSON.status) {
-        sweetAlert(1, JSON.message, true, 'cart.html');
+        sweetAlert(1, JSON.message, true, 'carrito_clientes.html');
     } else if (JSON.session) {
         sweetAlert(2, JSON.exception, false);
     } else {

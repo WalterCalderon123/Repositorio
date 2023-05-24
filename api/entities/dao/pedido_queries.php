@@ -34,7 +34,7 @@ class PedidoQueries
     public function createDetail()
     {
         // Se realiza una subconsulta para obtener el precio del producto.
-        $sql = 'INSERT INTO detalle_pedidos(idpedido,cantidad_producto,idproducto, precio)
+        $sql = 'INSERT INTO detalle_pedidos(id_pedido,cantidad_producto,idproducto, precio)
                 VALUES(?, ?, ?,(SELECT precio FROM productos WHERE idproducto = ?))';
         $params = array($this->id_pedido, $this->cantidad, $this->producto, $this->producto);
         return Database::executeRow($sql, $params);
@@ -44,8 +44,8 @@ class PedidoQueries
     // Método para obtener los productos que se encuentran en el carrito de compras.
     public function readOrderDetail()
     {
-        $sql = 'SELECT id_detalle, nombre_producto, detalle_pedido.precio_producto, detalle_pedido.cantidad_producto
-                FROM pedidos INNER JOIN detalle_pedido USING(id_pedido) INNER JOIN productos USING(id_producto)
+        $sql = 'SELECT iddetalle_pedido, nombre_producto, detalle_pedidos.precio, detalle_pedidos.cantidad_producto
+                FROM pedidos INNER JOIN detalle_pedidos USING(id_pedido) INNER JOIN productos USING(idproducto)
                 WHERE id_pedido = ?';
         $params = array($this->id_pedido);
         return Database::getRows($sql, $params);
@@ -68,9 +68,9 @@ class PedidoQueries
     // Método para actualizar la cantidad de un producto agregado al carrito de compras.
     public function updateDetail()
     {
-        $sql = 'UPDATE detalle_pedido
+        $sql = 'UPDATE detalle_pedidos
                 SET cantidad_producto = ?
-                WHERE id_detalle = ? AND id_pedido = ?';
+                WHERE iddetalle_pedido = ? AND id_pedido = ?';
         $params = array($this->cantidad, $this->id_detalle, $_SESSION['id_pedido']);
         return Database::executeRow($sql, $params);
     }
@@ -78,8 +78,8 @@ class PedidoQueries
     // Método para eliminar un producto que se encuentra en el carrito de compras.
     public function deleteDetail()
     {
-        $sql = 'DELETE FROM detalle_pedido
-                WHERE id_detalle = ? AND id_pedido = ?';
+        $sql = 'DELETE FROM detalle_pedidos
+                WHERE iddetalle_pedido= ? AND id_pedido = ?';
         $params = array($this->id_detalle, $_SESSION['id_pedido']);
         return Database::executeRow($sql, $params);
     }
