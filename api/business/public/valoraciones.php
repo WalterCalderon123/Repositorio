@@ -19,20 +19,7 @@ if (isset($_GET['action'])) {
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'No hay datos registrados';
-                }
-                break;
-            case 'search':
-                $_POST = Validator::validateForm($_POST);
-                if ($_POST['search'] == '') {
-                    $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $valoracion->searchRows($_POST['search'])) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay coincidencias';
+                    $result['exception'] = 'No hay comentarios disponibles';
                 }
                 break;
             case 'readOne':
@@ -56,8 +43,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Detalle incorrecto';
                 } elseif (!$valoracion->setCalificacion($_POST['calificacion'])) {
                     $result['exception'] = 'Calificacion incorrecta';
-                } elseif (!$valoracion->setCliente($_POST['idcliente'])) {
-                    $result['exception'] = 'Cliente incorrecto';
+                } elseif (!$valoracion->setCliente($_POST['cliente'])) {
+                    $result['exception'] = 'Seleccione un cliente';
                 } elseif (!$valoracion->setTitulo($_POST['titulo'])) {
                     $result['exception'] = 'Marca Incorrecta';
                 } elseif (!$valoracion->setResenia($_POST['resenia'])) {
@@ -83,10 +70,10 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Detalle incorrecto';
                 } elseif (!$valoracion->setCalificacion($_POST['calificacion'])) {
                     $result['exception'] = 'Calificacion incorrecta';
-                } elseif (!$valoracion->setCliente($_POST['idcliente'])) {
-                    $result['exception'] = 'Cliente incorrecto';
+                } elseif (!$valoracion->setCliente($_POST['cliente'])) {
+                    $result['exception'] = 'Seleccione un cliente';
                 } elseif (!$valoracion->setTitulo($_POST['titulo'])) {
-                    $result['exception'] = 'Marca Incorrecta';
+                    $result['exception'] = 'Titulo Incorrecta';
                 } elseif (!$valoracion->setResenia($_POST['resenia'])) {
                     $result['exception'] = 'Reseña incorrecta';
                 } elseif (!$valoracion->setFecha($_POST['fecha'])) {

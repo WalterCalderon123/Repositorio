@@ -63,4 +63,13 @@ class ValoracionQueries
         return Database::getRow($sql, $params);
     }
 
+    public function readValoracionCliente()
+    {
+        $sql = 'SELECT calificacion_producto, titulo, resenia, fecha_comentario, estado_valoracion
+                FROM clientes INNER JOIN nombre_cliente USING (idcliente)
+                WHERE idvaloracion = ?
+                ORDER BY idvaloracion';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
 }

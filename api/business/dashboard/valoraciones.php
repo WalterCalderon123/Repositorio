@@ -56,7 +56,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Detalle incorrecto';
                 } elseif (!$valoracion->setCalificacion($_POST['calificacion'])) {
                     $result['exception'] = 'Calificacion incorrecta';
-                } elseif (!$valoracion->setNombre($_POST['nombre'])) {
+                } elseif (!$valoracion->setCliente($_POST['cliente'])) {
                     $result['exception'] = 'Nombre incorrecto';
                 } elseif (!$valoracion->setTitulo($_POST['titulo'])) {
                     $result['exception'] = 'Marca Incorrecta';

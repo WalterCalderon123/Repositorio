@@ -41,7 +41,7 @@ class Valoracion extends ValoracionQueries
 
     public function setCalificacion($value)
     {
-        if (Validator::validateNaturalNumber($value, 1, 5)) {
+        if (Validator::validateNaturalNumber($value, 1, 1)) {
             $this->calificacion = $value;
             return true;
         } else {
