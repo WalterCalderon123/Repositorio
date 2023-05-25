@@ -87,72 +87,64 @@
 
     <br>
     <!-- Page content-->
-    <div class="container">
+    <div class="containerfilt">
+
         <div class="row">
-            <!-- Blog entries-->
-            <div class="col-lg-8">
-                <!-- Featured blog post-->
-                <div class="card mb-4">
-                    <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg"
-                            alt="..." /></a>
-                    <div class="card-body">
-                        <h2 class="card-title">Air Force 1</h2>
-                        <p class="card-text"></p>
+            <div class="col-md-3">
+                <div class="list-group">
+                    <h3>Filtros</h3>
+                    <hr>
+                </div>
+
+                <div class="list-group">
+                    <h4>Generos</h4>
+
+                    <div class="list-group-item checkbox">
+                        <label><input type="checkbox" class="productDetail ram"> Masculino</label>
+                        <hr>
+                        <label><input type="checkbox" class="productDetail ram"> Femeninos</label>
+                        <hr>
+                        <label><input type="checkbox" class="productDetail ram"> Niños/as</label>
+                    </div>
+
+                </div>
+                <br>
+
+
+                <div class="list-group">
+                    <h4>Marcas</h4>
+
+                    <div class="list-group-item checkbox">
+                        <label><input type="checkbox" class="productDetail ram"> Adidas</label>
+                        <hr>
+                        <label><input type="checkbox" class="productDetail ram"> Jordan</label>
+                        <hr>
+                        <label><input type="checkbox" class="productDetail ram"> Nike</label>
+                    </div>
+
+                </div>
+                <br>
+                
+                <div class="list-group">
+                    <h4>Tipos</h4>
+
+                    <div class="list-group-item checkbox">
+                        <label><input type="checkbox" class="productDetail ram"> Casual</label>
+                        <hr>
+                        <label><input type="checkbox" class="productDetail ram"> Baloncesto</label>
+                        <hr>
+                        <label><input type="checkbox" class="productDetail ram"> Tacos</label>
                     </div>
                 </div>
-                <!-- Nested row for non-featured blog posts-->
-                <div class="row">
-                    <div class="col-lg-6">
-                        <!-- Blog post-->
-                        <!-- Blog post-->
-                        <div class="card mb-4">
-                            <a href="#!"><img class="card-img-top"
-                                    src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                            <div class="card-body">
-                                <div class="small text-muted">18 de Febrero de 2023</div>
-                                <h2 class="card-title h4">Mike Stevenson</h2>
-                                <p class="card-text">Recomendados para todo publico.</p>
-                                <a>Calificacion: ★★★★✰</a>
-                            </div>
-                        </div>
-                    </div>
-                    <label>
-                        Mi Reseña</label>
-                    <textarea placeholder="Escribir"></textarea>
-                    <button class="button">Subir reseña</button>
-                </div>
+                <br>
+
             </div>
-            <!-- Side widgets-->
-            <div class="col-lg-4">
-                <!-- Categories widget-->
-                <div class="card mb-4">
-                    <div class="card-header">Cantidad</div>
-                    <div class="card-body">
-                        <div class="row">
-                            <input type="number" id="middle-label">
-                        </div>
-                    </div>
+            <div class="col-md-5 ">
+                <div class="row searchResult">
                 </div>
-                <!-- Side widget-->
-                <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                    <i class="bi-cart-fill me-1"></i>
-                    Añadir al carrito
-                </button>
-                <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                    <i class="bi-cart-fill me-1"></i>
-                    Detalles del producto
-                </button>
             </div>
         </div>
     </div>
-
-    <div class="d-flex flex-row align-items-center justify-content-center">
-        <div class="input-field">
-          <a onclick="window.openCreate()" data-bs-toggle="modal" data-bs-target="#save-modal"
-          class="btn btn-agregar tooltipped" data-tooltip="Crear">Agregar
-          reseña para el producto</a>
-        </div>
-      </div>
     <!-- Footer-->
 
     <div class="footer">
