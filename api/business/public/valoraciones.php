@@ -56,8 +56,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Detalle incorrecto';
                 } elseif (!$valoracion->setCalificacion($_POST['calificacion'])) {
                     $result['exception'] = 'Calificacion incorrecta';
-                } elseif (!$valoracion->setNombre($_POST['nombre'])) {
-                    $result['exception'] = 'Nombre incorrecto';
+                } elseif (!$valoracion->setCliente($_POST['idcliente'])) {
+                    $result['exception'] = 'Cliente incorrecto';
                 } elseif (!$valoracion->setTitulo($_POST['titulo'])) {
                     $result['exception'] = 'Marca Incorrecta';
                 } elseif (!$valoracion->setResenia($_POST['resenia'])) {
@@ -83,8 +83,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Detalle incorrecto';
                 } elseif (!$valoracion->setCalificacion($_POST['calificacion'])) {
                     $result['exception'] = 'Calificacion incorrecta';
-                } elseif (!$valoracion->setNombre($_POST['nombre'])) {
-                    $result['exception'] = 'Nombre incorrecto';
+                } elseif (!$valoracion->setCliente($_POST['idcliente'])) {
+                    $result['exception'] = 'Cliente incorrecto';
                 } elseif (!$valoracion->setTitulo($_POST['titulo'])) {
                     $result['exception'] = 'Marca Incorrecta';
                 } elseif (!$valoracion->setResenia($_POST['resenia'])) {
