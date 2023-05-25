@@ -78,7 +78,7 @@ async function fillValoracion() {
             // Se establece la página web de destino con los parámetros.
             url = `producto_info.html?id=${row.idproducto}`;
             // Se crean y concatenan las tarjetas con los datos de cada categoría.
-            PRODUCTOS.innerHTML += /*
+            VALORACION.innerHTML += /*
                 <div class="col s12 m6 l4">
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">
