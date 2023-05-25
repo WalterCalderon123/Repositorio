@@ -10,7 +10,7 @@ class Valoracion extends ValoracionQueries
     protected $id = null;
     protected $detallepedido = null;
     protected $calificacion = null;
-    protected $nombre = null;
+    protected $cliente = null;
     protected $titulo = null;
     protected $resenia = null;
     protected $fecha = null;
@@ -49,10 +49,10 @@ class Valoracion extends ValoracionQueries
         }
     }
 
-    public function setNombre($value)
+    public function setCliente($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 50)) {
-            $this->nombre = $value;
+        if (Validator::validateNaturalNumber($value)) {
+            $this->cliente = $value;
             return true;
         } else {
             return false;
@@ -119,9 +119,9 @@ class Valoracion extends ValoracionQueries
         return $this->calificacion;
     }
 
-    public function getNombre()
+    public function getCliente()
     {
-        return $this->nombre;
+        return $this->cliente;
     }
 
     public function getTitulo()
