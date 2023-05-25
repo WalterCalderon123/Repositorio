@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <i class="fa-solid fa-user"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+          <li><a href="historial_pedidos.html" class="dropdown-item">Historial de pedidos</a></li>      
             <li><a a onclick="logOut()" class="dropdown-item">Salir</a></li>
           </ul>
           </div>
@@ -106,7 +107,6 @@ document.addEventListener('DOMContentLoaded', async () => {
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
             <li><a href="login.html" class="dropdown-item">Iniciar sesion</a></li>      
-            <li><a a onclick="logOut()" class="dropdown-item">Salir</a></li>
           </ul>
           </div>
           <div class="carrito">

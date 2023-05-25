@@ -41,6 +41,15 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No tiene productos en el carrito';
                 }
                 break;
+                case 'readHistoryOrder':
+                     if ($result['dataset'] = $pedido->readHistoryOrder()) {
+                        $result['status'] = 1;
+                    } elseif (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'Pedido inexistente';
+                    }
+                    break;
             case 'updateDetail':
                 $_POST = Validator::validateForm($_POST);
                 if (!$pedido->setIdDetalle($_POST['id_detalle'])) {
