@@ -12,7 +12,7 @@ class ValoracionQueries
     {
         $sql = 'SELECT idvaloracion, iddetalle_pedido, calificacion_producto, nombre_cliente, titulo, resenia, fecha_comentario, estado_valoracion
                 FROM valoraciones
-                INNER JOIN nombre_cliente USING (idcliente)
+                INNER JOIN clientes USING (idcliente)
                 WHERE iddetalle_pedido ILIKE ? OR calificacion_producto ILIKE ? OR nombre ILIKE ? 
                 OR titulo ILIKE ? OR resenia ILIKE ? OR fecha_comentario ILIKE ?
                 ORDER BY iddetalle_pedido';
@@ -31,7 +31,7 @@ class ValoracionQueries
     public function updateRow()
     {
         $sql = 'UPDATE valoraciones
-                SET iddetalle_pedido = ?, calificacion_producto = ?, nombre_cliente = ?, titulo = ?, resenia = ?, fecha_comentario = ?, estado_valoracion = ?
+                SET iddetalle_pedido = ?, calificacion_producto = ?, idcliente = ?, titulo = ?, resenia = ?, fecha_comentario = ?, estado_valoracion = ?
                 WHERE idvaloracion = ?';
         $params = array($this->detallepedido, $this->calificacion, $this->cliente, $this->titulo, $this->resenia, $this->fecha, $this->estado, $this->id);
         return Database::executeRow($sql, $params);
@@ -49,7 +49,7 @@ class ValoracionQueries
     {
         $sql = 'SELECT idvaloracion, iddetalle_pedido, calificacion_producto, nombre_cliente, titulo, resenia, fecha_comentario, estado_valoracion
                 FROM valoraciones
-                INNER JOIN nombre_cliente USING (idcliente)
+                INNER JOIN clientes USING (idcliente)
                 ORDER BY idvaloracion';
         return Database::getRows($sql);
     }
