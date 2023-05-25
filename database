@@ -1,3 +1,17 @@
+-- Database: zeladinho_sneakers
+
+-- DROP DATABASE IF EXISTS zeladinho_sneakers;
+
+CREATE DATABASE zeladinho_sneakers
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Spanish_Spain.1252'
+    LC_CTYPE = 'Spanish_Spain.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+
 	Create table usuarios(
 	idusuario serial primary key,
 	nombre_usuario varchar(50) not null,
@@ -26,8 +40,6 @@
 	telefono varchar(9) not null,
 	fecha_nacimiento date not null,
 	direccion varchar(200) not null,
-	idgenero_cliente int not null,
-	idestado_cliente int not null,
 	clave_cliente varchar(50) not null
 	);
 	
@@ -47,15 +59,10 @@
 	logo varchar(500) not null
 	);
 	
-	Create table estado_pedidos(
-	idestado_pedido serial primary key,
-	estado_pedido varchar(20) not null
-	);
-	
 	create table pedidos(
 	id_pedido serial primary key,
 	idcliente int not null,
-	idestado_pedido int not null,
+	estado_pedido int not null,
 	fecha_pedido date not null,
 	direccion_pedido varchar(500)
 	);
@@ -88,16 +95,17 @@
 
 	Create table detalle_pedidos(
 	iddetalle_pedido serial primary key,
-	idpedido int not null,
-	iddetalle_producto int not null,
-	cantidad_producto int not null
+	id_pedido int not null,
+	idproducto int not null,
+	cantidad_producto int not null,
+	precio numeric(5,2) not null
 	);
 	
 	create table valoraciones(
 	idvaloracion serial primary key,
 	iddetalle_pedido int not null,
 	calificacion_producto int not null,
-	nombre varchar(50) not null,
+	idcliente int not null,
 	titulo varchar(50) not null,
 	resenia varchar(800) not null,
 	fecha_comentario date not null,
@@ -128,11 +136,6 @@ ALTER TABLE pedidos
 ADD CONSTRAINT pedido_cliente
 FOREIGN KEY (idcliente) 
 REFERENCES clientes(idcliente);
-		
-ALTER TABLE pedidos
-ADD CONSTRAINT estado_pedido
-FOREIGN KEY (idestado_pedido) 
-REFERENCES estado_pedidos(idestado_pedido);
 
 ALTER TABLE productos
 ADD CONSTRAINT genero_producto
@@ -157,8 +160,10 @@ ON DELETE CASCADE;
 
 ALTER TABLE detalle_pedidos
 ADD CONSTRAINT detalle_producto
-FOREIGN KEY (iddetalle_producto) 
-REFERENCES detalle_productos(iddetalle_producto);
+FOREIGN KEY (idproducto) 
+REFERENCES productos(idproducto);
+
+select * from clientes
 
 ALTER TABLE detalle_productos
 ADD CONSTRAINT detalle_talla
@@ -172,7 +177,7 @@ REFERENCES productos(idproducto);
 
 ALTER TABLE detalle_pedidos
 ADD CONSTRAINT detalle_pedido
-FOREIGN KEY (idpedido) 
+FOREIGN KEY (id_pedido) 
 REFERENCES pedidos(id_pedido);
 
 ALTER TABLE valoraciones
@@ -180,19 +185,11 @@ ADD CONSTRAINT detalle_valoracion
 FOREIGN KEY (iddetalle_pedido) 
 REFERENCES detalle_pedidos(iddetalle_pedido);
 
-ALTER TABLE clientes
-ADD CONSTRAINT genero_clientes
-FOREIGN KEY (idgenero_cliente) 
-REFERENCES genero_clientes(idgenero_cliente)
-ON UPDATE CASCADE
-ON DELETE CASCADE;
+ALTER TABLE valoraciones
+ADD CONSTRAINT cliente_valoracion
+FOREIGN KEY (idcliente) 
+REFERENCES clientes(idcliente);
 
-ALTER TABLE clientes
-ADD CONSTRAINT estado_clientes
-FOREIGN KEY (idestado_cliente) 
-REFERENCES estado_clientes(idestado_cliente)
-ON UPDATE CASCADE
-ON DELETE CASCADE;
 
 Insert Into genero_clientes(genero_cliente)
 values ('Masculino'),

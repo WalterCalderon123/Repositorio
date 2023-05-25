@@ -81,7 +81,7 @@ async function fillTable(form = null) {
                 <tr>
                     <td>${row.calificacion_producto}</td>
                     <td>${row.fecha_comentario}</td>
-                    <td>${row.nombre}</td>
+                    <td>${row.idcliente}</td>
                     <td>${row.titulo}</td>
                     <td>${row.resenia}</td>
                     <td>
@@ -142,7 +142,7 @@ async function openUpdate(id) {
         document.getElementById('id').value = JSON.dataset.idproducto;
         fillSelect(DETALLEPED_API, 'readAll', 'detalle', JSON.dataset.iddetalle_pedido);
         document.getElementById('calificacion').value = JSON.dataset.calificacion_producto;
-        document.getElementById('autor').value = JSON.dataset.nombre;
+        document.getElementById('cliente').value = JSON.dataset.idcliente;
         document.getElementById('titulo').value = JSON.dataset.titulo;
         document.getElementById('resenia').value = JSON.dataset.resenia;
         document.getElementById('fecha').value = JSON.dataset.fecha_comentario;
