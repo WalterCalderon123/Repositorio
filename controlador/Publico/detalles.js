@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se colocan los datos en la página web de acuerdo con el producto seleccionado previamente.
-        document.getElementById('imagen').src = SERVER_URL.concat('/images/productos', JSON.dataset.imagen);
+        document.getElementById('imagen').src = SERVER_URL.concat('../../images/productos', JSON.dataset.imagen);
         document.getElementById('nombre').textContent = JSON.dataset.nombre_producto;
         document.getElementById('descripcion').textContent = JSON.dataset.descripcion;
         document.getElementById('precio').textContent = JSON.dataset.precio;
