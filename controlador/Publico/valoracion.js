@@ -78,6 +78,7 @@ async function fillValoracion() {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
+
 function openCreate() {
     // Se abre la caja de diálogo que contiene el formulario.
     // Se restauran los elementos del formulario.
@@ -88,3 +89,41 @@ function openCreate() {
     fillSelect(DETALLEPED_API, 'readAll', 'detalle');
 
 }
+
+/*
+*   Función asíncrona para preparar el formulario al momento de actualizar un registro.
+*   Parámetros: id (identificador del registro seleccionado).
+*   Retorno: ninguno.
+*/
+async function openUpdate(id) {
+    // Se define un objeto con los datos del registro seleccionado.
+    const FORM = new FormData();
+    FORM.append('id', id);
+    // Petición para obtener los datos del registro solicitado.
+    const JSON = await dataFetch(VALORACION_API, 'readOne', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (JSON.status) {
+        // Se abre la caja de diálogo que contiene el formulario.
+        // Se restauran los elementos del formulario.
+        SAVE_FORM.reset();
+        // Se asigna el título para la caja de diálogo (modal).
+        MODAL_TITLE.textContent = 'Actualizar valoracion';
+        // Se inicializan los campos del formulario.
+        document.getElementById('id').value = JSON.dataset.idproducto;
+        fillSelect(DETALLEPED_API, 'readAll', 'detalle', JSON.dataset.iddetalle_pedido);
+        document.getElementById('calificacion').value = JSON.dataset.calificacion_producto;
+        document.getElementById('cliente').value = JSON.dataset.nombre_cliente;
+        document.getElementById('titulo').value = JSON.dataset.titulo;
+        document.getElementById('resenia').value = JSON.dataset.resenia;
+        document.getElementById('fecha').value = JSON.dataset.fecha_comentario;
+        if (JSON.dataset.estado_valoracion) {
+            document.getElementById('estado').checked = true;
+        } else {
+            document.getElementById('estado').checked = false;
+        }
+        // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
+    } else {
+        sweetAlert(2, JSON.exception, false);
+    }
+}
+
