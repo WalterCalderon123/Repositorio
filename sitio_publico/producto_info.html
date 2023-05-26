@@ -89,6 +89,50 @@
       mi valoracion</a>
   </div>
 
+  
+  <div class="modal fade" id="save-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modal-title"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="d-flex flex-column" method="post" id="save-form">
+            <input class="invisible" type="number" id="id" name="id">
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Calificacion:</label>
+              <textarea id="calificacion" name="calificacion" class="form-control validate" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Cliente:</label>
+              <select id="cliente" type="text" name="cliente" class="form-select validate" required aria-label="Default select example">
+            </div>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Titulo:</label>
+              <input id="titulo" type="text" name="titulo" class="form-control validate" required aria-label="Default select example">
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Reseña:</label>
+              <input id="resenia" type="text" name="resenia" class="form-control validate" required aria-label="Default select example">
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Fecha:</label>
+              <select id="fecha" type="date" name="fecha" class="form-control validate" required aria-label="Default select example">
+              </select>
+            </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary  tooltipped" data-tooltip="Guardar">Guardar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+          </form>
+        </div>    
+      </div>
+    </div>
+  </div>
+
   <br>
 
   <div class="Comentarios">
