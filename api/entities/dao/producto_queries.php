@@ -74,7 +74,7 @@ class ProductoQueries
 
     public function readProductosMarcas()
     {
-        $sql = 'SELECT idproducto, imagen, nombre_producto, descripcion, precio
+        $sql = 'SELECT idproducto, imagen, nombre_producto, descripcion, precio, nombre_marca
                 FROM productos INNER JOIN marcas USING(idmarca)
                 WHERE idmarca = ? AND estado_producto = true
                 ORDER BY nombre_producto';

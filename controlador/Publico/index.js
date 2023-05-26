@@ -93,7 +93,7 @@ async function fillMarcas() {
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
             // Se establece la página web de destino con los parámetros.
-            urlmarca = `catalogo.html?id=${row.idmarca}`;
+            urlmarca = `catalogo.html?id=${row.idmarca}&nombre=${row.nombre_marca}`;
             // Se crean y concatenan las tarjetas con los datos de cada categoría.
             MARCAS.innerHTML += /*
                 <div class="col s12 m6 l4">
