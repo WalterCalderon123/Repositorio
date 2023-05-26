@@ -5,6 +5,8 @@ const DETALLEPED_API = 'business/dashboard/detalleprod.php';
 
 // Constante para establecer el contenedor de categorías.
 const VALORACION = document.getElementById('valoraciones');
+const MODAL_TITLE = document.getElementById('modal-title');
+
 
 // Constante tipo objeto para establecer las opciones del componente Slider.
 const OPTIONS = {
@@ -82,7 +84,6 @@ async function fillValoracion() {
 function openCreate() {
     // Se abre la caja de diálogo que contiene el formulario.
     // Se restauran los elementos del formulario.
-    SAVE_FORM.reset();
     // Se asigna el título a la caja de diálogo.
     MODAL_TITLE.textContent = 'Crear valoracion';
     // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
