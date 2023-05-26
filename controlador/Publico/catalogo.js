@@ -1,6 +1,7 @@
 // Constante para completar la ruta de la API.
 const PRODUCTO_API = 'business/public/producto.php';
 const MARCA_API = 'business/public/marcas.php';
+const PARAMS = new URLSearchParams(location.search);
 
 // Constante para establecer el contenedor de categorías.
 const PRODUCTOS = document.getElementById('productos');
@@ -19,12 +20,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   fillProductos();
 
    // Petición para obtener las marcas disponibles.
-   fillMarcas();
+   
 });
 
 async function fillProductos() {
-
-    const JSON = await dataFetch(PRODUCTO_API, 'readAll');
+    const FORM = new FormData();
+    FORM.append('idmarca', PARAMS.get('id'));
+    const JSON = await dataFetch(PRODUCTO_API, 'readProductosMarcas');
 
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
@@ -93,7 +95,7 @@ async function fillMarcas() {
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
             // Se establece la página web de destino con los parámetros.
-            urlmarca = `catalogo.html?id=${row.idmarca}`;
+            url = `catalogo.html?id=${row.idmarca}`;
             // Se crean y concatenan las tarjetas con los datos de cada categoría.
             MARCAS.innerHTML += /*
                 <div class="col s12 m6 l4">
@@ -123,7 +125,7 @@ async function fillMarcas() {
                 </div>
                 */               
                 `
-                <a href="${urlmarca}" class="text-dark" data-producto="ID-del-producto">
+                <a href="${url}" class="text-dark" data-producto="ID-del-producto">
                 <div class="card" style="width: 18rem;">
                   <img src="${SERVER_URL}images/marcas/${row.logo}" class="card-img-top">
                   <div class="card-body text-center">
