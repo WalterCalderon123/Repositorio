@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <a class="nav-link active" aria-current="page" href="">Categorias</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="">Destacados</a>
+                <a class="nav-link active" aria-current="page" href="index.html">Destacados</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"

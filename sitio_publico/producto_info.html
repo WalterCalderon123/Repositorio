@@ -40,7 +40,7 @@
           <div class="card horizontal">
             <div class="card-image">
               <!-- Se muestra una imagen por defecto mientras se carga la imagen del producto -->
-              <img id="imagen" src="../../images/productos/unknown.png">  
+              <img id="imagen" src="../../images/productos/unknown.png">
             </div>
           </div>
         </main>
@@ -84,92 +84,14 @@
   <br>
   <br>
 
-  <div class="d-flex flex-row">
-    <div class="input-field">
-      <a onclick="window.openCreate()" data-bs-toggle="modal" data-bs-target="#save-modal"
-        class="btn btn-agregar tooltipped" data-tooltip="Crear">Agregar
-        mi valoracion</a>
+  <div class="Comentarios">
+    <div class="principal">
+      <h4 class="titulo_seccion">Reseñas del producto</h4>
+    </div>
+    <div class="cartas" id="valoraciones">
+
     </div>
   </div>
-
-  <div class="modal fade" id="save-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="modal-title"></h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form class="d-flex flex-column" method="post" id="save-form">
-            <input class="invisible" type="number" id="id" name="id">
-            <div class="mb-3">
-              <label for="recipient-name" class="col-form-label">Fecha:</label>
-              <input id="fecha" type="date" name="date" value="yyyy-MM-dd" class="form-control validate" required>
-            </div>
-            <div class="mb-3">
-              <label for="calificacion">Calificacion:</label>
-              <input id="calificacion" type="number" name="calificacion" class="form-control validate" required max="5"
-                min="1">
-            </div>
-            <div class="nav-item dropdown">
-              <label for="recipient-name" class="col-form-label">Cliente:</label>
-              <select id="cliente" name="cliente" class="form-select validate" required aria-label="Default select example">
-              </select>
-            </div>
-            <div class="nav-item dropdown">
-              <label for="recipient-name" class="col-form-label">Titulo:</label>
-              <input id="titulo" type="text" name="titulo" class="form-control validate" required>
-            </div>
-            <div class="nav-item dropdown">
-              <label for="recipient-name" class="col-form-label">Reseña:</label>
-              <input id="resenia" type="text" name="resenia" class="validate form-control" required>
-            </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-primary  tooltipped" data-tooltip="Guardar">Guardar</button>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <main class="intro">
-    <div class="bg-image bg-light h-100">
-      <div class="mask d-flex align-items-center h-100">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-body p-0">
-                  <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true"
-                    style="position: relative; height: 700px">
-                    <table class="table table-striped mb-0">
-                      <thead class="bg-primary">
-                        <tr id="records"></tr>
-                        <tr>
-                          <th scope="col">ID</th>
-                          <th scope="col">Detalle</th>
-                          <th scope="col">Calificacion</th>
-                          <th scope="col">Cliente</th>
-                          <th scope="col">Titulo</th>
-                          <th scope="col">Reseña</th>
-                          <th scope="col">Fecha</th>
-                          <th scope="col">Estado</th>
-                          <th scope="col">Actualizar</th>
-                        </tr>
-                      </thead>
-                      <tbody id="tbody-rows"></tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
 
 
   <br>
