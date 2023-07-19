@@ -1,5 +1,7 @@
 <?php
+// Se incluye la clase con las plantillas para generar reportes.
 require_once('../../helpers/report.php');
+// Se incluyen las clases para la transferencia y acceso a datos.
 require_once('../../entities/dto/producto.php');
 require_once('../../entities/dto/categoria.php');
 

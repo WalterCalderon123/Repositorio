@@ -5,19 +5,19 @@ require_once('../../helpers/report.php');
 // Se instancia la clase para crear el reporte.
 $pdf = new Report;
 // Se verifica si existe un valor para la categoría, de lo contrario se muestra un mensaje.
-if (isset($_GET['id_categoria'])) {
+if (isset($_GET['idestado_pedido'])) {
     // Se incluyen las clases para la transferencia y acceso a datos.
-    require_once('../../entities/dto/categoria.php');
-    require_once('../../entities/dto/producto.php');
+    require_once('../../entities/dto/pedido.php');
+    require_once('../../entities/dto/estado_pedido.php');
     // Se instancian las entidades correspondientes.
-    $categoria = new Categoria;
-    $producto = new Producto;
+    $pedido = new Pedido;
+    $estado = new Estado;
     // Se establece el valor de la categoría, de lo contrario se muestra un mensaje.
-    if ($categoria->setId($_GET['id_categoria']) && $producto->setCategoria($_GET['id_categoria'])) {
+    if ($categoria->setId($_GET['idestado_pedido']) && $producto->setCategoria($_GET['idestado_pedido'])) {
         // Se verifica si la categoría existe, de lo contrario se muestra un mensaje.
         if ($rowCategoria = $categoria->readOne()) {
             // Se inicia el reporte con el encabezado del documento.
-            $pdf->startReport('Productos de la categoría ' . $rowCategoria['nombre_categoria']);
+            $pdf->startReport('Pedidos del estado ' . $rowCategoria['nombre_categoria']);
             // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
             if ($dataProductos = $producto->productosCategoria()) {
                 // Se establece un color de relleno para los encabezados.
@@ -39,16 +39,16 @@ if (isset($_GET['id_categoria'])) {
                     $pdf->cell(30, 10, $estado, 1, 1);
                 }
             } else {
-                $pdf->cell(0, 10, $pdf->encodeString('No hay productos para la categoría'), 1, 1);
+                $pdf->cell(0, 10, $pdf->encodeString('No hay productos para el estado'), 1, 1);
             }
             // Se llama implícitamente al método footer() y se envía el documento al navegador web.
-            $pdf->output('I', 'categoria.pdf');
+            $pdf->output('I', 'estado.pdf');
         } else {
-            print('Categoría inexistente');
+            print('Estado inexistente');
         }
     } else {
-        print('Categoría incorrecta');
+        print('Estado incorrecto');
     }
 } else {
-    print('Debe seleccionar una categoría');
+    print('Debe seleccionar un Estado');
 }
