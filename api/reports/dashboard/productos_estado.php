@@ -13,9 +13,9 @@ if (isset($_GET['idestado_pedido'])) {
     $pedido = new Pedido;
     $estado = new Estado;
     // Se establece el valor de la categoría, de lo contrario se muestra un mensaje.
-    if ($categoria->setId($_GET['idestado_pedido']) && $producto->setCategoria($_GET['idestado_pedido'])) {
+    if ($estado->setId($_GET['idestado_pedido']) && $producto->setCategoria($_GET['idestado_pedido'])) {
         // Se verifica si la categoría existe, de lo contrario se muestra un mensaje.
-        if ($rowCategoria = $categoria->readOne()) {
+        if ($rowCategoria = $estado->readOne()) {
             // Se inicia el reporte con el encabezado del documento.
             $pdf->startReport('Pedidos del estado ' . $rowCategoria['nombre_categoria']);
             // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
