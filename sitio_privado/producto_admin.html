@@ -38,13 +38,13 @@
 
     <div class="icons">
       <div class="user">
-        <a class="nav-link active dropdown-toggle" href="#" id="logoutdropdown" role="button"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="fa-solid fa-user"></i>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="logoutdropdown">
-        <li><a a onclick="logOut()" class="dropdown-item">Salir</a></li>
-      </ul>
+        <a class="nav-link active dropdown-toggle" href="#" id="logoutdropdown" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <i class="fa-solid fa-user"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="logoutdropdown">
+          <li><a a onclick="logOut()" class="dropdown-item">Salir</a></li>
+        </ul>
       </div>
       <div class="carrito">
         <i class="fa-solid fa-cart-shopping"></i>
@@ -72,7 +72,7 @@
               <li><a class="dropdown-item" href="gen_productos_admin.html">Generos</a></li>
               <li><a class="dropdown-item" href="productos_tipo_admin.html">Tipos</a></li>
             </ul>
-          </li> 
+          </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="tallas_admin.html">Tallas</a>
           </li>
@@ -94,7 +94,7 @@
               <li><a class="dropdown-item" href="pedidos_admin.html">Pedidos</a></li>
               <li><a class="dropdown-item" href="detalle_pedidos.html">Detalles</a></li>
             </ul>
-          </li> 
+          </li>
         </ul>
       </div>
     </div>
@@ -121,6 +121,11 @@
         class="btn btn-agregar tooltipped" data-tooltip="Crear">Agregar
         producto</a>
     </div>
+
+    <!-- Enlace para generar un reporte en formato PDF -->
+    <a onclick="openReport()" class="btn waves-effect amber tooltipped" data-tooltip="Reporte">
+      <i class="material-icons">assignment</i>
+    </a>
   </div>
 
   <div class="modal fade" id="save-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
@@ -144,7 +149,7 @@
             </div>
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label">Precio:</label>
-              <input id="precio" name="precio" type="number"  class="form-control validate" required>
+              <input id="precio" name="precio" type="number" class="form-control validate" required>
             </div>
             <div class="nav-item dropdown">
               <label for="recipient-name" class="col-form-label">Marca:</label>
@@ -153,7 +158,8 @@
             </div>
             <div class="nav-item dropdown">
               <label for="recipient-name" class="col-form-label">Genero:</label>
-              <select id="genero" name="genero" class="form-select validate" required aria-label="Default select example">
+              <select id="genero" name="genero" class="form-select validate" required
+                aria-label="Default select example">
               </select>
             </div>
             <div class="nav-item dropdown">
@@ -163,7 +169,8 @@
             </div>
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label">Usuario:</label>
-              <select id="usuario" name="usuario" class="form-select validate" required aria-label="Default select example">
+              <select id="usuario" name="usuario" class="form-select validate" required
+                aria-label="Default select example">
               </select>
             </div>
             <div class="mb-3">
@@ -172,33 +179,33 @@
             </div>
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label">Imagen:</label>
-                <input class="form-control validate" type="file" name="archivo" id="archivo" accept=".jpg, .png" required>
+              <input class="form-control validate" type="file" name="archivo" id="archivo" accept=".jpg, .png" required>
             </div>
             <div class="d-flex mb-3">
               <p>
                 <span class="label">Estado:</span>
               <div class="form-switch form-check">
-                  <label>
-                      <input class="form-check-input" id="estado" type="checkbox" role="switch" name="estado" checked>
-                      <span class="lever"></span>
-                  </label>
+                <label>
+                  <input class="form-check-input" id="estado" type="checkbox" role="switch" name="estado" checked>
+                  <span class="lever"></span>
+                </label>
               </div>
               </p>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary  tooltipped" data-tooltip="Guardar">Guardar</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary  tooltipped" data-tooltip="Guardar">Guardar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
           </form>
         </div>
-       
+
       </div>
     </div>
   </div>
 
 
   <main class="intro">
-    <div class="bg-image bg-light h-100" >
+    <div class="bg-image bg-light h-100">
       <div class="mask d-flex align-items-center h-100">
         <div class="container">
           <div class="row justify-content-center">
@@ -244,4 +251,5 @@
   <script src="../controlador/Privado/productos.js"></script>
 
 </body>
+
 </html>
