@@ -149,20 +149,20 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            /*case 'cantidadProductosCategoria':
-                if ($result['dataset'] = $producto->cantidadProductosCategoria()) {
+            case 'cantidadProductosMarca':
+                if ($result['dataset'] = $producto->cantidadProductosMarca()) {
                     $result['status'] = 1;
                 } else {
                     $result['exception'] = 'No hay datos disponibles';
                 }
                 break;
-            case 'porcentajeProductosCategoria':
-                if ($result['dataset'] = $producto->porcentajeProductosCategoria()) {
+            case 'porcentajeProductosMarca':
+                if ($result['dataset'] = $producto->porcentajeProductosMarca()) {
                     $result['status'] = 1;
                 } else {
                     $result['exception'] = 'No hay datos disponibles';
                 }
-                break;*/
+                break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }

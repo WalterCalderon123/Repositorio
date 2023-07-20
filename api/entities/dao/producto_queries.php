@@ -112,6 +112,23 @@ class ProductoQueries
         return Database::getRows($sql, $params);
     }
 
+    public function cantidadProductosMarca()
+    {
+        $sql = 'SELECT nombre_marca, COUNT(idproducto) cantidad
+                FROM productos INNER JOIN marcas USING(idmarca)
+                GROUP BY nombre_marca ORDER BY cantidad DESC';
+        return Database::getRows($sql);
+    }
+
+    public function porcentajeProductosMarca()
+    {
+        $sql = 'SELECT nombre_marca, ROUND((COUNT(idproducto) * 100.0 / (SELECT COUNT(idproducto) FROM productos)), 2) porcentaje
+                FROM productos INNER JOIN marcas USING(idmarca)
+                GROUP BY nombre_marca ORDER BY porcentaje DESC';
+        return Database::getRows($sql);
+    }
+    
+
    
 
 
