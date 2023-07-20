@@ -8,7 +8,7 @@ require_once('../../libraries/fpdf182/fpdf.php');
 class Report extends FPDF
 {
     // Constante para definir la ruta de las vistas del sitio privado.
-    const CLIENT_URL = 'http://localhost/coffeeshop/views/dashboard/';
+    const CLIENT_URL = 'http://localhost/Repositorio/Repositorio/sitio_privado/';
     // Propiedad para guardar el título del reporte.
     private $title = null;
 
@@ -57,7 +57,7 @@ class Report extends FPDF
     public function header()
     {
         // Se establece el logo.
-        $this->image('../../images/logo.png', 15, 15, 20);
+        $this->image('../images/.png', 15, 15, 20);
         // Se ubica el título.
         $this->cell(20);
         $this->setFont('Arial', 'B', 15);
