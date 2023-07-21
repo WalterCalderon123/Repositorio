@@ -156,13 +156,13 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos disponibles';
                 }
                 break;
-            case 'porcentajeProductosMarca':
-                if ($result['dataset'] = $producto->porcentajeProductosMarca()) {
-                    $result['status'] = 1;
-                } else {
-                    $result['exception'] = 'No hay datos disponibles';
-                }
-                break;
+            case 'cantidadProductosTipo':
+                    if ($result['dataset'] = $producto->cantidadProductosTipo()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                    break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }
