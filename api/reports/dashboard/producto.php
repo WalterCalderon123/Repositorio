@@ -33,17 +33,16 @@ if ($dataMarcas = $marca->readAll()) {
         $pdf->cell(0, 10, $pdf->encodeString('Marcas: ' . $rowMarcas['nombre_marca']), 1, 1, 'C', 1);
         // Se instancia el módelo Producto para procesar los datos.
         $producto = new Producto;
-        // Se establece la categoría para obtener sus productos, de lo contrario se imprime un mensaje de error.
+        // Se establece la marca para obtener sus productos, de lo contrario se imprime un mensaje de error.
         if ($producto->setMarca($rowMarcas['idmarca'])) {
             // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
-            if ($dataProductos = $producto->productosCategoria()) {
+            if ($dataProductos = $producto->productosGenero()) {
                 // Se recorren los registros fila por fila.
                 foreach ($dataProductos as $rowProducto) {
                     ($rowProducto['estado_producto']) ? $estado = 'Activo' : $estado = 'Inactivo';
                     // Se imprimen las celdas con los datos de los productos.
                     $pdf->cell(126, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
                     $pdf->cell(30, 10, $rowProducto['precio'], 1, 0);
-                    $pdf->cell(30, 10, $estado, 1, 1);
                 }
             } else {
                 $pdf->cell(0, 10, $pdf->encodeString('No hay productos para la marca'), 1, 1);

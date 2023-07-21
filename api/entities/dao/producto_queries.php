@@ -154,13 +154,14 @@ class ProductoQueries
     /*
     *   Métodos para generar reportes.
     */
-   /* public function productosCategoria()
+    public function productosGenero()
     {
-        $sql = 'SELECT nombre_producto, precio_producto, estado_producto
-                FROM productos INNER JOIN categorias USING(id_categoria)
-                WHERE id_categoria = ?
+        $sql = 'SELECT nombre_producto, precio, estado_producto
+                FROM productos
+                INNER JOIN marcas USING(idmarca)
+                WHERE idmarca = ?
                 ORDER BY nombre_producto';
-        $params = array($this->categoria);
+        $params = array($this->marca);
         return Database::getRows($sql, $params);
-    }*/
+    }
 }
