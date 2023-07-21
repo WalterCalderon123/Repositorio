@@ -36,7 +36,7 @@ if ($dataMarcas = $marca->readAll()) {
         // Se establece la marca para obtener sus productos, de lo contrario se imprime un mensaje de error.
         if ($producto->setMarca($rowMarcas['idmarca'])) {
             // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
-            if ($dataProductos = $producto->productosGenero()) {
+            if ($dataProductos = $producto->productosMarca()) {
                 // Se recorren los registros fila por fila.
                 foreach ($dataProductos as $rowProducto) {
                     ($rowProducto['estado_producto']) ? $estado = 'Activo' : $estado = 'Inactivo';

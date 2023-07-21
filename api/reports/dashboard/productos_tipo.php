@@ -7,10 +7,10 @@ $pdf = new Report;
 // Se verifica si existe un valor para la categoría, de lo contrario se muestra un mensaje.
 if (isset($_GET['idmarca'])) {
     // Se incluyen las clases para la transferencia y acceso a datos.
-    require_once('../../entities/dto/marcas.php');
+    require_once('../../entities/dto/tipo.php');
     require_once('../../entities/dto/producto.php');
     // Se instancian las entidades correspondientes.
-    $marca = new Marca;
+    $tipo = new Tipo;
     $producto = new Producto;
     // Se establece el valor de la categoría, de lo contrario se muestra un mensaje.
     if ($marca->setId($_GET['idmarca']) && $producto->setMarca($_GET['idmarca'])) {

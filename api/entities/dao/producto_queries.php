@@ -154,7 +154,7 @@ class ProductoQueries
     /*
     *   Métodos para generar reportes.
     */
-    public function productosGenero()
+    public function productosMarca()
     {
         $sql = 'SELECT nombre_producto, precio, estado_producto
                 FROM productos
