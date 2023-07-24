@@ -116,12 +116,13 @@ CREATE TABLE valoraciones (
     idvaloracion INT AUTO_INCREMENT PRIMARY KEY,
     iddetalle_pedido INT NOT NULL,
     calificacion_producto INT NOT NULL,
-    nombre VARCHAR(50) NOT NULL,
+    idcliente INT NOT NULL,
     titulo VARCHAR(50) NOT NULL,
     resenia VARCHAR(800) NOT NULL,
     fecha_comentario DATE NOT NULL,
     estado_valoracion BOOLEAN NOT NULL,
-    FOREIGN KEY (iddetalle_pedido) REFERENCES detalle_pedidos(iddetalle_pedido) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (iddetalle_pedido) REFERENCES detalle_pedidos(iddetalle_pedido) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (idcliente) REFERENCES clientes(idcliente) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 Insert Into genero_clientes(genero_cliente)
