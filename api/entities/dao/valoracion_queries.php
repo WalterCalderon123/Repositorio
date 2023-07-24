@@ -76,10 +76,11 @@ class ValoracionQueries
     /*
     *   Métodos para generar reportes.
     */
-    public function productosMarca()
+    public function ValoracionProductos()
     {
-        $sql = 'SELECT nombre_producto, precio, estado_producto
-                FROM productos
+        $sql = 'SELECT nombre_cliente, resenia, estado_producto
+                FROM valoraciones
+                INNER JOIN clientes USING (idcliente)
                 INNER JOIN marcas USING(idmarca)
                 WHERE idmarca = ?
                 ORDER BY nombre_producto';

@@ -170,16 +170,19 @@ class PedidoQueries
         return Database::getRows($sql);
     }*/
 
+
     /*
     *   Métodos para generar reportes.
     */
-   /* public function productosCategoria()
+    public function pedidosCliente()
     {
-        $sql = 'SELECT nombre_producto, precio_producto, estado_producto
-                FROM productos INNER JOIN categorias USING(id_categoria)
-                WHERE id_categoria = ?
-                ORDER BY nombre_producto';
-        $params = array($this->categoria);
+        $sql = 'SELECT fecha_pedido, direccion_pedido
+                FROM pedidos
+                INNER JOIN clientes USING(idcliente)
+                WHERE idcliente = ?
+                ORDER BY fecha_pedido';
+        $params = array($this->cliente);
         return Database::getRows($sql, $params);
-    }*/
+    }
 }
+    
