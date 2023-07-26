@@ -156,12 +156,40 @@ class ProductoQueries
     */
     public function productosMarca()
     {
-        $sql = 'SELECT nombre_producto, precio, estado_producto
+        $sql = 'SELECT nombre_producto, precio, descuento
                 FROM productos
                 INNER JOIN marcas USING(idmarca)
                 WHERE idmarca = ?
                 ORDER BY nombre_producto';
         $params = array($this->marca);
+        return Database::getRows($sql, $params);
+    }
+
+    /*
+    *   Métodos para generar reportes.
+    */
+    public function productosTipo()
+    {
+        $sql = 'SELECT nombre_producto, precio, descuento
+                FROM productos
+                INNER JOIN tipo_productos USING(idtipo_producto)
+                WHERE idtipo_producto = ?
+                ORDER BY nombre_producto';
+        $params = array($this->tipo);
+        return Database::getRows($sql, $params);
+    }
+    
+    /*
+    *   Métodos para generar reportes.
+    */
+    public function productosGenero()
+    {
+        $sql = 'SELECT nombre_producto, precio, descuento
+                FROM productos
+                INNER JOIN generos_productos USING(idgenero_producto)
+                WHERE idgenero_producto = ?
+                ORDER BY nombre_producto';
+        $params = array($this->genero);
         return Database::getRows($sql, $params);
     }
 }

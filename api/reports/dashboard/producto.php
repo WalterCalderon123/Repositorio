@@ -20,7 +20,7 @@ if ($dataMarcas = $marca->readAll()) {
     // Se imprimen las celdas con los encabezados.
     $pdf->cell(126, 10, 'Nombre', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Precio (US$)', 1, 0, 'C', 1);
-    $pdf->cell(30, 10, 'Estado', 1, 1, 'C', 1);
+    $pdf->cell(30, 10, 'Descuento (%)', 1, 1, 'C', 1);
 
     // Se establece un color de relleno para mostrar el nombre de la categoría.
     $pdf->setFillColor(225);
@@ -39,10 +39,10 @@ if ($dataMarcas = $marca->readAll()) {
             if ($dataProductos = $producto->productosMarca()) {
                 // Se recorren los registros fila por fila.
                 foreach ($dataProductos as $rowProducto) {
-                    ($rowProducto['estado_producto']) ? $estado = 'Activo' : $estado = 'Inactivo';
                     // Se imprimen las celdas con los datos de los productos.
                     $pdf->cell(126, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
                     $pdf->cell(30, 10, $rowProducto['precio'], 1, 0);
+                    $pdf->cell(30, 10, $rowProducto['descuento'], 1, 0);
                 }
             } else {
                 $pdf->cell(0, 10, $pdf->encodeString('No hay productos para la marca'), 1, 1);
