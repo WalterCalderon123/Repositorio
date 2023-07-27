@@ -40,7 +40,7 @@ if ($dataCliente = $cliente->readAll()) {
                 foreach ($dataPedido as $rowPedido) {
                     // Se imprimen las celdas con los datos de los productos.
                     $pdf->cell(50, 10, $pdf->encodeString($rowPedido['fecha_pedido']), 1, 0);
-                    $pdf->cell(136, 10, $rowPedido['direccion_pedido'], 1, 0);
+                    $pdf->cell(136, 10, $rowPedido['direccion_pedido'], 1, 1);
                 }
             } else {
                 $pdf->cell(0, 10, $pdf->encodeString('No hay pedidos de clientes'), 1, 1);

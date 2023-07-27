@@ -25,7 +25,8 @@ if (isset($_GET['idusuario'])) {
                 // Se establece la fuente para los encabezados.
                 $pdf->setFont('Times', 'B', 11);
                 // Se imprimen las celdas con los encabezados.
-                $pdf->cell(126, 10, 'Nombre', 1, 0, 'C', 1);
+                $pdf->cell(30, 10, 'Nombre', 1, 0, 'C', 1);
+                $pdf->cell(96, 10, 'Descripcion', 1, 0, 'C', 1);
                 $pdf->cell(30, 10, 'Precio (US$)', 1, 0, 'C', 1);
                 $pdf->cell(30, 10, 'Descuento (%)', 1, 1, 'C', 1);
                 // Se establece la fuente para los datos de los productos.
@@ -33,9 +34,10 @@ if (isset($_GET['idusuario'])) {
                 // Se recorren los registros fila por fila.
                 foreach ($dataProductos as $rowProducto) {
                     // Se imprimen las celdas con los datos de los productos.
-                    $pdf->cell(126, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
+                    $pdf->cell(30, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
+                    $pdf->cell(96, 10, $rowProducto['descripcion'], 1, 0);
                     $pdf->cell(30, 10, $rowProducto['precio'], 1, 0);
-                    $pdf->cell(30, 10, $rowProducto['descuento'], 1, 0);
+                    $pdf->cell(30, 10, $rowProducto['descuento'], 1, 1);
                 }
             } else {
                 $pdf->cell(0, 10, $pdf->encodeString('No hay productos subidos por el usuario'), 1, 1);

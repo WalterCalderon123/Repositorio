@@ -164,7 +164,7 @@ class PedidoQueries
     *   Métodos para generar reportes.
     */
     
-    //Reporte no parametrizado de los pedidos de un cliente
+    //Reporte no parametrizado de los pedidos de los cliente
     public function pedidosCliente()
     {
         $sql = 'SELECT fecha_pedido, direccion_pedido
