@@ -82,19 +82,4 @@ class DetalleprodQueries
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
-
-    
-    /*
-    *   Métodos para generar reportes.
-    */
-    public function productosMarca()
-    {
-        $sql = 'SELECT nombre_producto, num_talla, existencia
-                FROM productos
-                INNER JOIN marcas USING(idmarca)
-                WHERE idmarca = ?
-                ORDER BY nombre_producto';
-        $params = array($this->marca);
-        return Database::getRows($sql, $params);
-    }
 }

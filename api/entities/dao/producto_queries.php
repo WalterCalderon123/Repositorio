@@ -146,6 +146,8 @@ class ProductoQueries
     /*
     *   Métodos para generar reportes.
     */
+    
+    //Reporte no parametrizado de los productos de una marca
     public function productosMarca()
     {
         $sql = 'SELECT nombre_producto, precio, descuento

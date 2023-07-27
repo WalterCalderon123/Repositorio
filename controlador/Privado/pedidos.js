@@ -158,7 +158,7 @@ async function openUpdate(id) {
 
 
 /*
-*   Función para abrir el reporte de productos por categoría.
+*   Función para abrir el reporte de pedidos por cliente.
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
