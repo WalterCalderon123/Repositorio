@@ -65,9 +65,12 @@ async function readHistoryDetail() {
     }
 }
 
+//Metodo para generar la factura de los pedidos
+
 function openReport(id) {
     // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
     const PATH = new URL(`${SERVER_URL}reports/public/pedido_factura.php`);
+    //Se declara el id que se enviara cuando se abra el reporte
     PATH.searchParams.append('iddetalle_pedido', id);
 
     // Se abre el reporte en una nueva pestaña del navegador web.
