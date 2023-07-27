@@ -130,30 +130,17 @@ class ProductoQueries
 
     public function cantidadProductosGenero()
     {
-        $sql = 'SELECT generos_productos, COUNT(idproducto) cantidad
+        $sql = 'SELECT nombre_genero, COUNT(idproducto) cantidad
                 FROM productos INNER JOIN generos_productos USING(idgenero_producto)
-                GROUP BY generos_productos ORDER BY cantidad DESC';
+                GROUP BY nombre_genero ORDER BY cantidad DESC';
         return Database::getRows($sql);   
     }
-    
-    /*
-    *   Métodos para generar gráficas.
-    */
-    /*public function cantidadProductosCategoria()
-    {
-        $sql = 'SELECT nombre_categoria, COUNT(id_producto) cantidad
-                FROM productos INNER JOIN categorias USING(id_categoria)
-                GROUP BY nombre_categoria ORDER BY cantidad DESC';
-        return Database::getRows($sql);
-    }
 
-    public function porcentajeProductosCategoria()
-    {
-        $sql = 'SELECT nombre_categoria, ROUND((COUNT(id_producto) * 100.0 / (SELECT COUNT(id_producto) FROM productos)), 2) porcentaje
-                FROM productos INNER JOIN categorias USING(id_categoria)
-                GROUP BY nombre_categoria ORDER BY porcentaje DESC';
-        return Database::getRows($sql);
-    }*/
+    
+
+
+    
+  
 
 
     /*
