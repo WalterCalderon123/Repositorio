@@ -21,11 +21,12 @@ if (isset($_GET['idgenero_producto'])) {
             // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
             if ($dataProductos = $producto->productosGenero()) {
                 // Se establece un color de relleno para los encabezados.
-                $pdf->setFillColor(225);
+                $pdf->setFillColor(64, 127, 176);
                 // Se establece la fuente para los encabezados.
                 $pdf->setFont('Times', 'B', 11);
                 // Se imprimen las celdas con los encabezados.
-                $pdf->cell(126, 10, 'Nombre', 1, 0, 'C', 1);
+                $pdf->cell(30, 10, 'Nombre', 1, 0, 'C', 1);
+                $pdf->cell(96, 10, 'Descripcion', 1, 0, 'C', 1);
                 $pdf->cell(30, 10, 'Precio (US$)', 1, 0, 'C', 1);
                 $pdf->cell(30, 10, 'Descuento (%)', 1, 1, 'C', 1);
                 // Se establece la fuente para los datos de los productos.
@@ -33,7 +34,8 @@ if (isset($_GET['idgenero_producto'])) {
                 // Se recorren los registros fila por fila.
                 foreach ($dataProductos as $rowProducto) {
                     // Se imprimen las celdas con los datos de los productos.
-                    $pdf->cell(126, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
+                    $pdf->cell(30, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
+                    $pdf->cell(96, 10, $rowProducto['descripcion'], 1, 0);
                     $pdf->cell(30, 10, $rowProducto['precio'], 1, 0);
                     $pdf->cell(30, 10, $rowProducto['descuento'], 1, 0);
                 }
