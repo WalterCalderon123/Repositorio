@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Se comprueba si existe una sesión, de lo contrario se sigue con el flujo normal.
     if (JSON.session) {
         // Se direcciona a la página web de bienvenida.
-        location.href = 'producto_admin.html';
+        location.href = 'dashboard.html';
     } else if (JSON.status) {
         // Se muestra el formulario para iniciar sesión.
         document.getElementById('login-contenedor').classList.remove('d-none');
