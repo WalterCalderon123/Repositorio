@@ -8,6 +8,7 @@ class DetallePedidoQueries
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
+    //Metodo para buscar pedidos
     public function searchRows($value)
     {
         $sql = 'SELECT iddetalle_pedido,b.fecha_pedido, c.nombre_producto , cantidad_producto
@@ -18,7 +19,7 @@ class DetallePedidoQueries
         return Database::getRows($sql, $params);
     }
 
- 
+    //Metodo para leer varios pedidos
     public function readAll()
     {
         $sql = 'SELECT iddetalle_pedido,b.fecha_pedido, c.nombre_producto , cantidad_producto
@@ -27,6 +28,8 @@ class DetallePedidoQueries
         ORDER BY nombre_producto';
         return Database::getRows($sql);
     }
+
+        //Metodo para leer un pedido
 
     public function readOne()
     {
@@ -37,6 +40,8 @@ class DetallePedidoQueries
         return Database::getRow($sql, $params);
     }
 
+        //Metodo para generar los pedidos
+
     public function readPedido()
     {
         $sql = 'SELECT iddetalle_pedido,id_pedido, iddetalle_producto, cantidad_producto
@@ -46,6 +51,7 @@ class DetallePedidoQueries
         return Database::getRow($sql, $params);
     }
 
+    //Metodo para generar las facturas de los pedidos
     public function FacturaOrder()
     {
         $sql = 'SELECT id_pedido, nombre_producto, detalle_pedidos.precio, detalle_pedidos.cantidad_producto,fecha_pedido, estado_pedido, detalle_pedidos.precio * detalle_pedidos.cantidad_producto as total
