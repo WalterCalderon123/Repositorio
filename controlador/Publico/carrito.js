@@ -115,6 +115,7 @@ async function finishOrder() {
         const JSON = await dataFetch(PEDIDO_API, 'finishOrder');
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
+            openReport();
             sweetAlert(1, JSON.message, true, 'index.html');
         } else {
             sweetAlert(2, JSON.exception, false);
@@ -147,3 +148,5 @@ async function openDelete(id) {
         }
     }
 }
+
+

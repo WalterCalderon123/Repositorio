@@ -30,13 +30,30 @@ class DetallePedidoQueries
 
     public function readOne()
     {
-        $sql = 'SELECT iddetalle_pedido,idpedido, iddetalle_producto, cantidad_producto
-                FROM detalle_pedidos 
+        $sql = 'SELECT iddetalle_pedido,id_pedido, nombre_producto, cantidad_producto, fecha_pedido
+                FROM detalle_pedidos INNER JOIN pedidos USING(id_pedido) INNER JOIN productos USING(idproducto)
                 WHERE iddetalle_pedido = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
 
+    public function readPedido()
+    {
+        $sql = 'SELECT iddetalle_pedido,id_pedido, iddetalle_producto, cantidad_producto
+                FROM detalle_pedidos 
+                WHERE id_pedido = ?';
+        $params = array($this->pedido);
+        return Database::getRow($sql, $params);
+    }
+
+    public function FacturaOrder()
+    {
+        $sql = 'SELECT id_pedido, nombre_producto, detalle_pedidos.precio, detalle_pedidos.cantidad_producto,fecha_pedido, estado_pedido, detalle_pedidos.precio * detalle_pedidos.cantidad_producto as total
+        FROM pedidos INNER JOIN detalle_pedidos USING(id_pedido) INNER JOIN productos USING(idproducto)
+        WHERE iddetalle_pedido = ?';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
     /*public function updateRow()
     {
        
