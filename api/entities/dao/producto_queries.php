@@ -127,6 +127,14 @@ class ProductoQueries
                 GROUP BY tipo_producto ORDER BY cantidad DESC';
         return Database::getRows($sql);   
     }
+
+    public function cantidadProductosGenero()
+    {
+        $sql = 'SELECT generos_productos, COUNT(idproducto) cantidad
+                FROM productos INNER JOIN generos_productos USING(idgenero_producto)
+                GROUP BY generos_productos ORDER BY cantidad DESC';
+        return Database::getRows($sql);   
+    }
     
 
    

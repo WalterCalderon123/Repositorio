@@ -40,19 +40,47 @@ async function graficoBarrasMarca() {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
+async function graficoPastel() {
+    // Petición para obtener los datos del gráfico.
+    const JSON = await dataFetch(PRODUCTO_API, 'cantidadProductosTipo');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (JSON.status) {
+        // Se declaran los arreglos para guardar los datos a gráficar.
+        let tipo_productos = [];
+        let cantidades = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        JSON.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            tipo_productos.push(row.tipo_producto);
+            cantidades.push(row.cantidad);
+        });
+        // Llamada a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
+        pieGraph('chart2', tipo_productos, cantidades, 'Cantidad de productos por tipo');
+    } else {
+        document.getElementById('chart2').remove();
+        console.log(JSON.exception);
+    }
+}
+
+
+/*
+*   Función asíncrona para mostrar en un gráfico de dona por la cantidad de productos por genero.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
 async function graficoPastelMarca() {
     // Petición para obtener los datos del gráfico.
     const JSON = await dataFetch(PRODUCTO_API, 'cantidadProductosTipo');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
     if (JSON.status) {
         // Se declaran los arreglos para guardar los datos a gráficar.
-        let marcas = [];
+        let tipo_productos = [];
         let cantidades = [];
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
             // Se agregan los datos a los arreglos.
-            marcas.push(row.tipo_producto);
-            cantidades.push(row.porcentaje);
+            tipo_productos.push(row.tipo_producto);
+            cantidades.push(row.cantidad);
         });
         // Llamada a la función que genera y muestra un gráfico de pastel. Se encuentra en el archivo components.js
         pieGraph('chart2', tipo_productos, cantidades, 'Cantidad de productos por tipo');
