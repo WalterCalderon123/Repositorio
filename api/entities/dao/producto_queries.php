@@ -150,7 +150,7 @@ class ProductoQueries
     //Reporte no parametrizado de los productos de una marca
     public function productosMarca()
     {
-        $sql = 'SELECT nombre_producto, precio, descuento
+        $sql = 'SELECT nombre_producto, descripcion, precio, descuento
                 FROM productos
                 INNER JOIN marcas USING(idmarca)
                 WHERE idmarca = ?
@@ -166,7 +166,7 @@ class ProductoQueries
     //Reporte parametrizado de los productos de un solo tipo
     public function productosTipo()
     {
-        $sql = 'SELECT nombre_producto, precio, descuento
+        $sql = 'SELECT nombre_producto, descripcion, precio, descuento
                 FROM productos
                 INNER JOIN tipo_productos USING(idtipo_producto)
                 WHERE idtipo_producto = ?
@@ -178,7 +178,7 @@ class ProductoQueries
     //Reporte parametrizado de los productos de un solo genero
     public function productosGenero()
     {
-        $sql = 'SELECT nombre_producto, precio, descuento
+        $sql = 'SELECT nombre_producto, descripcion, precio, descuento
                 FROM productos
                 INNER JOIN generos_productos USING(idgenero_producto)
                 WHERE idgenero_producto = ?

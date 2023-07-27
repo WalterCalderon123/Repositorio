@@ -21,7 +21,7 @@ if (isset($_GET['idusuario'])) {
             // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
             if ($dataProductos = $producto->productosUsuario()) {
                 // Se establece un color de relleno para los encabezados.
-                $pdf->setFillColor(225);
+                $pdf->setFillColor(64, 127, 176);
                 // Se establece la fuente para los encabezados.
                 $pdf->setFont('Times', 'B', 11);
                 // Se imprimen las celdas con los encabezados.

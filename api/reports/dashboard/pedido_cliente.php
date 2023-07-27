@@ -14,7 +14,7 @@ $cliente = new Cliente;
 // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
 if ($dataCliente = $cliente->readAll()) {
     // Se establece un color de relleno para los encabezados.
-    $pdf->setFillColor(175);
+    $pdf->setFillColor(64, 127, 176);
     // Se establece la fuente para los encabezados.
     $pdf->setFont('Times', 'B', 11);
     // Se imprimen las celdas con los encabezados.
@@ -22,7 +22,7 @@ if ($dataCliente = $cliente->readAll()) {
     $pdf->cell(136, 10, 'Direccion', 1, 1, 'C', 1);
 
     // Se establece un color de relleno para mostrar el nombre de la categoría.
-    $pdf->setFillColor(225);
+    $pdf->setFillColor(255, 79, 79);
     // Se establece la fuente para los datos de los productos.
     $pdf->setFont('Times', '', 11);
 
