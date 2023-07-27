@@ -209,7 +209,7 @@ async function openDelete(id) {
 }
 
 /*
-*   Función para abrir el reporte de productos por categoría.
+*   Función para abrir el reporte de productos por marca.
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
