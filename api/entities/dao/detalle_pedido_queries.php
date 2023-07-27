@@ -8,6 +8,7 @@ class DetallePedidoQueries
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
+    //Metodo para buscar pedidos
     public function searchRows($value)
     {
         $sql = 'SELECT iddetalle_pedido,b.fecha_pedido, c.nombre_producto , cantidad_producto
@@ -18,7 +19,7 @@ class DetallePedidoQueries
         return Database::getRows($sql, $params);
     }
 
- 
+    //Metodo para leer varios pedidos
     public function readAll()
     {
         $sql = 'SELECT iddetalle_pedido,b.fecha_pedido, c.nombre_producto , cantidad_producto
@@ -28,15 +29,37 @@ class DetallePedidoQueries
         return Database::getRows($sql);
     }
 
+        //Metodo para leer un pedido
+
     public function readOne()
     {
-        $sql = 'SELECT iddetalle_pedido,idpedido, iddetalle_producto, cantidad_producto
-                FROM detalle_pedidos 
+        $sql = 'SELECT iddetalle_pedido,id_pedido, nombre_producto, cantidad_producto, fecha_pedido
+                FROM detalle_pedidos INNER JOIN pedidos USING(id_pedido) INNER JOIN productos USING(idproducto)
                 WHERE iddetalle_pedido = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
 
+        //Metodo para generar los pedidos
+
+    public function readPedido()
+    {
+        $sql = 'SELECT iddetalle_pedido,id_pedido, iddetalle_producto, cantidad_producto
+                FROM detalle_pedidos 
+                WHERE id_pedido = ?';
+        $params = array($this->pedido);
+        return Database::getRow($sql, $params);
+    }
+
+    //Metodo para generar las facturas de los pedidos
+    public function FacturaOrder()
+    {
+        $sql = 'SELECT id_pedido, nombre_producto, detalle_pedidos.precio, detalle_pedidos.cantidad_producto,fecha_pedido, estado_pedido, detalle_pedidos.precio * detalle_pedidos.cantidad_producto as total
+        FROM pedidos INNER JOIN detalle_pedidos USING(id_pedido) INNER JOIN productos USING(idproducto)
+        WHERE iddetalle_pedido = ?';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
     /*public function updateRow()
     {
        

@@ -86,12 +86,15 @@ class PedidoQueries
 
     public function readHistoryOrder()
     {
-        $sql = 'SELECT id_pedido, nombre_producto, detalle_pedidos.precio, detalle_pedidos.cantidad_producto,fecha_pedido, estado_pedido
+        $sql = 'SELECT iddetalle_pedido, nombre_producto, detalle_pedidos.precio, detalle_pedidos.cantidad_producto,fecha_pedido, estado_pedido
         FROM pedidos INNER JOIN detalle_pedidos USING(id_pedido) INNER JOIN productos USING(idproducto)
         WHERE idcliente = ?';
         $params = array($_SESSION['idcliente']);
         return Database::getRows($sql, $params);
     }
+
+   
+
 
     
 
@@ -176,4 +179,4 @@ class PedidoQueries
         return Database::getRows($sql, $params);
     }
 }
-    
+  

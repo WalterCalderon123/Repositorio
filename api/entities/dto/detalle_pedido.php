@@ -8,6 +8,7 @@ class Detalle extends DetallePedidoQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
+    protected $pedido = null;
    
    
     /*
@@ -31,6 +32,15 @@ class Detalle extends DetallePedidoQueries
         }
     }
 
+    public function setPedido($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->pedido = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
    
     /*
     *   Métodos para obtener valores de los atributos.
@@ -40,4 +50,8 @@ class Detalle extends DetallePedidoQueries
         return $this->id;
     }
 
+    public function getPedido()
+    {
+        return $this->pedido;
+    }
 }

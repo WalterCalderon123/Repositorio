@@ -48,6 +48,13 @@ async function readHistoryDetail() {
                     <td>${row.fecha_pedido}</td>
                     <td>${icon}</td>
                     <td>${subtotal.toFixed(2)}</td>
+                    <td>
+                    <a onclick="openReport(${row.iddetalle_pedido})" class="btn btn-primary tooltipped" data-tooltip="Reporte">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-check-fill" viewBox="0 0 16 16">
+                    <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zm1.354 4.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
+                    </svg>
+                    </a>
+                </td>
                 </tr>
             `;
         });
@@ -57,6 +64,19 @@ async function readHistoryDetail() {
         sweetAlert(4, JSON.exception, false, 'index.html');
     }
 }
+
+//Metodo para generar la factura de los pedidos
+
+function openReport(id) {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/public/pedido_factura.php`);
+    //Se declara el id que se enviara cuando se abra el reporte
+    PATH.searchParams.append('iddetalle_pedido', id);
+
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(PATH.href);
+}
+
 
 /*
 *   Función para abrir la caja de diálogo con el formulario de cambiar cantidad de producto.
