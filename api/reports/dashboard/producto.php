@@ -44,7 +44,7 @@ if ($dataMarcas = $marca->readAll()) {
                     $pdf->cell(30, 10, $pdf->encodeString($rowProducto['nombre_producto']), 1, 0);
                     $pdf->cell(96, 10, $rowProducto['descripcion'], 1, 0);
                     $pdf->cell(30, 10, $rowProducto['precio'], 1, 0);
-                    $pdf->cell(30, 10, $rowProducto['descuento'], 1, 0);
+                    $pdf->cell(30, 10, $rowProducto['descuento'], 1, 1);
                 }
             } else {
                 $pdf->cell(0, 10, $pdf->encodeString('No hay productos para la marca'), 1, 1);

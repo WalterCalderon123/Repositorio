@@ -190,7 +190,7 @@ class ProductoQueries
     //Reporte parametrizado de los productos de un usuario
     public function productosUsuario()
     {
-        $sql = 'SELECT nombre_producto, precio, descuento
+        $sql = 'SELECT nombre_producto, descripcion, precio, descuento
                 FROM productos
                 INNER JOIN usuarios USING(idusuario)
                 WHERE idusuario = ?
