@@ -116,5 +116,13 @@ class ClienteQueries
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
+
+    public function cantidadClientesGenero()
+    {
+        $sql = 'SELECT genero_cliente, COUNT(idcliente) cantidad
+                FROM clientes INNER JOIN genero_clientes USING(idgenero_cliente)
+                GROUP BY genero_cliente ORDER BY cantidad DESC';
+        return Database::getRows($sql);   
+    }
 }
 
