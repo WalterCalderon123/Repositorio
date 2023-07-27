@@ -2,6 +2,7 @@
 // Constante para completar la ruta de la API.
 const PRODUCTO_API = 'business/dashboard/producto.php';
 const PEDIDO_API = 'business/dashboard/pedido.php';
+const CLIENTE_API = 'business/dashboard/cliente.php';
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     graficoPastelTipo();
     graficoBarrasGenero();
     graficoDonaEstado();
+    graficoPolarAreaGenero();
 });
 
 /*
@@ -117,6 +119,33 @@ async function graficoDonaEstado() {
         doughnutGraph('chart4', estado_pedidos, cantidades, 'Cantidad de pedidos por estado');
     } else {
         document.getElementById('chart4').remove();
+        console.log(JSON.exception);
+    }
+}
+
+/*
+*   Función asíncrona para mostrar en un gráfico de areas polares segun la cantidad de productos por genero.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+async function graficoPolarAreaGenero() {
+    // Petición para obtener los datos del gráfico.
+    const JSON = await dataFetch(CLIENTE_API, 'cantidadClientesGenero');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (JSON.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let genero_clientes  = [];
+        let cantidades = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        JSON.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            genero_clientes .push(row.genero_cliente);
+            cantidades.push(row.cantidad);
+        });
+        // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
+        polarAreaGraph('chart5', genero_clientes , cantidades, 'Cantidad de clientes', 'Cantidad de clientes por genero');
+    } else {
+        document.getElementById('chart5').remove();
         console.log(JSON.exception);
     }
 }
