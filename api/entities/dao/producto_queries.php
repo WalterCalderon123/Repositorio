@@ -136,10 +136,6 @@ class ProductoQueries
         return Database::getRows($sql);   
     }
     
-
-   
-
-
     /*
     *   Métodos para generar gráficas.
     */
@@ -159,6 +155,7 @@ class ProductoQueries
         return Database::getRows($sql);
     }*/
 
+
     /*
     *   Métodos para generar reportes.
     */
@@ -176,6 +173,8 @@ class ProductoQueries
     /*
     *   Métodos para generar reportes.
     */
+
+    //Reporte parametrizado de los productos de un solo tipo
     public function productosTipo()
     {
         $sql = 'SELECT nombre_producto, precio, descuento
@@ -187,9 +186,7 @@ class ProductoQueries
         return Database::getRows($sql, $params);
     }
     
-    /*
-    *   Métodos para generar reportes.
-    */
+    //Reporte parametrizado de los productos de un solo genero
     public function productosGenero()
     {
         $sql = 'SELECT nombre_producto, precio, descuento
@@ -198,6 +195,18 @@ class ProductoQueries
                 WHERE idgenero_producto = ?
                 ORDER BY nombre_producto';
         $params = array($this->genero);
+        return Database::getRows($sql, $params);
+    }
+        
+    //Reporte parametrizado de los productos de un usuario
+    public function productosUsuario()
+    {
+        $sql = 'SELECT nombre_producto, precio, descuento
+                FROM productos
+                INNER JOIN usuarios USING(idusuario)
+                WHERE idusuario = ?
+                ORDER BY nombre_producto';
+        $params = array($this->usuario);
         return Database::getRows($sql, $params);
     }
 }
