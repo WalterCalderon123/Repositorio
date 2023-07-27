@@ -26,12 +26,14 @@ class ClienteQueries
         $sql = 'SELECT clave_cliente FROM clientes WHERE idcliente = ?';
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
-        if (password_verify($password, $data['clave_cliente'])) {
+        if ( $data['clave_cliente']){
             return true;
         } else {
             return false;
         }
     }
+
+    
 
     public function changePassword()
     {
