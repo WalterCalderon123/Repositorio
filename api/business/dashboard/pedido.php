@@ -61,6 +61,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                //Consulta la cantidad de pedidos que pertenecen a un estado
                 case 'cantidadPedidosEstado':
                     if ($result['dataset'] = $pedido->cantidadPedidosEstado 
                     ()) {

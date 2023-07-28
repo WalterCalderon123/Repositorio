@@ -117,6 +117,7 @@ class ClienteQueries
         return Database::getRows($sql, $params);
     }
 
+    //Creamos la consulta para obtener la cantidad de clientes que pertenecen a un genero 
     public function cantidadClientesGenero()
     {
         $sql = 'SELECT genero_cliente, COUNT(idcliente) cantidad

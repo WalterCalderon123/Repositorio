@@ -62,6 +62,7 @@ if (isset($_GET['action'])) {
                 }
                 break;*/
 
+            //Consulta la cantidad de clientes que pertenecen a un genero 
                 case 'cantidadClientesGenero':
                     if ($result['dataset'] = $cliente->cantidadClientesGenero()) {
                         $result['status'] = 1;

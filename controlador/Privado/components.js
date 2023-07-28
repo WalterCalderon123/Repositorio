@@ -168,11 +168,11 @@ function barGraphY(canvas, xAxis, yAxis, legend, title) {
 
 
 /*
-*   Función para generar un gráfico de barras verticales.
+*   Función para generar un gráfico de lineas.
 *   Parámetros: canvas (identificador de la etiqueta canvas), xAxis (datos para el eje X), yAxis (datos para el eje Y), legend (etiqueta para los datos) y title (título del gráfico).
 *   Retorno: ninguno.
 */
-function barGraphX(canvas, xAxis, yAxis, legend, title) {
+function lineGraph(canvas, xAxis, yAxis, legend, title) {
     // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
     let colors = [];
     // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.

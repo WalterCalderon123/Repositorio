@@ -112,6 +112,7 @@ class ProductoQueries
         return Database::getRows($sql, $params);
     }
 
+    //Creamos la consulta para obtener la cantidad de productos que pertenecen a una marca  
     public function cantidadProductosMarca()
     {
         $sql = 'SELECT nombre_marca, COUNT(idproducto) cantidad
@@ -119,7 +120,7 @@ class ProductoQueries
                 GROUP BY nombre_marca ORDER BY cantidad DESC';
         return Database::getRows($sql);
     }
-
+    //Creamos la consulta para obtener la cantidad de productos que pertenecen a un tipo 
     public function cantidadProductosTipo()
     {
         $sql = 'SELECT tipo_producto, COUNT(idproducto) cantidad
@@ -127,7 +128,7 @@ class ProductoQueries
                 GROUP BY tipo_producto ORDER BY cantidad DESC';
         return Database::getRows($sql);   
     }
-
+    //Creamos la consulta para obtener la cantidad de productos que pertenecen a un genero 
     public function cantidadProductosGenero()
     {
         $sql = 'SELECT nombre_genero, COUNT(idproducto) cantidad

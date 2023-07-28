@@ -149,6 +149,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                //Consulta la cantidad de productos que pertenecen a una marca
             case 'cantidadProductosMarca':
                 if ($result['dataset'] = $producto->cantidadProductosMarca()) {
                     $result['status'] = 1;
@@ -156,6 +157,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos disponibles';
                 }
                 break;
+                //Consulta la cantidad de productos que pertenecen a un tipo
             case 'cantidadProductosTipo':
                     if ($result['dataset'] = $producto->cantidadProductosTipo()) {
                         $result['status'] = 1;
@@ -163,6 +165,7 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'No hay datos disponibles';
                     }
                     break;
+                    //Consulta la cantidad de productos que pertenecen a un genero
                 case 'cantidadProductosGenero':
                         if ($result['dataset'] = $producto->cantidadProductosGenero 
                         ()) {

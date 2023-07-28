@@ -8,7 +8,7 @@ const CLIENTE_API = 'business/dashboard/cliente.php';
 document.addEventListener('DOMContentLoaded', () => {
     graficoBarrasMarca();
     graficoPastelTipo();
-    graficoBarrasGenero();
+    graficoLineasGenero();
     graficoDonaEstado();
     graficoPolarAreaGenero();
 });
@@ -73,7 +73,7 @@ async function graficoPastelTipo() {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
-async function graficoBarrasGenero() {
+async function graficoLineasGenero() {
     // Petición para obtener los datos del gráfico.
     const JSON = await dataFetch(PRODUCTO_API, 'cantidadProductosGenero');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
@@ -88,7 +88,7 @@ async function graficoBarrasGenero() {
             cantidades.push(row.cantidad);
         });
         // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
-        barGraphX('chart3', generos_productos, cantidades, 'Cantidad de productos', 'Cantidad de productos por genero');
+        lineGraph('chart3', generos_productos, cantidades, 'Cantidad de productos', 'Cantidad de productos por genero');
     } else {
         document.getElementById('chart3').remove();
         console.log(JSON.exception);

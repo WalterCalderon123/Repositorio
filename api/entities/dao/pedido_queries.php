@@ -153,7 +153,7 @@ class PedidoQueries
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
-
+    //Creamos la consulta para obtener la cantidad de pedidos que pertenecen a un estado
     public function cantidadPedidosEstado()
     {
         $sql = 'SELECT estado_pedido, COUNT(id_pedido) cantidad
